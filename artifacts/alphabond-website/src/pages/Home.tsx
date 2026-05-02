@@ -223,31 +223,86 @@ export function Home() {
           {/* Dot grid texture */}
           <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage:"radial-gradient(circle,#010ED0 1px,transparent 1px)",backgroundSize:"36px 36px"}} />
 
-          {/* Product showcase card — right side */}
-          <div className="absolute right-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center pointer-events-none select-none" style={{width:"280px"}}>
-            {/* Card */}
-            <div className="w-full bg-white/6 backdrop-blur-md border border-white/12 rounded-3xl p-6 shadow-2xl">
-              <div className="text-[9px] font-bold text-blue-400 uppercase tracking-[0.18em] mb-4">Featured Product</div>
-              <img
-                src="/images/real-tx4.png"
-                alt="Alphabond TileGrip X4 — C2TES1 Flexible Tile Adhesive"
-                className="w-full h-52 object-contain mx-auto mb-4"
-              />
-              <div className="text-white font-display font-bold text-base mb-0.5">TileGrip X4</div>
-              <div className="text-blue-300 text-xs font-medium mb-4">C2TES1 · Flexible Tile Adhesive</div>
-              <div className="space-y-2">
-                {["Water resistant formulation","Superior bonding strength","Indoor &amp; outdoor use"].map((f,i)=>(
-                  <div key={i} className="flex items-center gap-2 text-[11px] text-slate-300">
-                    <CheckCircle2 size={10} className="text-blue-400 shrink-0" />
-                    <span dangerouslySetInnerHTML={{__html:f}} />
-                  </div>
-                ))}
+          {/* Orbital product animation */}
+          <div className="absolute hidden lg:block pointer-events-none select-none"
+            style={{right:"80px", top:"50%", transform:"translateY(-50%)", width:"360px", height:"360px"}}>
+
+            <style>{`
+              @keyframes heroOrbitSpin    { to   { transform: rotate(360deg);  } }
+              @keyframes heroCounter0     { from { transform: rotate(0deg);    } to { transform: rotate(-360deg);  } }
+              @keyframes heroCounter90    { from { transform: rotate(-90deg);  } to { transform: rotate(-450deg);  } }
+              @keyframes heroCounter180   { from { transform: rotate(-180deg); } to { transform: rotate(-540deg);  } }
+              @keyframes heroCounter270   { from { transform: rotate(-270deg); } to { transform: rotate(-630deg);  } }
+              @keyframes heroPulse        { 0%,100% { opacity:0.5; transform:translate(-50%,-50%) scale(1);   }
+                                           50%      { opacity:1;   transform:translate(-50%,-50%) scale(1.15); } }
+            `}</style>
+
+            {/* Outer orbit ring */}
+            <div style={{
+              position:"absolute", inset:0, borderRadius:"50%",
+              border:"1px solid rgba(255,255,255,0.08)",
+              boxShadow:"0 0 40px rgba(1,14,208,0.08) inset"
+            }} />
+            {/* Inner dashed ring */}
+            <div style={{
+              position:"absolute", inset:"60px", borderRadius:"50%",
+              border:"1px dashed rgba(1,14,208,0.25)"
+            }} />
+
+            {/* Center glow + label */}
+            <div style={{
+              position:"absolute", top:"50%", left:"50%",
+              transform:"translate(-50%,-50%)", textAlign:"center", zIndex:2
+            }}>
+              <div style={{
+                width:"64px", height:"64px", borderRadius:"50%",
+                background:"rgba(1,14,208,0.2)", backdropFilter:"blur(12px)",
+                border:"1px solid rgba(1,14,208,0.4)",
+                display:"flex", alignItems:"center", justifyContent:"center",
+                animation:"heroPulse 3s ease-in-out infinite",
+                position:"absolute", top:"50%", left:"50%",
+                transform:"translate(-50%,-50%)"
+              }}>
+                <span style={{fontSize:"18px", fontWeight:900, color:"white", fontFamily:"Space Grotesk, sans-serif"}}>A</span>
               </div>
             </div>
-            {/* ISO badge below card */}
-            <div className="mt-3 flex items-center gap-2 bg-white/6 border border-white/12 backdrop-blur-md rounded-xl px-4 py-2.5 w-full justify-center">
-              <ShieldCheck size={12} className="text-blue-400" />
-              <span className="text-white text-[11px] font-bold">ISO 9001:2015 Certified</span>
+
+            {/* Spinning orbit container */}
+            <div style={{
+              position:"absolute", inset:0,
+              animation:"heroOrbitSpin 14s linear infinite"
+            }}>
+              {[
+                {img:"/images/real-tx4.png",      label:"TileGrip X4",   sub:"Tile Adhesive",    angle:0,   counter:"heroCounter0"   },
+                {img:"/images/real-ag1.png",       label:"AlphaGrout X1", sub:"Precision Grout",  angle:90,  counter:"heroCounter90"  },
+                {img:"/images/real-blockgrip.png", label:"BlockGrip X",   sub:"Block Mortar",     angle:180, counter:"heroCounter180" },
+                {img:"/images/real-plastogrip.png",label:"PlastoGrip X",  sub:"Ready-Mix Plaster",angle:270, counter:"heroCounter270" },
+              ].map((p) => (
+                <div key={p.angle} style={{
+                  position:"absolute",
+                  top:"50%", left:"50%",
+                  transform:`rotate(${p.angle}deg) translateX(155px)`,
+                  marginTop:"-44px", marginLeft:"-44px",
+                }}>
+                  {/* Counter-rotation keeps card upright */}
+                  <div style={{animation:`${p.counter} 14s linear infinite`, width:"88px"}}>
+                    <div style={{
+                      background:"rgba(255,255,255,0.06)",
+                      backdropFilter:"blur(10px)",
+                      border:"1px solid rgba(255,255,255,0.12)",
+                      borderRadius:"16px",
+                      padding:"8px 6px",
+                      textAlign:"center",
+                      boxShadow:"0 8px 32px rgba(0,0,0,0.3)"
+                    }}>
+                      <img src={p.img} alt={p.label}
+                        style={{height:"52px", width:"auto", objectFit:"contain", margin:"0 auto 4px"}} />
+                      <div style={{fontSize:"8.5px", fontWeight:700, color:"white", lineHeight:1.2}}>{p.label}</div>
+                      <div style={{fontSize:"7px", color:"rgb(147,197,253)", marginTop:"2px"}}>{p.sub}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
