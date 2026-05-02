@@ -210,12 +210,13 @@ export function Home() {
           {/* Full-bleed background photo */}
           <div className="absolute inset-0">
             <img
-              src="/images/real-ag1-app.jpg"
-              alt="Construction site"
-              className="w-full h-full object-cover object-center"
+              src="/images/sector-renovation.png"
+              alt="Construction chemicals application — tiling and renovation work"
+              className="w-full h-full object-cover"
+              style={{objectPosition:"center center"}}
             />
-            {/* Left-anchored dark overlay so text is always readable; photo visible on right */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 from-30% via-slate-950/88 via-55% to-slate-950/30" />
+            {/* Left overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 from-35% via-slate-950/82 via-58% to-slate-950/20" />
             {/* Top & bottom vignette */}
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/60" />
           </div>
