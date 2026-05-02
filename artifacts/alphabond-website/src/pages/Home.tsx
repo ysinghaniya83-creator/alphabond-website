@@ -210,7 +210,7 @@ export function Home() {
           {/* Full-bleed background photo */}
           <div className="absolute inset-0">
             <img
-              src="/images/real-tx2-app.jpg"
+              src="/images/real-ag1-app.jpg"
               alt="Construction site"
               className="w-full h-full object-cover object-center"
             />
