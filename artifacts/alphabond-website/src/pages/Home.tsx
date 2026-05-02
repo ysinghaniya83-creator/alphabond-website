@@ -247,7 +247,7 @@ export function Home() {
 
                 {/* Perspective viewport */}
                 <div style={{
-                  width:"260px", height:"440px",
+                  width:"260px", height:"360px",
                   perspective:"800px", perspectiveOrigin:"50% 45%",
                   position:"relative",
                 }}>
@@ -277,70 +277,67 @@ export function Home() {
                         }}>
                           {/* Card */}
                           <div style={{
-                            width:"240px", height:"420px",
-                            marginLeft:"-120px", marginTop:"10px",
-                            borderRadius:"24px", overflow:"hidden",
-                            background:"linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(10,20,60,0.75) 100%)",
+                            width:"240px", height:"340px",
+                            marginLeft:"-120px",
+                            borderRadius:"22px", overflow:"hidden",
+                            background:"linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(10,20,60,0.80) 100%)",
                             backdropFilter:"blur(20px)",
                             border:"1px solid rgba(255,255,255,0.15)",
                             boxShadow:isFront
-                              ? "0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,130,246,0.3), inset 0 1px 0 rgba(255,255,255,0.15)"
-                              : "0 10px 30px rgba(0,0,0,0.4)",
+                              ? "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(59,130,246,0.3), inset 0 1px 0 rgba(255,255,255,0.15)"
+                              : "0 8px 24px rgba(0,0,0,0.4)",
                             display:"flex", flexDirection:"column",
                           }}>
-                            {/* Top gradient bar */}
-                            <div style={{
-                              height:"3px", flexShrink:0,
-                              background:"linear-gradient(90deg,#1d4ed8,#60a5fa,#1d4ed8)",
-                            }}/>
+                            {/* Top accent bar */}
+                            <div style={{height:"3px", flexShrink:0, background:"linear-gradient(90deg,#1d4ed8,#60a5fa,#1d4ed8)"}}/>
 
-                            <div style={{flex:1, display:"flex", flexDirection:"column", padding:"18px 18px 16px", gap:0}}>
+                            <div style={{display:"flex", flexDirection:"column", padding:"14px 16px 14px"}}>
                               {/* Tag */}
                               <div style={{
-                                alignSelf:"flex-start", padding:"3px 9px", borderRadius:"12px",
+                                alignSelf:"flex-start", padding:"2px 8px", borderRadius:"10px",
                                 background:"rgba(37,99,235,0.22)", border:"1px solid rgba(59,130,246,0.35)",
-                                fontSize:"8.5px", fontWeight:700, letterSpacing:"0.13em",
-                                color:"#93c5fd", textTransform:"uppercase", marginBottom:"12px",
+                                fontSize:"8px", fontWeight:700, letterSpacing:"0.12em",
+                                color:"#93c5fd", textTransform:"uppercase", marginBottom:"10px",
                               }}>{p.tag}</div>
 
-                              {/* Bag image — fixed height so text never gets squeezed */}
+                              {/* Bag image */}
                               <div style={{
-                                height:"170px", flexShrink:0,
+                                height:"140px", flexShrink:0,
                                 display:"flex", alignItems:"center", justifyContent:"center",
                                 marginBottom:"10px",
                               }}>
                                 <img src={p.img} alt={p.label} style={{
-                                  maxHeight:"170px", maxWidth:"200px",
+                                  maxHeight:"140px", maxWidth:"190px",
                                   objectFit:"contain",
-                                  filter:"drop-shadow(0 18px 36px rgba(0,0,0,0.7)) drop-shadow(0 4px 12px rgba(1,14,208,0.3))",
+                                  filter:"drop-shadow(0 14px 28px rgba(0,0,0,0.65)) drop-shadow(0 3px 10px rgba(1,14,208,0.28))",
                                 }}/>
                               </div>
 
-                              {/* Product name */}
+                              {/* Name + sub */}
                               <div style={{
                                 fontFamily:"Space Grotesk,sans-serif",
-                                fontSize:"17px", fontWeight:800, color:"#fff",
-                                letterSpacing:"-0.025em", lineHeight:1.1, marginBottom:"2px",
+                                fontSize:"16px", fontWeight:800, color:"#fff",
+                                letterSpacing:"-0.02em", lineHeight:1.15, marginBottom:"2px",
                               }}>{p.label}</div>
-                              <div style={{fontSize:"10px", color:"rgba(147,197,253,0.8)", marginBottom:"10px"}}>{p.sub}</div>
+                              <div style={{fontSize:"9.5px", color:"rgba(147,197,253,0.8)", marginBottom:"9px"}}>{p.sub}</div>
 
                               {/* Divider */}
                               <div style={{height:"1px", background:"rgba(255,255,255,0.08)", marginBottom:"8px"}}/>
 
-                              {/* Features */}
-                              <div style={{display:"flex", flexDirection:"column", gap:"6px"}}>
+                              {/* 3 Features */}
+                              <div style={{display:"flex", flexDirection:"column", gap:"5px"}}>
                                 {p.feat.map((f,fi) => (
-                                  <div key={fi} style={{display:"flex", alignItems:"center", gap:"7px"}}>
+                                  <div key={fi} style={{display:"flex", alignItems:"center", gap:"6px"}}>
                                     <div style={{
-                                      width:"14px", height:"14px", borderRadius:"50%", flexShrink:0,
-                                      background:"rgba(37,99,235,0.3)", border:"1px solid rgba(59,130,246,0.45)",
+                                      width:"13px", height:"13px", borderRadius:"50%", flexShrink:0,
+                                      background:"rgba(37,99,235,0.3)", border:"1px solid rgba(59,130,246,0.4)",
                                       display:"flex", alignItems:"center", justifyContent:"center",
                                     }}>
-                                      <svg width="7" height="7" viewBox="0 0 8 8" fill="none">
-                                        <path d="M1.5 4l1.8 1.8L6.5 2" stroke="#60a5fa" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                                      <svg width="6" height="6" viewBox="0 0 8 8" fill="none">
+                                        <path d="M1.5 4l1.8 1.8L6.5 2" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                                       </svg>
                                     </div>
-                                    <span style={{fontSize:"11px", color:"#cbd5e1", lineHeight:1.3}}>{f}</span>
+                                    <span style={{fontSize:"10.5px", color:"#cbd5e1", lineHeight:1.3}}>{f}</span>
                                   </div>
                                 ))}
                               </div>
