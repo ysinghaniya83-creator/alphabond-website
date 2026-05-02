@@ -206,112 +206,103 @@ export function Home() {
       <main className="flex-1">
 
         {/* ── Hero ───────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden" style={{background:"linear-gradient(160deg,#06091e 0%,#0a0f2e 50%,#040814 100%)"}}>
-          {/* Dot grid overlay */}
-          <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage:"radial-gradient(circle,#010ED0 1.5px,transparent 1.5px)",backgroundSize:"38px 38px"}} />
-          {/* Glow orbs */}
-          <div className="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-blue-600/8 rounded-full blur-3xl pointer-events-none" />
+        <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+          {/* Full-bleed background photo */}
+          <div className="absolute inset-0">
+            <img
+              src="/images/real-tx2-app.jpg"
+              alt="Construction site"
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Left-anchored dark overlay so text is always readable; photo visible on right */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 from-30% via-slate-950/88 via-55% to-slate-950/30" />
+            {/* Top & bottom vignette */}
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/60" />
+          </div>
 
-          <div className="container mx-auto px-4 md:px-8 w-full pt-20">
-            <div className="grid lg:grid-cols-[58%_42%] gap-10 xl:gap-14 items-center min-h-[calc(100vh-80px)] py-16">
+          {/* Subtle dot grid on top */}
+          <div className="absolute inset-0 opacity-[0.025]" style={{backgroundImage:"radial-gradient(circle,#fff 1px,transparent 1px)",backgroundSize:"36px 36px"}} />
 
-              {/* Left: Content */}
-              <div>
-                <div className="flex flex-wrap gap-2 mb-7">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-300 text-[11px] font-bold tracking-wide">
-                    <ShieldCheck size={11} /> ISO 9001:2015 Certified
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
-                    <MapPin size={10} /> Bharuch &amp; Surat, Gujarat
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">Since 2008</span>
-                </div>
+          {/* Content */}
+          <div className="relative z-10 container mx-auto px-4 md:px-8 w-full pt-28 pb-36">
+            <div className="max-w-2xl">
 
-                <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] font-bold font-display text-white leading-[1.04] mb-6">
-                  High-performance<br /><span className="text-blue-400">construction</span><br />chemicals.
-                </h1>
-                <p className="text-lg text-slate-300 mb-3 max-w-xl leading-relaxed">
-                  Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — all manufactured at our ISO-certified Bharuch facility.
-                </p>
-                <p className="text-sm text-slate-500 mb-9 max-w-xl">
-                  Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3 mb-9">
-                  <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-sm font-semibold h-12">Explore All 8 Products</Button></a>
-                  <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-sm h-12 bg-transparent">Request a Sample</Button></a>
-                  <Link href="/brochure"><Button size="lg" variant="outline" className="border-white/15 text-white/60 hover:text-white hover:bg-white/8 rounded-full px-6 text-sm h-12 bg-transparent gap-1.5"><FileText size={14} /> Brochure</Button></Link>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-9">
-                  {["Tile Adhesive (C1T–C2TES1)", "Non-Shrink Precision Grout", "AAC Block Mortar", "Ready-Mix Plaster", "Dry & Wet Sand"].map(tag => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 text-xs font-medium">{tag}</span>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-3 gap-6 pt-7 border-t border-white/10">
-                  {[
-                    { value: "8", label: "Products", sub: "In the range" },
-                    { value: "1.5L", label: "Bags/Month", sub: "Chemical output" },
-                    { value: "20+", label: "Major Clients", sub: "National brands" },
-                  ].map(s => (
-                    <div key={s.label}>
-                      <div className="text-3xl md:text-4xl font-display font-bold text-white mb-0.5">{s.value}</div>
-                      <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">{s.label}</div>
-                      <div className="text-[10px] text-slate-600">{s.sub}</div>
-                    </div>
-                  ))}
-                </div>
+              {/* Credential badges */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-300 text-[11px] font-bold tracking-wide">
+                  <ShieldCheck size={11} /> ISO 9001:2015 Certified
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
+                  <MapPin size={10} /> Bharuch &amp; Surat, Gujarat
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">Est. 2008</span>
               </div>
 
-              {/* Right: 2×2 application photo mosaic */}
-              <div className="hidden lg:block relative">
-                {/* ISO badge floating top-right */}
-                <div className="absolute -top-3 -right-3 z-20 bg-white/10 backdrop-blur-md rounded-xl px-4 py-2.5 border border-white/20 flex items-center gap-2 shadow-xl">
-                  <ShieldCheck size={13} className="text-blue-400" />
-                  <span className="text-white text-xs font-bold">ISO 9001:2015</span>
-                </div>
+              {/* Headline */}
+              <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-bold font-display text-white leading-[1.04] mb-6">
+                High-performance<br /><span className="text-blue-400">construction</span><br />chemicals.
+              </h1>
 
-                {/* 2×2 photo grid */}
-                <div className="grid grid-cols-2 gap-3" style={{height:"480px"}}>
-                  {[
-                    { img: "/images/real-tx2-app.jpg",        label: "Tile Adhesive",     sub: "TileGrip Series" },
-                    { img: "/images/real-blockgrip-app.jpg",  label: "Block Mortar",      sub: "BlockGrip X" },
-                    { img: "/images/real-plastogrip-app.jpg", label: "Ready-Mix Plaster", sub: "PlastoGrip X" },
-                    { img: "/images/real-ag1-app.jpg",        label: "Precision Grout",   sub: "AlphaGrout Series" },
-                  ].map((item, i) => (
-                    <div key={i} className="relative rounded-2xl overflow-hidden border border-white/10">
-                      <img
-                        src={item.img}
-                        alt={item.label}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                      <div className="absolute bottom-3 left-3">
-                        <div className="text-white text-xs font-bold leading-tight">{item.label}</div>
-                        <div className="text-blue-300 text-[10px] font-medium">{item.sub}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <p className="text-lg text-slate-300 leading-relaxed mb-3 max-w-lg">
+                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — manufactured at our ISO-certified Bharuch facility.
+              </p>
+              <p className="text-sm text-slate-500 mb-10 max-w-lg">
+                Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
+              </p>
 
-                {/* Trusted-by strip below */}
-                <div className="mt-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-3 flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Trusted by</span>
-                  <div className="flex items-center gap-3 text-xs text-slate-400 font-medium">
-                    <span>Pidilite</span><span className="text-slate-700">·</span>
-                    <span>UltraTech</span><span className="text-slate-700">·</span>
-                    <span>Asian Paints</span><span className="text-slate-700">·</span>
-                    <span>Walplast</span>
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-3 mb-10">
+                <a href="#products">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-sm font-semibold h-12">
+                    Explore All 8 Products
+                  </Button>
+                </a>
+                <a href="#contact">
+                  <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-sm h-12 bg-transparent">
+                    Request a Sample
+                  </Button>
+                </a>
+                <Link href="/brochure">
+                  <Button size="lg" variant="outline" className="border-white/15 text-white/60 hover:text-white hover:bg-white/8 rounded-full px-6 text-sm h-12 bg-transparent gap-1.5">
+                    <FileText size={14} /> Brochure
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Stats row */}
+              <div className="flex flex-wrap gap-8 pt-7 border-t border-white/10">
+                {[
+                  { value: "17+", label: "Years in Business" },
+                  { value: "8",   label: "Products in Range" },
+                  { value: "20+", label: "Major Clients" },
+                  { value: "1.5L", label: "Bags/Month" },
+                ].map(s => (
+                  <div key={s.label}>
+                    <div className="text-3xl font-display font-bold text-white leading-none mb-0.5">{s.value}</div>
+                    <div className="text-[11px] text-slate-400 font-medium">{s.label}</div>
                   </div>
-                </div>
+                ))}
               </div>
-
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-white/30 animate-bounce">
+          {/* Bottom trusted-by bar */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/8 bg-slate-950/60 backdrop-blur-sm">
+            <div className="container mx-auto px-4 md:px-8 h-14 flex items-center gap-8">
+              <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest shrink-0">Trusted by</span>
+              <div className="flex items-center gap-6 text-sm text-slate-400 font-medium">
+                {["Pidilite","UltraTech RMC","Asian Paints","Walplast","Magicrete","JK Lakshmi"].map((b, i, arr) => (
+                  <React.Fragment key={b}>
+                    <span>{b}</span>
+                    {i < arr.length - 1 && <span className="text-slate-700">·</span>}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-20 right-8 z-10 flex flex-col items-center text-white/20 animate-bounce">
             <ChevronDown size={20} />
           </div>
         </section>
