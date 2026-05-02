@@ -81,33 +81,32 @@ const TILEGRIP_GRADES = [
 const ALPHAGROUT_GRADES = [
   {
     grade: "X1",
-    subtitle: "Cement-Based Joint Grout",
+    subtitle: "Non-Shrink Precision Grout",
     img: "/images/real-ag1.png",
-    appImg: "/images/real-ag1-app.jpg",
-    desc: "High-performance, cement-based, polymer-modified grout for filling tile joints with exceptional strength, smooth finish, and lasting durability.",
-    applications: ["Tile joints 1–6 mm width", "Wet areas – bathrooms, kitchens", "Outdoor terraces, façades, balconies", "Residential & commercial flooring"],
+    desc: "Cement-based, non-shrink, polymer-enriched precision grout for machine foundations, column joints, and structural anchor applications. Formulated with Portland cement, graded fillers, and controlled expansion additives for high early strength.",
+    applications: ["Machine foundation grouting", "Column joints and precast construction gaps", "Grout anchors and structural anchor bolts", "Base plate of turbines, compressors & heavy machinery"],
     specs: [
-      { label: "Joint Width", value: "1–6 mm" },
-      { label: "Pot Life", value: "~90 min @ 20°C" },
-      { label: "Compressive Strength", value: "> 20 N/mm²" },
-      { label: "Flexural Strength", value: "> 5 N/mm²" },
-      { label: "Water Absorption", value: "< 5%" },
-      { label: "Packaging", value: "1 kg & 20 kg Bags" },
+      { label: "Density", value: "2200–2250 kg/m³" },
+      { label: "Young's Modulus", value: "25 kN/mm²" },
+      { label: "Compressive Strength (1D)", value: "> 10 N/mm²" },
+      { label: "Compressive Strength (7D)", value: "> 35 N/mm²" },
+      { label: "Compressive Strength (28D)", value: "> 45 N/mm²" },
+      { label: "Packaging", value: "25 kg Bag" },
     ],
   },
   {
     grade: "X2",
-    subtitle: "Flexible Polymer-Modified Grout",
+    subtitle: "High-Strength Precision Grout",
     img: "/images/real-ag2.png",
-    desc: "Flexible, polymer-modified grout offering superior stain resistance and durability. Ideal for wider joints and high-moisture areas.",
-    applications: ["Wider joint widths", "High-moisture and wet areas", "Stain-resistant applications", "Commercial high-traffic installations"],
+    desc: "Extended-aggregate grade precision grout for larger-volume applications requiring higher compressive strength. Accepts well-graded coarse aggregates up to 20 mm. Delivers superior structural performance with the same reliable non-shrink properties as X1.",
+    applications: ["Large-volume machine foundation grouting", "Column joints and precast construction voids", "Structural anchor bolt grouting", "Base plate grouting for turbines and heavy plant"],
     specs: [
-      { label: "Type", value: "Polymer-modified, flexible" },
-      { label: "Stain Resistance", value: "Superior" },
-      { label: "Flexibility", value: "Enhanced" },
-      { label: "Application", value: "Wide joints, wet areas" },
-      { label: "Durability", value: "High-moisture zones" },
-      { label: "Packaging", value: "Available in multiple sizes" },
+      { label: "Density", value: "2200–2250 kg/m³" },
+      { label: "Young's Modulus", value: "28 kN/mm²" },
+      { label: "Compressive Strength (1D)", value: "> 25 N/mm²" },
+      { label: "Compressive Strength (7D)", value: "> 45 N/mm²" },
+      { label: "Compressive Strength (28D)", value: "> 65 N/mm²" },
+      { label: "Packaging", value: "25 kg Bag" },
     ],
   },
 ];
@@ -274,13 +273,39 @@ export function Home() {
                 </div>
               </div>
               <div className="space-y-4">
-                <div className="aspect-video rounded-2xl overflow-hidden bg-slate-100">
-                  <img src="/images/facility-plant.png" alt="Alphabond Bharuch Facility" className="w-full h-full object-cover" />
+                <div className="bg-slate-900 rounded-2xl p-6">
+                  <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">Our Product Range</p>
+                  <div className="grid grid-cols-4 gap-3">
+                    {[
+                      { img: "/images/real-tx1.png", name: "TileGrip X1" },
+                      { img: "/images/real-tx2.png", name: "TileGrip X2" },
+                      { img: "/images/real-tx3.png", name: "TileGrip X3" },
+                      { img: "/images/real-tx4.png", name: "TileGrip X4" },
+                      { img: "/images/real-blockgrip.png", name: "BlockGrip X" },
+                      { img: "/images/real-plastogrip.png", name: "PlastoGrip X" },
+                      { img: "/images/real-ag1.png", name: "AlphaGrout X1" },
+                      { img: "/images/real-ag2.png", name: "AlphaGrout X2" },
+                    ].map(p => (
+                      <div key={p.name} className="flex flex-col items-center bg-white/5 rounded-xl p-2 border border-white/10">
+                        <img src={p.img} alt={p.name} className="h-16 w-auto object-contain" />
+                        <span className="text-[9px] text-slate-400 text-center mt-1.5 leading-tight">{p.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="aspect-video rounded-2xl overflow-hidden bg-slate-100">
-                  <img src="/images/facility-lab.png" alt="In-house QC Lab" className="w-full h-full object-cover" />
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { value: "17+", label: "Years in Business", sub: "Est. 2008" },
+                    { value: "9,000 MT", label: "Monthly Sand Output", sub: "Bharuch plant" },
+                    { value: "20+", label: "Major Clients", sub: "Industrial buyers" },
+                  ].map(s => (
+                    <div key={s.label} className="bg-slate-50 rounded-xl p-4 border border-slate-100 text-center">
+                      <div className="text-xl font-display font-bold text-primary">{s.value}</div>
+                      <div className="text-[10px] font-semibold text-slate-700 mt-0.5">{s.label}</div>
+                      <div className="text-[9px] text-slate-400">{s.sub}</div>
+                    </div>
+                  ))}
                 </div>
-                <p className="text-xs text-slate-400 text-center">Bharuch manufacturing facility & in-house quality control laboratory</p>
               </div>
             </div>
           </div>
@@ -341,11 +366,22 @@ export function Home() {
                       ))}
                     </ul>
                   </div>
-                  {/* Application photo */}
-                  <div className="relative z-10 mt-8 rounded-xl overflow-hidden aspect-video">
-                    <img src="/images/real-tx2-app.jpg" alt="TileGrip application" className="w-full h-full object-cover opacity-80" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-                    <p className="absolute bottom-2 left-3 text-xs text-slate-300">TileGrip X2 — large-format floor installation</p>
+                  {/* Grade strength ladder */}
+                  <div className="relative z-10 mt-8 grid grid-cols-4 gap-1.5">
+                    {[
+                      { grade: "X1", str: "C1T", bar: "w-1/4" },
+                      { grade: "X2", str: "C2T", bar: "w-2/4" },
+                      { grade: "X3", str: "C2TE", bar: "w-3/4" },
+                      { grade: "X4", str: "C2TES1", bar: "w-full" },
+                    ].map(g => (
+                      <div key={g.grade} className="bg-white/5 rounded-lg p-2 border border-white/10">
+                        <div className="text-xs font-bold text-white mb-0.5">{g.grade}</div>
+                        <div className="text-[8px] text-blue-300">{g.str}</div>
+                        <div className="mt-1.5 h-1 bg-white/10 rounded-full overflow-hidden">
+                          <div className={`h-full bg-primary rounded-full ${g.bar}`} />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -432,22 +468,30 @@ export function Home() {
                 <div className="md:col-span-2 bg-slate-900 text-white p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
                   <div className="relative z-10">
-                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">02 · Tile Grout</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">02 · Structural Precision Grout</span>
                     <h3 className="text-3xl font-display font-bold mb-2">AlphaGrout Series</h3>
                     <p className="text-blue-300 font-medium mb-5">X1 · X2</p>
                     <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                      High-performance, cement-based and polymer-modified tile joint grouts designed for smooth, durable tile joints with excellent water, stain, and crack resistance. Available in multiple colours for both residential and commercial applications.
+                      Cement-based, non-shrink, polymer-enriched high-performance precision grouts for structural and industrial applications. Engineered for machine foundation grouting, column joints, structural anchor bolts, and heavy plant base plates — not for tile joints.
                     </p>
                     <ul className="space-y-2">
-                      {["Neat, uniform finish between tiles", "Water-resistant — ideal for wet areas", "Durable in heavy foot-traffic", "Weather-resistant for external use", "Packaging: 1 kg & 20 kg Bags"].map(f => (
+                      {["Non-shrink, non-expanding formulation", "High early strength — > 10 N/mm² at 1 day", "Compressive strength up to > 65 N/mm² at 28 days", "For machine foundations, turbines & heavy plant", "Packaging: 25 kg Bag"].map(f => (
                         <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="relative z-10 mt-8 rounded-xl overflow-hidden aspect-video">
-                    <img src="/images/real-ag1-app.jpg" alt="AlphaGrout application" className="w-full h-full object-cover opacity-80" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-                    <p className="absolute bottom-2 left-3 text-xs text-slate-300">AlphaGrout — tile joint finishing</p>
+                  <div className="relative z-10 mt-8 grid grid-cols-2 gap-2">
+                    {[
+                      { label: "X1 Compressive (28D)", value: "> 45 N/mm²" },
+                      { label: "X2 Compressive (28D)", value: "> 65 N/mm²" },
+                      { label: "Density", value: "2200–2250 kg/m³" },
+                      { label: "Expansion Type", value: "Non-shrink" },
+                    ].map(p => (
+                      <div key={p.label} className="bg-white/5 rounded-lg p-2.5 border border-white/10">
+                        <div className="text-[8px] text-slate-400 uppercase tracking-wide">{p.label}</div>
+                        <div className="text-xs font-bold text-white mt-0.5">{p.value}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -523,112 +567,144 @@ export function Home() {
               </div>
             </div>
 
-            {/* ─ BLOCKGRIP X + PLASTOGRIP X ──────────────────── */}
-            <div className="grid md:grid-cols-2 gap-6">
-
-              {/* BlockGrip X */}
-              <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
-                <div className="grid grid-cols-2 gap-0 flex-1">
-                  <div className="bg-slate-50 border-r border-slate-100 flex items-center justify-center p-8">
-                    <div className="text-center">
-                      <img src="/images/real-blockgrip.png" alt="BlockGrip X" className="h-52 w-auto object-contain mx-auto" />
-                    </div>
-                  </div>
-                  <div className="p-7 flex flex-col">
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">03 · AAC Block Adhesive</span>
-                    <h3 className="text-2xl font-display font-bold text-slate-900 mb-1">BlockGrip X</h3>
-                    <p className="text-slate-500 text-xs italic mb-4">Thin-bed Mortar</p>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-5">
-                      Premium, cement-based, polymer-modified adhesive for AAC blocks, hollow blocks, concrete blocks, and bricks. Superior bond strength, thin joint application (3–5 mm), and faster construction — replacing conventional sand-cement mortar with better performance.
+            {/* ─ BLOCKGRIP X ─────────────────────────────────── */}
+            <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden mb-6">
+              <div className="grid md:grid-cols-5">
+                <div className="md:col-span-2 bg-slate-900 text-white p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
+                  <div className="relative z-10">
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">03 · Block Jointing Mortar</span>
+                    <h3 className="text-3xl font-display font-bold mb-2">BlockGrip X</h3>
+                    <p className="text-blue-300 font-medium mb-5">Thin-Bed Ready-Mix Mortar</p>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                      Premium ready-mix mortar for AAC blocks, hollow blocks, concrete blocks, and bricks. Superior bond strength with thin joints (3–5 mm) for faster construction and reduced structural load — a complete replacement for conventional sand-cement mortar.
                     </p>
-                    <div className="space-y-1.5 mb-5">
+                    <ul className="space-y-2">
                       {[
-                        "High bonding strength for AAC & masonry",
-                        "Thin joint 3–5 mm — reduces structural load",
-                        "Shrinkage-controlled — no cracks/debonding",
-                        "Versatile for interior & exterior walls",
+                        "High bonding strength for AAC & all masonry types",
+                        "Thin joint 3–5 mm — reduces overall structural load",
+                        "One 40 kg bag bonds ~40 blocks (900×200×150 mm)",
+                        "Shrinkage-controlled — no cracks or debonding",
+                        "Packaging: 20 kg & 40 kg Bags",
                       ].map(f => (
-                        <div key={f} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />{f}
-                        </div>
+                        <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
                       ))}
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 mb-5">
-                      {[
-                        { label: "Compressive Strength", value: "> 7.5 N/mm²" },
-                        { label: "Bond Strength", value: "> 1.0 N/mm²" },
-                        { label: "Thickness", value: "3–5 mm" },
-                        { label: "Pot Life", value: "~120 min @ 20°C" },
-                        { label: "Mix Ratio", value: "~3:1 (Powder:Water)" },
-                        { label: "Packaging", value: "20 kg & 40 kg Bags" },
-                      ].map(s => (
-                        <div key={s.label} className="bg-slate-50 rounded-lg px-2.5 py-2 border border-slate-100">
-                          <div className="text-[9px] text-slate-400 uppercase tracking-wide">{s.label}</div>
-                          <div className="text-xs font-semibold text-slate-900">{s.value}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 mt-auto">
-                      <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> TDS</Button></a>
-                      <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Sample <ArrowRight size={12} /></Button></a>
-                    </div>
+                    </ul>
+                  </div>
+                  <div className="relative z-10 mt-8 grid grid-cols-2 gap-2">
+                    {[
+                      { label: "Tensile Strength", value: "> 0.6 N/mm²" },
+                      { label: "Compressive Strength", value: "> 15 N/mm² @ 14D" },
+                      { label: "Bond Strength", value: "> 1.0 N/mm²" },
+                      { label: "Pot Life", value: "~2 hrs @ 27°C" },
+                    ].map(p => (
+                      <div key={p.label} className="bg-white/5 rounded-lg p-2.5 border border-white/10">
+                        <div className="text-[8px] text-slate-400 uppercase tracking-wide">{p.label}</div>
+                        <div className="text-xs font-bold text-white mt-0.5">{p.value}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="overflow-hidden h-40">
-                  <img src="/images/real-blockgrip-app.jpg" alt="BlockGrip X in use" className="w-full h-full object-cover" />
+                <div className="md:col-span-3 p-8 flex flex-col justify-between">
+                  <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-6">
+                    <img src="/images/real-blockgrip.png" alt="BlockGrip X" className="h-64 w-auto object-contain" />
+                    <div className="mt-4 text-center">
+                      <div className="font-display font-bold text-slate-900 text-lg">BlockGrip X</div>
+                      <div className="text-sm text-slate-500">Block Jointing Mortar · Thin-Bed</div>
+                    </div>
+                  </div>
+                  <div className="mb-5">
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Suitable Substrates & Applications</p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {[
+                        "AAC block surfaces",
+                        "Hollow / concrete block surfaces",
+                        "Brick masonry",
+                        "Stretcher, corner & pillar blocks",
+                        "Interior & exterior wall construction",
+                        "Bricks and conventional masonry",
+                      ].map(s => (
+                        <div key={s} className="flex items-center gap-2 text-xs text-slate-700">
+                          <CheckCircle2 size={11} className="text-primary shrink-0" />{s}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> Request TDS</Button></a>
+                    <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Get a Sample <ArrowRight size={12} /></Button></a>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* PlastoGrip X */}
-              <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
-                <div className="grid grid-cols-2 gap-0 flex-1">
-                  <div className="bg-slate-50 border-r border-slate-100 flex items-center justify-center p-8">
-                    <div className="text-center">
-                      <img src="/images/real-plastogrip.png" alt="PlastoGrip X" className="h-52 w-auto object-contain mx-auto" />
-                    </div>
-                  </div>
-                  <div className="p-7 flex flex-col">
-                    <span className="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">04 · Plaster Bonding Agent</span>
-                    <h3 className="text-2xl font-display font-bold text-slate-900 mb-1">PlastoGrip X</h3>
-                    <p className="text-slate-500 text-xs italic mb-4">Plaster Primer</p>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-5">
-                      Polymer-modified plaster adhesive for direct application of plaster on concrete surfaces, ceilings, AAC blocks, and smooth substrates. Eliminates hacking or wire mesh. Ensures long-lasting, crack-free plaster finishes indoors and outdoors.
+            {/* ─ PLASTOGRIP X ────────────────────────────────── */}
+            <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden mb-6">
+              <div className="grid md:grid-cols-5">
+                <div className="md:col-span-2 bg-slate-900 text-white p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
+                  <div className="relative z-10">
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">04 · Ready-Mix Plaster & Bonding Agent</span>
+                    <h3 className="text-3xl font-display font-bold mb-2">PlastoGrip X</h3>
+                    <p className="text-blue-300 font-medium mb-5">Polymer-Modified Plaster</p>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                      High-quality polymer-modified ready-mix plaster for smooth, durable wall finishes on concrete, AAC blocks, and smooth substrates. Eliminates hacking and wire mesh. Two-coat system: thin bonding slurry first (1–2 mm), then finishing coat.
                     </p>
-                    <div className="space-y-1.5 mb-5">
+                    <ul className="space-y-2">
                       {[
-                        "No hacking or wire mesh required",
-                        "Prevents debonding, cracks & hollow patches",
+                        "No hacking or wire mesh required on smooth surfaces",
+                        "Prevents debonding, hollow patches & cracks",
+                        "Two-coat system for maximum adhesion",
                         "Excellent water retention and workability",
-                        "Interior & exterior plaster applications",
+                        "Packaging: 20 kg & 40 kg Bags",
                       ].map(f => (
-                        <div key={f} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />{f}
-                        </div>
+                        <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
                       ))}
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 mb-5">
-                      {[
-                        { label: "Bond Strength", value: "> 1.0 N/mm²" },
-                        { label: "Pot Life", value: "~90 min @ 20°C" },
-                        { label: "Coverage", value: "~40–50 sq.ft / 20 kg" },
-                        { label: "Thickness", value: "Thin coat (1–2 mm)" },
-                        { label: "Appearance", value: "Grey / White Powder" },
-                        { label: "Packaging", value: "20 kg Bag" },
-                      ].map(s => (
-                        <div key={s.label} className="bg-slate-50 rounded-lg px-2.5 py-2 border border-slate-100">
-                          <div className="text-[9px] text-slate-400 uppercase tracking-wide">{s.label}</div>
-                          <div className="text-xs font-semibold text-slate-900">{s.value}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 mt-auto">
-                      <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> TDS</Button></a>
-                      <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Sample <ArrowRight size={12} /></Button></a>
-                    </div>
+                    </ul>
+                  </div>
+                  <div className="relative z-10 mt-8 grid grid-cols-2 gap-2">
+                    {[
+                      { label: "Bond Strength", value: "> 1.0 N/mm²" },
+                      { label: "Pot Life", value: "90–120 min" },
+                      { label: "Coverage", value: "~40–50 sq.ft / 20 kg" },
+                      { label: "Coat 1 Thickness", value: "1–2 mm (bonding)" },
+                    ].map(p => (
+                      <div key={p.label} className="bg-white/5 rounded-lg p-2.5 border border-white/10">
+                        <div className="text-[8px] text-slate-400 uppercase tracking-wide">{p.label}</div>
+                        <div className="text-xs font-bold text-white mt-0.5">{p.value}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="overflow-hidden h-40">
-                  <img src="/images/real-plastogrip-app.jpg" alt="PlastoGrip X in use" className="w-full h-full object-cover" />
+                <div className="md:col-span-3 p-8 flex flex-col justify-between">
+                  <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-6">
+                    <img src="/images/real-plastogrip.png" alt="PlastoGrip X" className="h-64 w-auto object-contain" />
+                    <div className="mt-4 text-center">
+                      <div className="font-display font-bold text-slate-900 text-lg">PlastoGrip X</div>
+                      <div className="text-sm text-slate-500">Ready-Mix Plaster · Plaster Bonding Agent</div>
+                    </div>
+                  </div>
+                  <div className="mb-5">
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Suitable Substrates & Applications</p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {[
+                        "RCC columns and beams",
+                        "Smooth / fair-faced concrete",
+                        "AAC block walls",
+                        "Brick masonry walls",
+                        "Old tiled / plastered surfaces",
+                        "Interior & exterior plaster work",
+                      ].map(s => (
+                        <div key={s} className="flex items-center gap-2 text-xs text-slate-700">
+                          <CheckCircle2 size={11} className="text-primary shrink-0" />{s}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> Request TDS</Button></a>
+                    <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Get a Sample <ArrowRight size={12} /></Button></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -641,24 +717,69 @@ export function Home() {
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-3">Products designed to work together.</h3>
                   <p className="text-slate-600 leading-relaxed text-sm">From block laying to plastering to tiling to grouting — a single supplier for your entire finishing and bonding chain. No compatibility issues. Unified technical support. One trusted brand.</p>
                 </div>
-                <div className="flex flex-wrap gap-2 items-center justify-center md:justify-end">
-                  {[
-                    { step: "01", name: "BlockGrip X", action: "Lay AAC blocks" },
-                    { step: "02", name: "PlastoGrip X", action: "Prime for plaster" },
-                    { step: "03", name: "TileGrip", action: "Fix tiles" },
-                    { step: "04", name: "AlphaGrout", action: "Fill joints" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="text-center bg-white rounded-xl border border-primary/20 px-4 py-3 min-w-[105px]">
-                        <div className="text-xs text-primary font-bold mb-0.5">{item.step}</div>
-                        <div className="font-display font-bold text-slate-900 text-sm">{item.name}</div>
-                        <div className="text-xs text-slate-500">{item.action}</div>
+                <div>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Masonry & Finish Chain</p>
+                  <div className="flex flex-wrap gap-2 items-center mb-5">
+                    {[
+                      { step: "01", name: "BlockGrip X", action: "Lay AAC blocks" },
+                      { step: "02", name: "PlastoGrip X", action: "Prime for plaster" },
+                      { step: "03", name: "TileGrip", action: "Fix tiles" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="text-center bg-white rounded-xl border border-primary/20 px-4 py-3 min-w-[105px]">
+                          <div className="text-xs text-primary font-bold mb-0.5">{item.step}</div>
+                          <div className="font-display font-bold text-slate-900 text-sm">{item.name}</div>
+                          <div className="text-xs text-slate-500">{item.action}</div>
+                        </div>
+                        {i < 2 && <ArrowRight size={13} className="text-slate-300 shrink-0" />}
                       </div>
-                      {i < 3 && <ArrowRight size={13} className="text-slate-300 shrink-0" />}
+                    ))}
+                  </div>
+                  <div className="bg-slate-900 rounded-xl px-4 py-3 text-white inline-flex items-center gap-3">
+                    <div>
+                      <div className="text-[9px] text-blue-400 uppercase tracking-widest font-bold mb-0.5">Heavy Industrial</div>
+                      <div className="text-sm font-bold">AlphaGrout X1 · X2</div>
+                      <div className="text-[10px] text-slate-400">Machine foundations · Column joints · Heavy plant</div>
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Product Lineup ─────────────────────────────────── */}
+        <section className="py-20 bg-slate-950">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="text-center mb-12">
+              <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">The Complete Range</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">Eight products. One trusted manufacturer.</h2>
+              <p className="text-slate-400 text-base max-w-2xl mx-auto">From machine foundation grouting to AAC block laying, plastering, and tile fixing — the entire Alphabond range, all manufactured at our ISO-certified Bharuch facility.</p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+              {[
+                { img: "/images/real-tx1.png", name: "TileGrip X1", type: "Tile Adhesive · C1T" },
+                { img: "/images/real-tx2.png", name: "TileGrip X2", type: "Tile Adhesive · C2T" },
+                { img: "/images/real-tx3.png", name: "TileGrip X3", type: "Tile Adhesive · C2TE" },
+                { img: "/images/real-tx4.png", name: "TileGrip X4", type: "Tile Adhesive · C2TES1" },
+                { img: "/images/real-blockgrip.png", name: "BlockGrip X", type: "Block Jointing Mortar" },
+                { img: "/images/real-plastogrip.png", name: "PlastoGrip X", type: "Ready-Mix Plaster" },
+                { img: "/images/real-ag1.png", name: "AlphaGrout X1", type: "Precision Grout" },
+                { img: "/images/real-ag2.png", name: "AlphaGrout X2", type: "Precision Grout +" },
+              ].map(p => (
+                <div key={p.name} className="flex flex-col items-center bg-white/5 hover:bg-white/10 transition-colors rounded-2xl p-4 border border-white/10 hover:border-primary/40 group">
+                  <img src={p.img} alt={p.name} className="h-24 w-auto object-contain mb-3 group-hover:scale-105 transition-transform duration-300" />
+                  <div className="text-xs font-bold text-white text-center mb-1">{p.name}</div>
+                  <div className="text-[9px] text-slate-500 text-center leading-tight">{p.type}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/brochure">
+                <Button variant="outline" className="border-white/20 text-white/70 hover:text-white hover:bg-white/10 rounded-full px-8 h-11 bg-transparent gap-2">
+                  <FileText size={15} /> Download Full Product Brochure
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -722,15 +843,12 @@ export function Home() {
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {SECTORS.map((sector, i) => (
-                <div key={i} className="group relative rounded-2xl overflow-hidden bg-slate-900">
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img src={sector.img} alt={sector.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-80" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-7 w-full">
-                    <div className="text-xs font-bold uppercase tracking-widest text-primary mb-2">{sector.badge}</div>
-                    <h4 className="text-xl font-display font-bold text-white mb-2">{sector.title}</h4>
-                    <p className="text-sm text-slate-300 leading-relaxed mb-4 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300">{sector.desc}</p>
+                <div key={i} className="group relative rounded-2xl bg-slate-900 border border-slate-800 p-8 hover:border-primary/40 transition-all overflow-hidden">
+                  <div className="absolute top-0 right-0 w-52 h-52 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="relative z-10">
+                    <div className="text-6xl font-display font-black text-white/[0.06] mb-5 leading-none">{sector.badge}</div>
+                    <h4 className="text-xl font-display font-bold text-white mb-3">{sector.title}</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed mb-5">{sector.desc}</p>
                     <div className="flex flex-wrap gap-2">
                       {sector.products.map(p => (
                         <span key={p} className="px-2.5 py-1 rounded-full bg-primary/20 border border-primary/30 text-blue-300 text-xs font-semibold">{p}</span>
@@ -892,9 +1010,9 @@ export function Home() {
             </div>
             <Accordion type="single" collapsible className="w-full bg-slate-50 rounded-2xl p-6 border border-slate-200">
               {[
-                { q: "What does Alphabond manufacture?", a: "Alphabond (a brand of Kishan Enterprise) manufactures wet sand, dry sand, and a full range of construction chemicals from our ISO-certified facility in Bharuch, Gujarat. Our chemical range includes Tile Adhesives (TileGrip X1–X4), Tile Grouts (AlphaGrout X1 & X2), AAC Block Adhesive (BlockGrip X), and Plaster Bonding Agent (PlastoGrip X)." },
+                { q: "What does Alphabond manufacture?", a: "Alphabond (a brand of Kishan Enterprise) manufactures wet sand, dry sand, and a full range of construction chemicals from our ISO-certified facility in Bharuch, Gujarat. Our chemical range includes Tile Adhesives (TileGrip X1–X4), Structural Precision Grouts (AlphaGrout X1 & X2), AAC Block Jointing Mortar (BlockGrip X), and Ready-Mix Plaster / Bonding Agent (PlastoGrip X)." },
                 { q: "Which TileGrip grade should I use?", a: "TileGrip X1 is for standard ceramic tiles indoors. X2 handles large-format vitrified, porcelain, and natural stone for indoor/outdoor use. X3 is premium-grade for granite, marble, and large-format tiles in high-traffic and demanding exteriors. X4 is our extra-strength grade for heavy stone cladding, façades, and challenging industrial/exterior applications." },
-                { q: "What is AlphaGrout used for — is it a tile grout or a structural grout?", a: "AlphaGrout is a tile joint grout — it fills the gaps between tiles to provide a neat, durable finish with water and stain resistance. X1 is a cement-based grout for joints 1–6 mm wide. X2 is a flexible, polymer-modified grout for wider joints and high-moisture areas. It is not used for structural anchor bolt grouting." },
+                { q: "What is AlphaGrout used for — is it a tile grout or a structural grout?", a: "AlphaGrout X1 and X2 are high-performance structural precision grouts — not tile grouts. They are cement-based, non-shrink, polymer-enriched grouts engineered for machine foundation grouting, column joints, structural anchor bolts, and base plates of turbines, compressors, and heavy industrial machinery. X1 achieves > 45 N/mm² compressive strength at 28 days. X2 delivers > 65 N/mm² at 28 days and accepts coarse aggregates up to 20 mm for large-volume pours." },
                 { q: "Do you offer job work / contract manufacturing?", a: "Yes. Since 2022, we manufacture tile adhesives, block adhesives, grouts, and specialty compounds under clients' own brand names. Current partners include Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu. We provide custom formulations, batch QC documentation, and branded packaging." },
                 { q: "What is your production capacity?", a: "Dry sand: 8,000–9,000 MT per month. Construction chemicals: 1.5 lakh bags per month currently. A second production unit under construction in Bharuch will expand chemical capacity to over 5 lakh bags per month." },
                 { q: "How do I get Technical Data Sheets for your products?", a: "Contact us via the enquiry form or call directly. We will send TDS for any product or grade the same business day. For large project specifications, our technical team can provide a project-specific product selection guide." },

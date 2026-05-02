@@ -212,7 +212,6 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
 
     {/* ── PAGE 2: ABOUT / VISION / MISSION ─────────────── */}
     <Page size="A4" style={s.aboutPage}>
-      <Image src={`${baseUrl}/images/facility-plant.png`} style={s.facilityImg} />
       <Text style={s.sectionLabel}>About Us</Text>
       <Text style={s.aboutTitle}>{"Kishan Enterprise — operating as\nAlphabond™"}</Text>
       <Text style={s.aboutBody}>
@@ -246,7 +245,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={3}
       category="Tile Adhesive  ·  C1T" typeBadge="Type 1"
-      bagImg="/images/real-tx1.png" appImg="/images/real-tx2-app.jpg"
+      bagImg="/images/real-tx1.png"
       name="TileGrip X1" subtitle="Premium Tile Adhesive for Superior Bonding"
       desc="TileGrip X1 is a high-performance, polymer-modified tile adhesive designed for superior bonding strength and durability. Engineered for both wall and floor applications, it provides excellent adhesion to various substrates including concrete, cement plaster, and existing tiles."
       howToUse="Add 4.5 litres of clean water per 20 kg bag. Mix to a smooth, lump-free consistency. Apply with a notched trowel, press tiles firmly within 10–15 minutes. Fill joints after 24 hours. Do not walk on tiles for at least 24 hours."
@@ -330,7 +329,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={7}
       category="Block Jointing Mortar" typeBadge="Masonry"
-      bagImg="/images/real-blockgrip.png" appImg="/images/real-blockgrip-app.jpg"
+      bagImg="/images/real-blockgrip.png"
       name="BlockGrip X" subtitle="High-Performance Ready-Mix Mortar for Superior Masonry Work"
       desc="BlockGrip X is a premium-grade ready-mix mortar designed for efficient and durable masonry applications. Engineered with high-quality cement, graded sand, and performance-enhancing additives, it ensures strong bonding, smooth application, and long-lasting durability for bricklaying and blockwork."
       howToUse="Mix approx. 25–28% clean water in 40 kg powder and make a workable paste. Apply to block surfaces using a notch trowel to ensure good bonding. One 40 kg bag will bond approx. 40 blocks (900 mm × 200 mm × 150 mm). Joints should be 3–5 mm thick."
@@ -351,7 +350,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={8}
       category="Ready-Mix Cement Plaster / Bonding Agent" typeBadge="Plaster"
-      bagImg="/images/real-plastogrip.png" appImg="/images/real-plastogrip-app.jpg"
+      bagImg="/images/real-plastogrip.png"
       name="PlastoGrip X" subtitle="High-Performance Ready-Mix Plaster for Superior Wall Finishing"
       desc="PlastoGrip X is a high-quality, polymer-modified ready-mix plaster designed for smooth and durable wall finishes. It provides excellent adhesion, crack resistance, and workability — making it ideal for both interior and exterior applications. Formulated with graded sand, premium binders, and performance-enhancing additives. Eliminates the need for hacking or wire mesh on smooth surfaces."
       howToUse="Cure the wall surface with water before applying. First coat (bonding layer): add more water to make a thinner slurry and apply a thin, uniform coat (1–2 mm). Allow to become tacky. Second coat: add the required water to a 40 kg bag, mix with a blender, and apply the finishing coat. Allow to cure."
