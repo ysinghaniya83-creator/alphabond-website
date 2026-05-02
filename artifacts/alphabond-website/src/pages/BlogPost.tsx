@@ -91,7 +91,7 @@ export function BlogPost() {
           {/* CTA */}
           <div className="mt-16 bg-primary/5 border border-primary/20 rounded-2xl p-8 text-center">
             <h3 className="text-xl font-display font-bold text-slate-900 mb-2">Have a project that needs these products?</h3>
-            <p className="text-slate-600 text-sm mb-5">Our technical team is happy to recommend the right product and grade for your specific application — for free, with no obligation.</p>
+            <p className="text-slate-600 text-sm mb-5">Our technical team is happy to recommend the right product and grade for your specific application, free of charge, with no obligation.</p>
             <Link href="/#contact">
               <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">Get in Touch</Button>
             </Link>

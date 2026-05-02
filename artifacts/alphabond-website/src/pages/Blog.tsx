@@ -36,7 +36,7 @@ export function Blog() {
               Practical knowledge<br />from the plant floor.
             </h1>
             <p className="text-slate-400 text-lg max-w-2xl">
-              Technical guides, industry observations, and product deep-dives from a manufacturer that's been in the construction materials business since 2008. Written for builders, contractors, and architects — not for search engines.
+              Technical guides, industry observations, and product deep-dives from a manufacturer that's been in the construction materials business since 2008. Written for builders, contractors, and architects, not for search engines.
             </p>
           </div>
         </section>

@@ -385,10 +385,10 @@ export function Home() {
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed mb-3 max-w-lg">
-                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — all manufactured at our ISO-certified Bharuch facility.
+                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand, all manufactured at our ISO-certified Bharuch facility.
               </p>
               <p className="text-sm text-slate-500 mb-10 max-w-lg">
-                Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
+                Kishan Enterprise, operating as <strong className="text-slate-300">Alphabond™</strong>, trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
               </p>
 
               {/* CTAs */}
@@ -456,7 +456,7 @@ export function Home() {
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">About the Company</p>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">Two decades of materials, manufactured in Gujarat.</h2>
                 <p className="text-slate-600 leading-relaxed mb-5">Kishan Enterprise, operating under the brand name <strong>Alphabond™</strong>, is a leading manufacturer and supplier of high-quality building materials and industrial sand solutions based in Bharuch and Surat, Gujarat.</p>
-                <p className="text-slate-600 leading-relaxed mb-8">Since 2008 we've supplied wet sand to India's top cement and RMC companies. We entered dry sand manufacturing in 2021, and launched the Alphabond construction chemicals range in 2022 — all from our ISO-certified facility in Bharuch with a dedicated in-house QC lab and our own logistics fleet.</p>
+                <p className="text-slate-600 leading-relaxed mb-8">Since 2008 we've supplied wet sand to India's top cement and RMC companies. We entered dry sand manufacturing in 2021, and launched the Alphabond construction chemicals range in 2022, all from our ISO-certified facility in Bharuch with a dedicated in-house QC lab and our own logistics fleet.</p>
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { label: "Established", value: "2008" },
@@ -516,11 +516,11 @@ export function Home() {
             <div className="max-w-2xl mb-14">
               <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">What Sets Us Apart</p>
               <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-4">Three things our competitors can't match.</h2>
-              <p className="text-slate-400 text-lg">Owning our logistics, mastering monsoon production, and testing every batch in our own lab. These aren't extras — they're how we keep India's biggest construction companies running on schedule, year-round.</p>
+              <p className="text-slate-400 text-lg">Owning our logistics, mastering monsoon production, and testing every batch in our own lab. These aren't extras. That's how we keep India's biggest construction companies running on schedule, year-round.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { icon: <Truck size={26} />, title: "Our own fleet.", tag: "Reliable · On-time · Direct", desc: "We don't outsource transport, so we don't apologize for it either. With a dedicated fleet of trucks under our direct control, we deliver on our schedule — straight from plant to your project site." },
+                { icon: <Truck size={26} />, title: "Our own fleet.", tag: "Reliable · On-time · Direct", desc: "We don't outsource transport, so we don't apologize for it either. With a dedicated fleet of trucks under our direct control, we deliver on our schedule, straight from plant to your project site." },
                 { icon: <CloudRain size={26} />, title: "Monsoon doesn't stop us.", tag: "Year-round supply · No off-season", desc: "When the rains hit, most regional suppliers shut down for months. Our equipment and process technology are engineered to keep producing through peak monsoon." },
                 { icon: <FlaskConical size={26} />, title: "In-house QC lab.", tag: "Tested in · Tested out · Documented", desc: "Every raw material is tested before it enters the plant. Every finished product is tested before it leaves. Every bag, every batch, every shipment meets specification." },
               ].map((item, i) => (
@@ -557,7 +557,7 @@ export function Home() {
                     <h3 className="text-3xl font-display font-bold mb-2">TileGrip Series</h3>
                     <p className="text-blue-300 font-medium mb-5">X1 · X2 · X3 · X4</p>
                     <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                      Alphabond's premium range of high-performance, polymer-modified tile adhesives designed for superior bonding strength, durability, and ease of application. Specialized solutions for ceramic, vitrified, porcelain, natural stone, and large-format tiles — for both interior and exterior use.
+                      Alphabond's premium range of high-performance, polymer-modified tile adhesives designed for superior bonding strength, durability, and ease of application. Specialized solutions for ceramic, vitrified, porcelain, natural stone, and large-format tiles, for both interior and exterior use.
                     </p>
                     <ul className="space-y-2">
                       {["Water-resistant formulation", "Superior bonding strength", "Saves time & labour", "Indoor & outdoor use", "Packaging: 20 kg Bags"].map(f => (
@@ -671,10 +671,10 @@ export function Home() {
                     <h3 className="text-3xl font-display font-bold mb-2">AlphaGrout Series</h3>
                     <p className="text-blue-300 font-medium mb-5">X1 · X2</p>
                     <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                      Cement-based, non-shrink, polymer-enriched high-performance precision grouts for structural and industrial applications. Engineered for machine foundation grouting, column joints, structural anchor bolts, and heavy plant base plates — not for tile joints.
+                      Cement-based, non-shrink, polymer-enriched high-performance precision grouts for structural and industrial applications. Engineered for machine foundation grouting, column joints, structural anchor bolts, and heavy plant base plates. Not for tile joints.
                     </p>
                     <ul className="space-y-2">
-                      {["Non-shrink, non-expanding formulation", "High early strength — > 10 N/mm² at 1 day", "Compressive strength up to > 65 N/mm² at 28 days", "For machine foundations, turbines & heavy plant", "Packaging: 25 kg Bag"].map(f => (
+                      {["Non-shrink, non-expanding formulation", "High early strength: &gt;10 N/mm² at 1 day", "Compressive strength up to > 65 N/mm² at 28 days", "For machine foundations, turbines & heavy plant", "Packaging: 25 kg Bag"].map(f => (
                         <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
                       ))}
                     </ul>
@@ -776,14 +776,14 @@ export function Home() {
                     <h3 className="text-3xl font-display font-bold mb-2">BlockGrip X</h3>
                     <p className="text-blue-300 font-medium mb-5">Thin-Bed Ready-Mix Mortar</p>
                     <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                      Premium ready-mix mortar for AAC blocks, hollow blocks, concrete blocks, and bricks. Superior bond strength with thin joints (3–5 mm) for faster construction and reduced structural load — a complete replacement for conventional sand-cement mortar.
+                      Premium ready-mix mortar for AAC blocks, hollow blocks, concrete blocks, and bricks. Superior bond strength with thin joints (3–5 mm) for faster construction and reduced structural load, a complete replacement for conventional sand-cement mortar.
                     </p>
                     <ul className="space-y-2">
                       {[
                         "High bonding strength for AAC & all masonry types",
-                        "Thin joint 3–5 mm — reduces overall structural load",
+                        "Thin joint 3–5 mm, reduces overall structural load",
                         "One 40 kg bag bonds ~40 blocks (900×200×150 mm)",
-                        "Shrinkage-controlled — no cracks or debonding",
+                        "Shrinkage-controlled, no cracks or debonding",
                         "Packaging: 20 kg & 40 kg Bags",
                       ].map(f => (
                         <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
@@ -930,7 +930,7 @@ export function Home() {
                 <div>
                   <p className="text-xs uppercase tracking-widest text-primary font-bold mb-3">The Alphabond System</p>
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-3">Products designed to work together.</h3>
-                  <p className="text-slate-600 leading-relaxed text-sm">From block laying to plastering to tiling to grouting — a single supplier for your entire finishing and bonding chain. No compatibility issues. Unified technical support. One trusted brand.</p>
+                  <p className="text-slate-600 leading-relaxed text-sm">From block laying to plastering to tiling to grouting: a single supplier for your entire finishing and bonding chain. No compatibility issues. Unified technical support. One trusted brand.</p>
                 </div>
                 <div>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Masonry & Finish Chain</p>
@@ -969,7 +969,7 @@ export function Home() {
             <div className="text-center mb-12">
               <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">The Complete Range</p>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">Eight products. One trusted manufacturer.</h2>
-              <p className="text-slate-400 text-base max-w-2xl mx-auto">From machine foundation grouting to AAC block laying, plastering, and tile fixing — the entire Alphabond range, all manufactured at our ISO-certified Bharuch facility.</p>
+              <p className="text-slate-400 text-base max-w-2xl mx-auto">From machine foundation grouting to AAC block laying, plastering, and tile fixing. The entire Alphabond range, all manufactured at our ISO-certified Bharuch facility.</p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
               {[
@@ -1012,7 +1012,7 @@ export function Home() {
                     { label: "Production Units", value: "2 (1 Operational, 1 Under Construction)" },
                     { label: "Verticals", value: "Wet Sand · Dry Sand · Construction Chemicals · Job Work" },
                     { label: "Location", value: "Bharuch, Gujarat, India" },
-                    { label: "QC", value: "In-house lab — tested in, tested out, documented" },
+                    { label: "QC", value: "In-house lab: tested in, tested out, documented" },
                   ].map(item => (
                     <div key={item.label} className="flex gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 items-start">
                       <CheckCircle2 size={15} className="text-primary mt-0.5 shrink-0" />
@@ -1043,7 +1043,7 @@ export function Home() {
                 <div className="rounded-2xl bg-slate-950 text-white p-7 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-2xl" />
                   <div className="text-4xl font-display font-bold text-blue-400 mb-2 relative z-10">9,000 MT</div>
-                  <div className="font-semibold text-lg mb-1 relative z-10">Per Month — Dry Sand</div>
+                  <div className="font-semibold text-lg mb-1 relative z-10">Per Month, Dry Sand</div>
                   <p className="text-slate-400 text-sm relative z-10">Supplying industrial-grade dry sand to cement majors and construction chemical brands across India.</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
@@ -1100,7 +1100,7 @@ export function Home() {
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">Job Work & Contract Manufacturing</p>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">Your brand. Our manufacturing.</h2>
                 <p className="text-slate-600 leading-relaxed mb-5">Alphabond operates as a trusted white-label contract manufacturer for construction chemicals, produced under your brand name from our ISO-certified Bharuch facility. We've been trusted by <strong>Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu</strong> for private-label production since 2022.</p>
-                <p className="text-slate-600 leading-relaxed mb-8">From custom formulations and stringent batch testing to branded packaging and direct dispatch — partners get a ready-to-market, quality-assured product range without the capital or complexity of building their own plant.</p>
+                <p className="text-slate-600 leading-relaxed mb-8">From custom formulations and stringent batch testing to branded packaging and direct dispatch. Partners get a ready-to-market, quality-assured product range without the capital or complexity of building their own plant.</p>
                 <a href="#contact"><Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 gap-2">Discuss a Partnership <ArrowRight size={16} /></Button></a>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -1165,7 +1165,7 @@ export function Home() {
                 { icon: <Truck size={20} />, num: "02", title: "Own Fleet, Own Schedule", desc: "Dedicated truck fleet under direct control. Clients build their schedules around our reliability." },
                 { icon: <Factory size={20} />, num: "03", title: "High Capacity", desc: "9,000 MT dry sand and 1.5 lakh bags monthly. Expanding to 5L+ bags per month soon." },
                 { icon: <Clock size={20} />, num: "04", title: "17+ Years Experience", desc: "Operating since 2008. Deep expertise in supply, logistics, and large industrial buyer needs." },
-                { icon: <Users size={20} />, num: "05", title: "Trusted by Leaders", desc: "UltraTech, Pidilite, JK Lakshmi, Asian Paints, Nuvoco, ACC, Walplast — and growing." },
+                { icon: <Users size={20} />, num: "05", title: "Trusted by Leaders", desc: "UltraTech, Pidilite, JK Lakshmi, Asian Paints, Nuvoco, ACC, Walplast, and growing." },
                 { icon: <CloudRain size={20} />, num: "06", title: "Monsoon-Ready", desc: "Engineered to produce year-round. Competitors shut down in monsoon. We don't." },
                 { icon: <ShieldCheck size={20} />, num: "07", title: "ISO-Certified", desc: "Documented processes, traceable batches, audit-ready records. Every time." },
                 { icon: <HeartHandshake size={20} />, num: "08", title: "Customer-Centric", desc: "Hands-on management. Direct lines of communication. We answer fast." },
@@ -1190,13 +1190,13 @@ export function Home() {
               <div className="border border-slate-200 rounded-3xl p-10 md:p-12 flex flex-col">
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-6">Our Vision</p>
                 <h2 className="text-3xl font-display font-bold text-slate-900 mb-6">To be the most trusted name in construction bonding solutions.</h2>
-                <p className="text-lg text-slate-600 leading-relaxed border-l-4 border-primary pl-6">Setting new benchmarks for durability, quality, and sustainability — empowering builders, architects, and infrastructure leaders with products that simplify construction, enhance performance, and create lasting value.</p>
+                <p className="text-lg text-slate-600 leading-relaxed border-l-4 border-primary pl-6">Setting new benchmarks for durability, quality, and sustainability. Empowering builders, architects, and infrastructure leaders with products that simplify construction, enhance performance, and create lasting value.</p>
               </div>
               <div className="bg-slate-950 rounded-3xl p-10 md:p-12 text-white relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-3xl opacity-15 -translate-y-1/2 translate-x-1/4" />
                 <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-6 relative z-10">Our Mission</p>
                 <h2 className="text-3xl font-display font-bold mb-6 relative z-10">To deliver products that build a stronger India.</h2>
-                <p className="text-lg text-slate-300 leading-relaxed relative z-10">High-performance construction chemicals and sand solutions that transform the way the world builds — backed by continuous R&D, ethical practices, and exceptional customer service. Every project, big or small, built stronger and smarter with Alphabond.</p>
+                <p className="text-lg text-slate-300 leading-relaxed relative z-10">High-performance construction chemicals and sand solutions that transform the way the world builds, backed by continuous R&D, ethical practices, and exceptional customer service. Every project, big or small, built stronger and smarter with Alphabond.</p>
               </div>
             </div>
           </div>
@@ -1243,7 +1243,7 @@ export function Home() {
               {[
                 { q: "What does Alphabond manufacture?", a: "Alphabond (a brand of Kishan Enterprise) manufactures wet sand, dry sand, and a full range of construction chemicals from our ISO-certified facility in Bharuch, Gujarat. Our chemical range includes Tile Adhesives (TileGrip X1–X4), Structural Precision Grouts (AlphaGrout X1 & X2), AAC Block Jointing Mortar (BlockGrip X), and Ready-Mix Plaster / Bonding Agent (PlastoGrip X)." },
                 { q: "Which TileGrip grade should I use?", a: "TileGrip X1 is for standard ceramic tiles indoors. X2 handles large-format vitrified, porcelain, and natural stone for indoor/outdoor use. X3 is premium-grade for granite, marble, and large-format tiles in high-traffic and demanding exteriors. X4 is our extra-strength grade for heavy stone cladding, façades, and challenging industrial/exterior applications." },
-                { q: "What is AlphaGrout used for — is it a tile grout or a structural grout?", a: "AlphaGrout X1 and X2 are high-performance structural precision grouts — not tile grouts. They are cement-based, non-shrink, polymer-enriched grouts engineered for machine foundation grouting, column joints, structural anchor bolts, and base plates of turbines, compressors, and heavy industrial machinery. X1 achieves > 45 N/mm² compressive strength at 28 days. X2 delivers > 65 N/mm² at 28 days and accepts coarse aggregates up to 20 mm for large-volume pours." },
+                { q: "What is AlphaGrout used for? Is it a tile grout or a structural grout?", a: "AlphaGrout X1 and X2 are high-performance structural precision grouts, not tile grouts. They are cement-based, non-shrink, polymer-enriched grouts engineered for machine foundation grouting, column joints, structural anchor bolts, and base plates of turbines, compressors, and heavy industrial machinery. X1 achieves >45 N/mm² compressive strength at 28 days. X2 delivers >65 N/mm² at 28 days and accepts coarse aggregates up to 20 mm for large-volume pours." },
                 { q: "Do you offer job work / contract manufacturing?", a: "Yes. Since 2022, we manufacture tile adhesives, block adhesives, grouts, and specialty compounds under clients' own brand names. Current partners include Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu. We provide custom formulations, batch QC documentation, and branded packaging." },
                 { q: "What is your production capacity?", a: "Dry sand: 8,000–9,000 MT per month. Construction chemicals: 1.5 lakh bags per month currently. A second production unit under construction in Bharuch will expand chemical capacity to over 5 lakh bags per month." },
                 { q: "How do I get Technical Data Sheets for your products?", a: "Contact us via the enquiry form or call directly. We will send TDS for any product or grade the same business day. For large project specifications, our technical team can provide a project-specific product selection guide." },

@@ -38,7 +38,7 @@ export function BrochurePage() {
             Alphabond Product Brochure
           </h1>
           <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
-            13-page technical brochure covering all 8 Alphabond products — complete specs, substrates, applications, key advantages, and usage instructions.
+            13-page technical brochure covering all 8 Alphabond products: complete specs, substrates, applications, key advantages, and usage instructions.
           </p>
         </div>
 
@@ -49,15 +49,15 @@ export function BrochurePage() {
               <h2 className="text-xl font-display font-bold text-white mb-3">What's inside</h2>
               <ul className="space-y-2">
                 {[
-                  "TileGrip X1 · X2 · X3 · X4 — one page per grade",
-                  "BlockGrip X — AAC block jointing mortar",
-                  "PlastoGrip X — ready-mix plaster & bonding agent",
-                  "AlphaGrout X1 · X2 — non-shrink precision grout",
+                  "TileGrip X1 · X2 · X3 · X4: one page per grade",
+                  "BlockGrip X: AAC block jointing mortar",
+                  "PlastoGrip X: ready-mix plaster & bonding agent",
+                  "AlphaGrout X1 · X2: non-shrink precision grout",
                   "Key advantages section per product",
                   "Full technical properties for every product",
                   "How-to-use instructions per product",
                   "Suitable substrates & areas of application",
-                  "Clients & Partners page — all major brands",
+                  "Clients & Partners page: all major brands",
                   "Company profile, facility photos, vision & mission",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
