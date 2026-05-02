@@ -255,7 +255,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "May 1, 2025",
     readTime: "5 min read",
     category: "Guides",
-    coverImage: "/images/blog-contractor-guide.jpg",
+    coverImage: "/images/real-tx2-app.jpg",
     author: { name: "Kishan Enterprise Technical Team", role: "Bharuch, Gujarat" },
     body: `
 <p>One of the most common questions we get from contractors and homeowners is simple: how many bags of tile adhesive do I need for my floor? It sounds like a straightforward calculation, but there are a few variables that change the answer significantly. This guide gives you accurate numbers to work with.</p>
@@ -311,7 +311,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "April 5, 2025",
     readTime: "7 min read",
     category: "Technical",
-    coverImage: "/images/blog-tile-failure-summer.png",
+    coverImage: "/images/app-tilegrip-x4.png",
     author: { name: "Kishan Enterprise Technical Team", role: "Bharuch, Gujarat" },
     body: `
 <p>If you've ever looked at a bag of tile adhesive in India and seen the designation "C2TE" or "C2TES1" printed on it, you've seen the EN 12004 classification system. This is the European standard for tile adhesive performance that has been adopted across India's quality-conscious construction chemical market. Most contractors ignore it. That's a mistake, because the classification tells you exactly what the adhesive can and cannot do.</p>
@@ -369,7 +369,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "March 20, 2025",
     readTime: "6 min read",
     category: "Technical",
-    coverImage: "/images/blog-tile-failure-summer.png",
+    coverImage: "/images/app-tilegrip-x3.png",
     author: { name: "Kishan Enterprise Technical Team", role: "Bharuch, Gujarat" },
     body: `
 <p>Tiling over existing tiles is one of the most frequently asked questions we get at Alphabond. The short answer is yes, you can, but only when specific conditions are met. Skipping those conditions is how people end up with two layers of delaminated tiles instead of one.</p>
@@ -420,7 +420,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "March 1, 2025",
     readTime: "6 min read",
     category: "Technical",
-    coverImage: "/images/blog-aac-blocks.jpg",
+    coverImage: "/images/real-plastogrip-app.jpg",
     author: { name: "Kishan Enterprise Technical Team", role: "Bharuch, Gujarat" },
     body: `
 <p>If you've ever seen plaster peel away from a concrete column in a new building, you know what we're talking about. Not hairline cracks. Whole sections of plaster coming away in sheets, sometimes within a year of the building being plastered. The building owner is furious. The contractor says the plaster was mixed wrong. The plaster supplier says the application was wrong. Nobody talks about the actual cause.</p>
@@ -476,7 +476,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "February 15, 2025",
     readTime: "7 min read",
     category: "Industry",
-    coverImage: "/images/blog-dry-sand.jpg",
+    coverImage: "/images/real-ag1-app.jpg",
     author: { name: "Kishan Enterprise Technical Team", role: "Bharuch, Gujarat" },
     body: `
 <p>If you work in construction, you've probably heard of machine foundation grouting. If you work in manufacturing or process engineering, you know how critical it is. But the question of exactly what non-shrink grout does differently, and why it matters, often doesn't get a clear answer. This is that answer.</p>
@@ -533,7 +533,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "January 10, 2025",
     readTime: "5 min read",
     category: "Guides",
-    coverImage: "/images/blog-grout-comparison.jpg",
+    coverImage: "/images/app-tilegrip-x1.png",
     author: { name: "Kishan Enterprise Technical Team", role: "Bharuch, Gujarat" },
     body: `
 <p>Every bag of tile adhesive has curing time information printed on it. Most contractors don't read it until something goes wrong. This guide explains the three critical waiting periods after tile installation: initial set, grouting readiness, and full load-bearing strength.</p>
