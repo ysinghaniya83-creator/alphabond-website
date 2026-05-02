@@ -5,7 +5,7 @@ import {
   Menu, X, ArrowRight, ShieldCheck, MapPin, Phone, Mail,
   ChevronDown, Truck, CloudRain, FlaskConical,
   Package, HeartHandshake, Users, Clock,
-  Factory, CheckCircle2, Download, Award
+  Factory, CheckCircle2, Download, Award, FileText
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger
@@ -180,6 +180,11 @@ export function Home() {
 
           <div className="hidden md:flex items-center gap-3">
             <a href="tel:+919638563857" className={`text-sm font-medium transition-colors ${isScrolled ? "text-slate-700" : "text-white/80"}`}>+91 96385 63857</a>
+            <Link href="/brochure">
+              <Button variant="outline" className={`rounded-full px-4 h-9 text-sm gap-1.5 ${isScrolled ? "border-slate-300 text-slate-700 hover:bg-slate-50" : "border-white/30 text-white hover:bg-white/10 bg-transparent"}`}>
+                <FileText size={13} /> Brochure
+              </Button>
+            </Link>
             <a href="#contact">
               <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-5 h-9 text-sm">Get a Quote</Button>
             </a>
@@ -224,6 +229,7 @@ export function Home() {
               <div className="flex flex-col sm:flex-row gap-4 mb-16">
                 <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base h-13">Explore Products</Button></a>
                 <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-base h-13 bg-transparent">Request a Sample</Button></a>
+                <Link href="/brochure"><Button size="lg" variant="outline" className="border-white/20 text-white/70 hover:text-white hover:bg-white/10 rounded-full px-8 text-base h-13 bg-transparent gap-2"><FileText size={16} /> Download Brochure</Button></Link>
               </div>
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/15">
                 {[

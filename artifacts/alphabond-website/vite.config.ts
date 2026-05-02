@@ -46,10 +46,17 @@ export default defineConfig({
         ]
       : []),
   ],
+  define: {
+    global: "globalThis",
+  },
+  optimizeDeps: {
+    include: ["buffer"],
+  },
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
+      buffer: "buffer",
     },
     dedupe: ["react", "react-dom"],
   },
