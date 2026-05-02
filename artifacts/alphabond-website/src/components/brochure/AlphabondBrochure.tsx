@@ -48,7 +48,7 @@ const s = StyleSheet.create({
   aboutPage: { padding: 0, backgroundColor: "#ffffff" },
   aboutHeader: { backgroundColor: DARK, padding: "28 44 28 44" },
   aboutHeaderLabel: { fontSize: 8, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 2, marginBottom: 6 },
-  aboutHeaderTitle: { fontSize: 24, fontWeight: 700, color: "#ffffff", lineHeight: 1.2 },
+  aboutHeaderTitle: { fontSize: 20, fontWeight: 700, color: "#ffffff", lineHeight: 1.3 },
   aboutContent: { padding: "28 44 28 44" },
   facilityRow: { flexDirection: "row", gap: 12, marginBottom: 22 },
   facilityImg: { flex: 1, height: 130, objectFit: "cover", borderRadius: 8 },
@@ -312,7 +312,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <Page size="A4" style={s.aboutPage}>
       <View style={s.aboutHeader}>
         <Text style={s.aboutHeaderLabel}>About Us</Text>
-        <Text style={s.aboutHeaderTitle}>{"Kishan Enterprise — operating as Alphabond™\nBuilding India, one bond at a time."}</Text>
+        <Text style={s.aboutHeaderTitle}>{"Kishan Enterprise, operating as Alphabond™\nBuilding India, one bond at a time."}</Text>
       </View>
       <View style={s.aboutContent}>
         {/* Facility images */}
