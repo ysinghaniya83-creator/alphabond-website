@@ -16,7 +16,7 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "why-tile-adhesive-fails-indian-summers",
-    title: "Why Tile Adhesive Fails in Indian Summers — And What Most Contractors Won't Tell You",
+    title: "Why Tile Adhesive Fails in Indian Summers: What Most Contractors Won't Tell You",
     subtitle: "Hollow tiles, debonding, cracked grout lines. These aren't product failures. They're application failures, and the cause is almost always the same.",
     date: "April 18, 2025",
     readTime: "6 min read",
@@ -64,10 +64,10 @@ export const BLOG_POSTS: BlogPost[] = [
 
 <p>The grade breakdown we recommend:</p>
 <ul>
-  <li><strong>X1</strong> — Ceramic tiles, indoor walls and floors, standard residential use</li>
-  <li><strong>X2</strong> — Large-format vitrified (up to 600x600), porcelain, natural stone up to medium weight, outdoor floors</li>
-  <li><strong>X3</strong> — Marble, granite, oversized tiles (800x800 and above), high-traffic commercial, exterior walls</li>
-  <li><strong>X4</strong> — Heavy stone cladding, facades, industrial floors, extreme weather exposure</li>
+  <li><strong>X1:</strong> Ceramic tiles, indoor walls and floors, standard residential use</li>
+  <li><strong>X2:</strong> Large-format vitrified (up to 600x600), porcelain, natural stone up to medium weight, outdoor floors</li>
+  <li><strong>X3:</strong> Marble, granite, oversized tiles (800x800 and above), high-traffic commercial, exterior walls</li>
+  <li><strong>X4:</strong> Heavy stone cladding, facades, industrial floors, extreme weather exposure</li>
 </ul>
 
 <h2>One thing that's worth saying directly</h2>
@@ -213,7 +213,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "how-to-choose-construction-chemicals-small-contractor",
-    title: "A Small Contractor's Honest Guide to Construction Chemicals — Without the Sales Pitch",
+    title: "A Small Contractor's Honest Guide to Construction Chemicals, Without the Sales Pitch",
     subtitle: "What a site supervisor in Surat actually needs to know about tile adhesives, block mortars, and bonding agents. No jargon. No brand loyalty. Just what works.",
     date: "December 8, 2024",
     readTime: "6 min read",
