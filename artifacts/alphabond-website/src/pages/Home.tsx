@@ -266,17 +266,12 @@ export function Home() {
               </div>
 
               {/* Right: Visual showcase */}
-              <div className="hidden lg:block relative">
-                {/* Floating year badge */}
-                <div className="absolute -top-5 -left-5 z-20 bg-primary rounded-2xl px-5 py-3.5 shadow-2xl shadow-primary/30">
-                  <div className="text-2xl font-display font-bold text-white leading-none">17+</div>
-                  <div className="text-[10px] text-blue-200 mt-0.5 font-medium">Years in Business</div>
-                </div>
-
-                {/* Main image card */}
-                <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl" style={{height:"460px"}}>
+              <div className="hidden lg:flex lg:flex-col gap-4 relative">
+                {/* Main image card — full bleed, no clutter */}
+                <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl" style={{height:"400px"}}>
                   <img src="/images/real-tx-hero.jpg" alt="Tile installation with Alphabond TileGrip adhesive" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
+                  {/* Subtle vignette only — no heavy overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
 
                   {/* ISO tag */}
                   <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-md rounded-xl px-4 py-2.5 border border-white/20 flex items-center gap-2">
@@ -284,33 +279,43 @@ export function Home() {
                     <span className="text-white text-xs font-bold">ISO 9001:2015</span>
                   </div>
 
-                  {/* Product bag strip */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-16">
-                    <p className="text-[9px] text-white/40 uppercase tracking-[0.15em] font-semibold mb-2.5">Our Product Range</p>
-                    <div className="grid grid-cols-4 gap-2">
-                      {[
-                        {img:"/images/real-tx1.png",name:"TileGrip X1"},
-                        {img:"/images/real-tx2.png",name:"TileGrip X2"},
-                        {img:"/images/real-tx3.png",name:"TileGrip X3"},
-                        {img:"/images/real-tx4.png",name:"TileGrip X4"},
-                        {img:"/images/real-blockgrip.png",name:"BlockGrip X"},
-                        {img:"/images/real-plastogrip.png",name:"PlastoGrip X"},
-                        {img:"/images/real-ag1.png",name:"AlphaGrout X1"},
-                        {img:"/images/real-ag2.png",name:"AlphaGrout X2"},
-                      ].map(p=>(
-                        <div key={p.name} className="flex flex-col items-center bg-white/8 hover:bg-white/15 transition-colors rounded-xl p-2 border border-white/10">
-                          <img src={p.img} alt={p.name} className="h-12 w-auto object-contain mb-1" />
-                          <div className="text-[8px] font-semibold text-white/80 text-center leading-tight">{p.name}</div>
-                        </div>
-                      ))}
+                  {/* Bottom caption */}
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="text-white/70 text-xs font-medium">ISO-certified facility · Bharuch, Gujarat</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Floating client trust badge */}
-                <div className="absolute -bottom-4 -right-4 z-10 bg-slate-900 border border-white/10 rounded-2xl px-4 py-3 shadow-xl">
-                  <div className="text-xs font-bold text-green-400 mb-0.5">Trusted by 20+ Brands</div>
-                  <div className="text-[10px] text-slate-500">Pidilite · UltraTech · Asian Paints</div>
+                {/* Stat row below image */}
+                <div className="grid grid-cols-4 gap-3">
+                  {[
+                    { value: "17+", label: "Years", sub: "Est. 2008" },
+                    { value: "8", label: "Products", sub: "In the range" },
+                    { value: "20+", label: "Clients", sub: "Major brands" },
+                    { value: "1.5L", label: "Bags/Mo", sub: "Chem output" },
+                  ].map(s => (
+                    <div key={s.label} className="bg-white/5 border border-white/10 rounded-2xl p-3.5 text-center">
+                      <div className="text-xl font-display font-bold text-white leading-none mb-0.5">{s.value}</div>
+                      <div className="text-[10px] font-semibold text-slate-300 uppercase tracking-wide">{s.label}</div>
+                      <div className="text-[9px] text-slate-600 mt-0.5">{s.sub}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Trusted-by strip */}
+                <div className="bg-white/5 border border-white/10 rounded-2xl px-5 py-3.5 flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Trusted by</span>
+                  <div className="flex items-center gap-4 text-xs text-slate-300 font-semibold">
+                    <span>Pidilite</span>
+                    <span className="text-slate-700">·</span>
+                    <span>UltraTech</span>
+                    <span className="text-slate-700">·</span>
+                    <span>Asian Paints</span>
+                    <span className="text-slate-700">·</span>
+                    <span>Walplast</span>
+                  </div>
                 </div>
               </div>
 
