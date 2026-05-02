@@ -247,7 +247,7 @@ export function Home() {
 
                 {/* Perspective viewport */}
                 <div style={{
-                  width:"260px", height:"380px",
+                  width:"260px", height:"440px",
                   perspective:"800px", perspectiveOrigin:"50% 45%",
                   position:"relative",
                 }}>
@@ -277,7 +277,7 @@ export function Home() {
                         }}>
                           {/* Card */}
                           <div style={{
-                            width:"240px", height:"360px",
+                            width:"240px", height:"420px",
                             marginLeft:"-120px", marginTop:"10px",
                             borderRadius:"24px", overflow:"hidden",
                             background:"linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(10,20,60,0.75) 100%)",
