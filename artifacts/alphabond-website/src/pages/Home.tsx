@@ -147,6 +147,12 @@ export function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTilegrip, setActiveTilegrip] = useState(0);
   const [activeAlphagrout, setActiveAlphagrout] = useState(0);
+  const [activeCarousel, setActiveCarousel] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setActiveCarousel(p => (p + 1) % 4), 3000);
+    return () => clearInterval(t);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -223,88 +229,100 @@ export function Home() {
           {/* Dot grid texture */}
           <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage:"radial-gradient(circle,#010ED0 1px,transparent 1px)",backgroundSize:"36px 36px"}} />
 
-          {/* Orbital product animation */}
-          <div className="absolute hidden lg:block pointer-events-none select-none"
-            style={{right:"80px", top:"50%", transform:"translateY(-50%)", width:"360px", height:"360px"}}>
+          {/* 3-D product carousel — one at a time, front card full, others recede behind */}
+          {(() => {
+            const carouselProducts = [
+              { img:"/images/real-tx4.png",       label:"TileGrip X4",   sub:"C2TES1 · Flexible Tile Adhesive", feat:["Water resistant formulation","Superior bonding strength","Indoor & outdoor use"] },
+              { img:"/images/real-ag1.png",        label:"AlphaGrout X1", sub:"CG2WA · Premium Tile Grout",       feat:["Stain & mould resistant","Anti-bacterial formula","Wide colour range"] },
+              { img:"/images/real-blockgrip.png",  label:"BlockGrip X",   sub:"M5 · Block Joining Mortar",        feat:["High compressive strength","AAC & CLC block ready","Easy to apply"] },
+              { img:"/images/real-plastogrip.png", label:"PlastoGrip X",  sub:"GP · Ready-Mix Wall Plaster",      feat:["Crack resistant finish","Ultra-smooth surface","Factory premixed"] },
+            ];
 
-            <style>{`
-              @keyframes heroOrbitSpin    { to   { transform: rotate(360deg);  } }
-              @keyframes heroCounter0     { from { transform: rotate(0deg);    } to { transform: rotate(-360deg);  } }
-              @keyframes heroCounter90    { from { transform: rotate(-90deg);  } to { transform: rotate(-450deg);  } }
-              @keyframes heroCounter180   { from { transform: rotate(-180deg); } to { transform: rotate(-540deg);  } }
-              @keyframes heroCounter270   { from { transform: rotate(-270deg); } to { transform: rotate(-630deg);  } }
-              @keyframes heroPulse        { 0%,100% { opacity:0.5; transform:translate(-50%,-50%) scale(1);   }
-                                           50%      { opacity:1;   transform:translate(-50%,-50%) scale(1.15); } }
-            `}</style>
+            const cardStyleForOffset = (offset: number): React.CSSProperties => {
+              if (offset === 0) return {
+                transform: "perspective(700px) rotateY(0deg) translateZ(0px) scale(1)",
+                opacity: 1, zIndex: 10, filter: "none",
+              };
+              if (offset === 1) return {
+                transform: "perspective(700px) rotateY(-55deg) translateZ(-90px) scale(0.85)",
+                opacity: 0.45, zIndex: 5, filter: "brightness(0.6)",
+              };
+              if (offset === 3) return {
+                transform: "perspective(700px) rotateY(55deg) translateZ(-90px) scale(0.85)",
+                opacity: 0.45, zIndex: 5, filter: "brightness(0.6)",
+              };
+              // offset 2 — back, hidden
+              return {
+                transform: "perspective(700px) rotateY(180deg) translateZ(-180px) scale(0.6)",
+                opacity: 0, zIndex: 1,
+              };
+            };
 
-            {/* Outer orbit ring */}
-            <div style={{
-              position:"absolute", inset:0, borderRadius:"50%",
-              border:"1px solid rgba(255,255,255,0.08)",
-              boxShadow:"0 0 40px rgba(1,14,208,0.08) inset"
-            }} />
-            {/* Inner dashed ring */}
-            <div style={{
-              position:"absolute", inset:"60px", borderRadius:"50%",
-              border:"1px dashed rgba(1,14,208,0.25)"
-            }} />
+            return (
+              <div className="absolute hidden lg:flex flex-col items-center"
+                style={{right:"72px", top:"50%", transform:"translateY(-50%)", width:"300px", zIndex:10}}>
 
-            {/* Center glow + label */}
-            <div style={{
-              position:"absolute", top:"50%", left:"50%",
-              transform:"translate(-50%,-50%)", textAlign:"center", zIndex:2
-            }}>
-              <div style={{
-                width:"64px", height:"64px", borderRadius:"50%",
-                background:"rgba(1,14,208,0.2)", backdropFilter:"blur(12px)",
-                border:"1px solid rgba(1,14,208,0.4)",
-                display:"flex", alignItems:"center", justifyContent:"center",
-                animation:"heroPulse 3s ease-in-out infinite",
-                position:"absolute", top:"50%", left:"50%",
-                transform:"translate(-50%,-50%)"
-              }}>
-                <span style={{fontSize:"18px", fontWeight:900, color:"white", fontFamily:"Space Grotesk, sans-serif"}}>A</span>
-              </div>
-            </div>
+                {/* Dot indicators */}
+                <div className="flex gap-1.5 mb-5">
+                  {carouselProducts.map((_, i) => (
+                    <div key={i} style={{
+                      width: activeCarousel === i ? "20px" : "6px",
+                      height: "6px", borderRadius: "3px",
+                      background: activeCarousel === i ? "#010ED0" : "rgba(255,255,255,0.25)",
+                      transition: "all 0.4s ease",
+                    }} />
+                  ))}
+                </div>
 
-            {/* Spinning orbit container */}
-            <div style={{
-              position:"absolute", inset:0,
-              animation:"heroOrbitSpin 14s linear infinite"
-            }}>
-              {[
-                {img:"/images/real-tx4.png",      label:"TileGrip X4",   sub:"Tile Adhesive",    angle:0,   counter:"heroCounter0"   },
-                {img:"/images/real-ag1.png",       label:"AlphaGrout X1", sub:"Precision Grout",  angle:90,  counter:"heroCounter90"  },
-                {img:"/images/real-blockgrip.png", label:"BlockGrip X",   sub:"Block Mortar",     angle:180, counter:"heroCounter180" },
-                {img:"/images/real-plastogrip.png",label:"PlastoGrip X",  sub:"Ready-Mix Plaster",angle:270, counter:"heroCounter270" },
-              ].map((p) => (
-                <div key={p.angle} style={{
-                  position:"absolute",
-                  top:"50%", left:"50%",
-                  transform:`rotate(${p.angle}deg) translateX(155px)`,
-                  marginTop:"-44px", marginLeft:"-44px",
-                }}>
-                  {/* Counter-rotation keeps card upright */}
-                  <div style={{animation:`${p.counter} 14s linear infinite`, width:"88px"}}>
-                    <div style={{
-                      background:"rgba(255,255,255,0.06)",
-                      backdropFilter:"blur(10px)",
-                      border:"1px solid rgba(255,255,255,0.12)",
-                      borderRadius:"16px",
-                      padding:"8px 6px",
-                      textAlign:"center",
-                      boxShadow:"0 8px 32px rgba(0,0,0,0.3)"
-                    }}>
-                      <img src={p.img} alt={p.label}
-                        style={{height:"52px", width:"auto", objectFit:"contain", margin:"0 auto 4px"}} />
-                      <div style={{fontSize:"8.5px", fontWeight:700, color:"white", lineHeight:1.2}}>{p.label}</div>
-                      <div style={{fontSize:"7px", color:"rgb(147,197,253)", marginTop:"2px"}}>{p.sub}</div>
-                    </div>
+                {/* 3-D stage */}
+                <div style={{position:"relative", width:"260px", height:"360px", transformStyle:"preserve-3d"}}>
+                  {carouselProducts.map((p, i) => {
+                    const offset = (i - activeCarousel + 4) % 4;
+                    const style = cardStyleForOffset(offset);
+                    return (
+                      <div key={i} style={{
+                        position:"absolute", inset:0,
+                        transition:"all 0.65s cubic-bezier(0.4,0,0.2,1)",
+                        ...style,
+                      }}>
+                        <div style={{
+                          background:"rgba(255,255,255,0.06)",
+                          backdropFilter:"blur(14px)",
+                          border:"1px solid rgba(255,255,255,0.13)",
+                          borderRadius:"24px",
+                          padding:"24px 20px 20px",
+                          height:"100%",
+                          display:"flex", flexDirection:"column", alignItems:"center",
+                          boxShadow: offset === 0 ? "0 24px 80px rgba(1,14,208,0.2), 0 0 0 1px rgba(1,14,208,0.15)" : "none",
+                        }}>
+                          <div style={{fontSize:"8px", fontWeight:700, color:"rgb(96,165,250)", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:"16px"}}>Featured Product</div>
+                          <img src={p.img} alt={p.label}
+                            style={{height:"160px", width:"auto", objectFit:"contain", marginBottom:"16px"}} />
+                          <div style={{fontFamily:"Space Grotesk, sans-serif", fontSize:"17px", fontWeight:700, color:"white", marginBottom:"4px", textAlign:"center"}}>{p.label}</div>
+                          <div style={{fontSize:"11px", color:"rgb(147,197,253)", marginBottom:"16px", textAlign:"center"}}>{p.sub}</div>
+                          <div style={{width:"100%", borderTop:"1px solid rgba(255,255,255,0.08)", paddingTop:"14px", display:"flex", flexDirection:"column", gap:"8px"}}>
+                            {p.feat.map((f, fi) => (
+                              <div key={fi} style={{display:"flex", alignItems:"center", gap:"8px", fontSize:"11px", color:"rgb(203,213,225)"}}>
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="rgba(1,14,208,0.7)"/><path d="M2.5 5l1.8 1.8L7.5 3.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                {f}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Label beneath */}
+                <div className="mt-5 text-center">
+                  <div style={{fontSize:"11px", color:"rgba(255,255,255,0.35)", letterSpacing:"0.08em"}}>
+                    {activeCarousel + 1} / {carouselProducts.length} — swipe through our range
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            );
+          })()}
 
           {/* Content — left column */}
           <div className="relative z-10 container mx-auto px-4 md:px-8 w-full pt-28 pb-36">
