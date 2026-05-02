@@ -265,55 +265,44 @@ export function Home() {
                 </div>
               </div>
 
-              {/* Right: Visual showcase */}
-              <div className="hidden lg:flex lg:flex-col gap-4 relative">
-                {/* Main image card — full bleed, no clutter */}
-                <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl" style={{height:"400px"}}>
-                  <img src="/images/real-tx-hero.jpg" alt="Tile installation with Alphabond TileGrip adhesive" className="w-full h-full object-cover" />
-                  {/* Subtle vignette only — no heavy overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-
-                  {/* ISO tag */}
-                  <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-md rounded-xl px-4 py-2.5 border border-white/20 flex items-center gap-2">
-                    <ShieldCheck size={13} className="text-blue-400" />
-                    <span className="text-white text-xs font-bold">ISO 9001:2015</span>
-                  </div>
-
-                  {/* Bottom caption */}
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                      <span className="text-white/70 text-xs font-medium">ISO-certified facility · Bharuch, Gujarat</span>
-                    </div>
-                  </div>
+              {/* Right: 2×2 application photo mosaic */}
+              <div className="hidden lg:block relative">
+                {/* ISO badge floating top-right */}
+                <div className="absolute -top-3 -right-3 z-20 bg-white/10 backdrop-blur-md rounded-xl px-4 py-2.5 border border-white/20 flex items-center gap-2 shadow-xl">
+                  <ShieldCheck size={13} className="text-blue-400" />
+                  <span className="text-white text-xs font-bold">ISO 9001:2015</span>
                 </div>
 
-                {/* Stat row below image */}
-                <div className="grid grid-cols-4 gap-3">
+                {/* 2×2 photo grid */}
+                <div className="grid grid-cols-2 gap-3" style={{height:"480px"}}>
                   {[
-                    { value: "17+", label: "Years", sub: "Est. 2008" },
-                    { value: "8", label: "Products", sub: "In the range" },
-                    { value: "20+", label: "Clients", sub: "Major brands" },
-                    { value: "1.5L", label: "Bags/Mo", sub: "Chem output" },
-                  ].map(s => (
-                    <div key={s.label} className="bg-white/5 border border-white/10 rounded-2xl p-3.5 text-center">
-                      <div className="text-xl font-display font-bold text-white leading-none mb-0.5">{s.value}</div>
-                      <div className="text-[10px] font-semibold text-slate-300 uppercase tracking-wide">{s.label}</div>
-                      <div className="text-[9px] text-slate-600 mt-0.5">{s.sub}</div>
+                    { img: "/images/real-tx2-app.jpg",        label: "Tile Adhesive",     sub: "TileGrip Series" },
+                    { img: "/images/real-blockgrip-app.jpg",  label: "Block Mortar",      sub: "BlockGrip X" },
+                    { img: "/images/real-plastogrip-app.jpg", label: "Ready-Mix Plaster", sub: "PlastoGrip X" },
+                    { img: "/images/real-ag1-app.jpg",        label: "Precision Grout",   sub: "AlphaGrout Series" },
+                  ].map((item, i) => (
+                    <div key={i} className="relative rounded-2xl overflow-hidden border border-white/10">
+                      <img
+                        src={item.img}
+                        alt={item.label}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <div className="text-white text-xs font-bold leading-tight">{item.label}</div>
+                        <div className="text-blue-300 text-[10px] font-medium">{item.sub}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Trusted-by strip */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl px-5 py-3.5 flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Trusted by</span>
-                  <div className="flex items-center gap-4 text-xs text-slate-300 font-semibold">
-                    <span>Pidilite</span>
-                    <span className="text-slate-700">·</span>
-                    <span>UltraTech</span>
-                    <span className="text-slate-700">·</span>
-                    <span>Asian Paints</span>
-                    <span className="text-slate-700">·</span>
+                {/* Trusted-by strip below */}
+                <div className="mt-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-3 flex items-center justify-between">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Trusted by</span>
+                  <div className="flex items-center gap-3 text-xs text-slate-400 font-medium">
+                    <span>Pidilite</span><span className="text-slate-700">·</span>
+                    <span>UltraTech</span><span className="text-slate-700">·</span>
+                    <span>Asian Paints</span><span className="text-slate-700">·</span>
                     <span>Walplast</span>
                   </div>
                 </div>
