@@ -206,91 +206,117 @@ export function Home() {
       <main className="flex-1">
 
         {/* ── Hero ───────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-950">
-          {/* Chemical factory bg image */}
-          <div className="absolute inset-0 z-0">
-            <img src="/images/hero-chemicals-bg.png" alt="Alphabond Manufacturing Facility" className="w-full h-full object-cover opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
-            {/* Decorative chemical molecule / grid overlay */}
-            <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: "radial-gradient(circle, #010ED0 1px, transparent 1px)", backgroundSize: "40px 40px"}} />
-          </div>
+        <section className="relative min-h-screen flex items-center overflow-hidden" style={{background:"linear-gradient(160deg,#06091e 0%,#0a0f2e 50%,#040814 100%)"}}>
+          {/* Dot grid overlay */}
+          <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage:"radial-gradient(circle,#010ED0 1.5px,transparent 1.5px)",backgroundSize:"38px 38px"}} />
+          {/* Glow orbs */}
+          <div className="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-blue-600/8 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Right side: product bag showcase */}
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:flex items-center justify-center z-10 pr-12">
-            <div className="grid grid-cols-4 gap-3 max-w-md">
-              {[
-                { img: "/images/real-tx1.png", name: "TileGrip X1", sub: "C1T" },
-                { img: "/images/real-tx2.png", name: "TileGrip X2", sub: "C2T" },
-                { img: "/images/real-tx3.png", name: "TileGrip X3", sub: "C2TE" },
-                { img: "/images/real-tx4.png", name: "TileGrip X4", sub: "C2TES1" },
-                { img: "/images/real-blockgrip.png", name: "BlockGrip X", sub: "AAC Mortar" },
-                { img: "/images/real-plastogrip.png", name: "PlastoGrip X", sub: "Plaster" },
-                { img: "/images/real-ag1.png", name: "AlphaGrout X1", sub: ">45 N/mm²" },
-                { img: "/images/real-ag2.png", name: "AlphaGrout X2", sub: ">65 N/mm²" },
-              ].map((p, i) => (
-                <div key={p.name}
-                  className="flex flex-col items-center bg-white/5 hover:bg-white/10 transition-all rounded-2xl p-3 border border-white/10 hover:border-primary/50 group"
-                  style={{ animationDelay: `${i * 80}ms` }}
-                >
-                  <img src={p.img} alt={p.name} className="h-20 w-auto object-contain mb-2 group-hover:scale-110 transition-transform duration-300" />
-                  <div className="text-[9px] font-bold text-white text-center leading-tight">{p.name}</div>
-                  <div className="text-[8px] text-blue-400/70 text-center mt-0.5">{p.sub}</div>
+          <div className="container mx-auto px-4 md:px-8 w-full pt-20">
+            <div className="grid lg:grid-cols-[58%_42%] gap-10 xl:gap-14 items-center min-h-[calc(100vh-80px)] py-16">
+
+              {/* Left: Content */}
+              <div>
+                <div className="flex flex-wrap gap-2 mb-7">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-300 text-[11px] font-bold tracking-wide">
+                    <ShieldCheck size={11} /> ISO 9001:2015 Certified
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
+                    <MapPin size={10} /> Bharuch &amp; Surat, Gujarat
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">Since 2008</span>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="container relative z-10 mx-auto px-4 md:px-8 pt-20">
-            <div className="max-w-2xl">
-              <div className="flex flex-wrap gap-2 mb-8">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-300 text-[11px] font-bold tracking-wide">
-                  <ShieldCheck size={11} /> ISO 9001:2015 Certified
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
-                  Bharuch & Surat, Gujarat
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
-                  Since 2008
-                </span>
+                <h1 className="text-5xl md:text-6xl lg:text-[4.25rem] font-bold font-display text-white leading-[1.04] mb-6">
+                  High-performance<br /><span className="text-blue-400">construction</span><br />chemicals.
+                </h1>
+                <p className="text-lg text-slate-300 mb-3 max-w-xl leading-relaxed">
+                  Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — all manufactured at our ISO-certified Bharuch facility.
+                </p>
+                <p className="text-sm text-slate-500 mb-9 max-w-xl">
+                  Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3 mb-9">
+                  <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-sm font-semibold h-12">Explore All 8 Products</Button></a>
+                  <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-sm h-12 bg-transparent">Request a Sample</Button></a>
+                  <Link href="/brochure"><Button size="lg" variant="outline" className="border-white/15 text-white/60 hover:text-white hover:bg-white/8 rounded-full px-6 text-sm h-12 bg-transparent gap-1.5"><FileText size={14} /> Brochure</Button></Link>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-9">
+                  {["Tile Adhesive (C1T–C2TES1)", "Non-Shrink Precision Grout", "AAC Block Mortar", "Ready-Mix Plaster", "Dry & Wet Sand"].map(tag => (
+                    <span key={tag} className="px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-400 text-xs font-medium">{tag}</span>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-3 gap-6 pt-7 border-t border-white/10">
+                  {[
+                    { value: "8", label: "Products", sub: "In the range" },
+                    { value: "1.5L", label: "Bags/Month", sub: "Chemical output" },
+                    { value: "20+", label: "Major Clients", sub: "National brands" },
+                  ].map(s => (
+                    <div key={s.label}>
+                      <div className="text-3xl md:text-4xl font-display font-bold text-white mb-0.5">{s.value}</div>
+                      <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">{s.label}</div>
+                      <div className="text-[10px] text-slate-600">{s.sub}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display text-white leading-[1.04] mb-6">
-                High-performance<br /><span className="text-blue-400">construction</span><br />chemicals.
-              </h1>
-              <p className="text-lg text-slate-300 mb-4 max-w-lg leading-relaxed">
-                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — all manufactured at our ISO-certified Bharuch facility.
-              </p>
-              <p className="text-sm text-slate-500 mb-10 max-w-lg">
-                Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 mb-14">
-                <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-sm font-semibold h-12">Explore All 8 Products</Button></a>
-                <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-sm h-12 bg-transparent">Request a Sample</Button></a>
-                <Link href="/brochure"><Button size="lg" variant="outline" className="border-white/15 text-white/60 hover:text-white hover:bg-white/8 rounded-full px-6 text-sm h-12 bg-transparent gap-1.5"><FileText size={14} /> Brochure</Button></Link>
-              </div>
+              {/* Right: Visual showcase */}
+              <div className="hidden lg:block relative">
+                {/* Floating year badge */}
+                <div className="absolute -top-5 -left-5 z-20 bg-primary rounded-2xl px-5 py-3.5 shadow-2xl shadow-primary/30">
+                  <div className="text-2xl font-display font-bold text-white leading-none">17+</div>
+                  <div className="text-[10px] text-blue-200 mt-0.5 font-medium">Years in Business</div>
+                </div>
 
-              {/* Key product capsules */}
-              <div className="flex flex-wrap gap-2 mb-12">
-                {["Tile Adhesive (C1T–C2TES1)", "Non-Shrink Precision Grout", "AAC Block Mortar", "Ready-Mix Plaster", "Dry & Wet Sand"].map(tag => (
-                  <span key={tag} className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-xs font-medium">{tag}</span>
-                ))}
-              </div>
+                {/* Main image card */}
+                <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl" style={{height:"460px"}}>
+                  <img src="/images/real-tx-hero.jpg" alt="Tile installation with Alphabond TileGrip adhesive" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
 
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-                {[
-                  { value: "8", label: "Products", sub: "In the range" },
-                  { value: "1.5L", label: "Bags/Month", sub: "Chemical output" },
-                  { value: "20+", label: "Major Clients", sub: "National brands" },
-                ].map(s => (
-                  <div key={s.label}>
-                    <div className="text-3xl md:text-4xl font-display font-bold text-white mb-0.5">{s.value}</div>
-                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">{s.label}</div>
-                    <div className="text-[10px] text-slate-600">{s.sub}</div>
+                  {/* ISO tag */}
+                  <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-md rounded-xl px-4 py-2.5 border border-white/20 flex items-center gap-2">
+                    <ShieldCheck size={13} className="text-blue-400" />
+                    <span className="text-white text-xs font-bold">ISO 9001:2015</span>
                   </div>
-                ))}
+
+                  {/* Product bag strip */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent pt-16">
+                    <p className="text-[9px] text-white/40 uppercase tracking-[0.15em] font-semibold mb-2.5">Our Product Range</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[
+                        {img:"/images/real-tx1.png",name:"TileGrip X1"},
+                        {img:"/images/real-tx2.png",name:"TileGrip X2"},
+                        {img:"/images/real-tx3.png",name:"TileGrip X3"},
+                        {img:"/images/real-tx4.png",name:"TileGrip X4"},
+                        {img:"/images/real-blockgrip.png",name:"BlockGrip X"},
+                        {img:"/images/real-plastogrip.png",name:"PlastoGrip X"},
+                        {img:"/images/real-ag1.png",name:"AlphaGrout X1"},
+                        {img:"/images/real-ag2.png",name:"AlphaGrout X2"},
+                      ].map(p=>(
+                        <div key={p.name} className="flex flex-col items-center bg-white/8 hover:bg-white/15 transition-colors rounded-xl p-2 border border-white/10">
+                          <img src={p.img} alt={p.name} className="h-12 w-auto object-contain mb-1" />
+                          <div className="text-[8px] font-semibold text-white/80 text-center leading-tight">{p.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating client trust badge */}
+                <div className="absolute -bottom-4 -right-4 z-10 bg-slate-900 border border-white/10 rounded-2xl px-4 py-3 shadow-xl">
+                  <div className="text-xs font-bold text-green-400 mb-0.5">Trusted by 20+ Brands</div>
+                  <div className="text-[10px] text-slate-500">Pidilite · UltraTech · Asian Paints</div>
+                </div>
               </div>
+
             </div>
           </div>
+
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-white/30 animate-bounce">
             <ChevronDown size={20} />
           </div>
@@ -652,12 +678,20 @@ export function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="md:col-span-3 p-8 flex flex-col justify-between">
-                  <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-6">
-                    <img src="/images/real-blockgrip.png" alt="BlockGrip X" className="h-64 w-auto object-contain" />
-                    <div className="mt-4 text-center">
-                      <div className="font-display font-bold text-slate-900 text-lg">BlockGrip X</div>
-                      <div className="text-sm text-slate-500">Block Jointing Mortar · Thin-Bed</div>
+                <div className="md:col-span-3 p-6 flex flex-col justify-between">
+                  <div className="grid sm:grid-cols-2 gap-4 mb-5">
+                    <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                      <img src="/images/real-blockgrip.png" alt="BlockGrip X" className="h-52 w-auto object-contain" />
+                      <div className="mt-3 text-center">
+                        <div className="font-display font-bold text-slate-900">BlockGrip X</div>
+                        <div className="text-xs text-slate-500">Block Jointing Mortar · Thin-Bed</div>
+                      </div>
+                    </div>
+                    <div className="rounded-2xl overflow-hidden border border-slate-100 relative" style={{minHeight:"220px"}}>
+                      <img src="/images/app-blockgrip.png" alt="BlockGrip X in use on AAC block wall" className="w-full h-full object-cover" />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-3">
+                        <p className="text-white text-[10px] font-semibold">AAC block jointing application</p>
+                      </div>
                     </div>
                   </div>
                   <div className="mb-5">
@@ -723,12 +757,20 @@ export function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="md:col-span-3 p-8 flex flex-col justify-between">
-                  <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-6">
-                    <img src="/images/real-plastogrip.png" alt="PlastoGrip X" className="h-64 w-auto object-contain" />
-                    <div className="mt-4 text-center">
-                      <div className="font-display font-bold text-slate-900 text-lg">PlastoGrip X</div>
-                      <div className="text-sm text-slate-500">Ready-Mix Plaster · Plaster Bonding Agent</div>
+                <div className="md:col-span-3 p-6 flex flex-col justify-between">
+                  <div className="grid sm:grid-cols-2 gap-4 mb-5">
+                    <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                      <img src="/images/real-plastogrip.png" alt="PlastoGrip X" className="h-52 w-auto object-contain" />
+                      <div className="mt-3 text-center">
+                        <div className="font-display font-bold text-slate-900">PlastoGrip X</div>
+                        <div className="text-xs text-slate-500">Ready-Mix Plaster · Plaster Bonding Agent</div>
+                      </div>
+                    </div>
+                    <div className="rounded-2xl overflow-hidden border border-slate-100 relative" style={{minHeight:"220px"}}>
+                      <img src="/images/app-plastogrip.png" alt="PlastoGrip X plastering application on RCC surface" className="w-full h-full object-cover" />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-3">
+                        <p className="text-white text-[10px] font-semibold">Plastering on RCC / AAC wall</p>
+                      </div>
                     </div>
                   </div>
                   <div className="mb-5">
@@ -857,9 +899,24 @@ export function Home() {
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-4">
-                <div className="rounded-2xl bg-slate-950 text-white p-8 relative overflow-hidden">
+                {/* Facility images */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl overflow-hidden relative" style={{height:"160px"}}>
+                    <img src="/images/facility-plant.png" alt="Alphabond manufacturing plant Bharuch" className="w-full h-full object-cover" />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 to-transparent p-3">
+                      <p className="text-white text-[10px] font-semibold">Bharuch Production Plant</p>
+                    </div>
+                  </div>
+                  <div className="rounded-2xl overflow-hidden relative" style={{height:"160px"}}>
+                    <img src="/images/facility-lab.png" alt="Alphabond quality control laboratory" className="w-full h-full object-cover" />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 to-transparent p-3">
+                      <p className="text-white text-[10px] font-semibold">In-House QC Laboratory</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-slate-950 text-white p-7 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-2xl" />
-                  <div className="text-5xl font-display font-bold text-blue-400 mb-2 relative z-10">9,000 MT</div>
+                  <div className="text-4xl font-display font-bold text-blue-400 mb-2 relative z-10">9,000 MT</div>
                   <div className="font-semibold text-lg mb-1 relative z-10">Per Month — Dry Sand</div>
                   <p className="text-slate-400 text-sm relative z-10">Supplying industrial-grade dry sand to cement majors and construction chemical brands across India.</p>
                 </div>
@@ -890,15 +947,16 @@ export function Home() {
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {SECTORS.map((sector, i) => (
-                <div key={i} className="group relative rounded-2xl bg-slate-900 border border-slate-800 p-8 hover:border-primary/40 transition-all overflow-hidden">
-                  <div className="absolute top-0 right-0 w-52 h-52 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="relative z-10">
-                    <div className="text-6xl font-display font-black text-white/[0.06] mb-5 leading-none">{sector.badge}</div>
-                    <h4 className="text-xl font-display font-bold text-white mb-3">{sector.title}</h4>
-                    <p className="text-sm text-slate-400 leading-relaxed mb-5">{sector.desc}</p>
+                <div key={i} className="group relative rounded-2xl overflow-hidden cursor-default" style={{height:"300px"}}>
+                  <img src={sector.img} alt={sector.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/75 to-slate-800/20" />
+                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                    <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">{sector.badge}</span>
+                    <h4 className="text-xl font-display font-bold text-white mb-2">{sector.title}</h4>
+                    <p className="text-sm text-slate-300 leading-relaxed mb-4 line-clamp-2">{sector.desc}</p>
                     <div className="flex flex-wrap gap-2">
                       {sector.products.map(p => (
-                        <span key={p} className="px-2.5 py-1 rounded-full bg-primary/20 border border-primary/30 text-blue-300 text-xs font-semibold">{p}</span>
+                        <span key={p} className="px-2.5 py-1 rounded-full bg-primary/30 border border-primary/50 text-blue-200 text-xs font-semibold backdrop-blur-sm">{p}</span>
                       ))}
                     </div>
                   </div>
