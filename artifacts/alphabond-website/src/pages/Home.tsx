@@ -159,7 +159,7 @@ export function Home() {
   const navLinks: [string, string][] = [
     ["Products", "#products"], ["Solutions", "#solutions"],
     ["Clients", "#clients"], ["Job Work", "#job-work"],
-    ["About", "#about"], ["Contact", "#contact"],
+    ["Blog", "/blog"], ["About", "#about"], ["Contact", "#contact"],
   ];
 
   return (
