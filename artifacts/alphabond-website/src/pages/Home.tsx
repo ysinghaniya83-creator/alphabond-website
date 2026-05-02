@@ -303,13 +303,14 @@ export function Home() {
                                 color:"#93c5fd", textTransform:"uppercase", marginBottom:"12px",
                               }}>{p.tag}</div>
 
-                              {/* Bag image — centrepiece */}
+                              {/* Bag image — fixed height so text never gets squeezed */}
                               <div style={{
-                                flex:1, display:"flex", alignItems:"center", justifyContent:"center",
-                                marginBottom:"12px",
+                                height:"170px", flexShrink:0,
+                                display:"flex", alignItems:"center", justifyContent:"center",
+                                marginBottom:"10px",
                               }}>
                                 <img src={p.img} alt={p.label} style={{
-                                  maxHeight:"195px", maxWidth:"210px",
+                                  maxHeight:"170px", maxWidth:"200px",
                                   objectFit:"contain",
                                   filter:"drop-shadow(0 18px 36px rgba(0,0,0,0.7)) drop-shadow(0 4px 12px rgba(1,14,208,0.3))",
                                 }}/>
@@ -318,16 +319,16 @@ export function Home() {
                               {/* Product name */}
                               <div style={{
                                 fontFamily:"Space Grotesk,sans-serif",
-                                fontSize:"18px", fontWeight:800, color:"#fff",
-                                letterSpacing:"-0.025em", lineHeight:1.1, marginBottom:"3px",
+                                fontSize:"17px", fontWeight:800, color:"#fff",
+                                letterSpacing:"-0.025em", lineHeight:1.1, marginBottom:"2px",
                               }}>{p.label}</div>
-                              <div style={{fontSize:"10px", color:"rgba(147,197,253,0.8)", marginBottom:"12px"}}>{p.sub}</div>
+                              <div style={{fontSize:"10px", color:"rgba(147,197,253,0.8)", marginBottom:"10px"}}>{p.sub}</div>
 
                               {/* Divider */}
-                              <div style={{height:"1px", background:"rgba(255,255,255,0.08)", marginBottom:"10px"}}/>
+                              <div style={{height:"1px", background:"rgba(255,255,255,0.08)", marginBottom:"8px"}}/>
 
                               {/* Features */}
-                              <div style={{display:"flex", flexDirection:"column", gap:"7px"}}>
+                              <div style={{display:"flex", flexDirection:"column", gap:"6px"}}>
                                 {p.feat.map((f,fi) => (
                                   <div key={fi} style={{display:"flex", alignItems:"center", gap:"7px"}}>
                                     <div style={{
