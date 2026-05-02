@@ -232,10 +232,10 @@ export function Home() {
           {/* ── 3-D cylinder carousel: cards rotate around Y-axis ── */}
           {(() => {
             const cp = [
-              { img:"/images/real-tx4.png",       label:"TileGrip X4",   tag:"Tile Adhesive",   sub:"C2TES1 · Extra Strong Flex",  feat:["Water resistant","Superior bonding","Indoor & outdoor"] },
-              { img:"/images/real-ag1.png",        label:"AlphaGrout X1", tag:"Precision Grout", sub:"CG2WA · Premium Grade",        feat:["Stain & mould proof","Anti-bacterial","10+ colour options"] },
-              { img:"/images/real-blockgrip.png",  label:"BlockGrip X",   tag:"Block Mortar",    sub:"M5 · High-Strength Joint",     feat:["High compressive strength","AAC & CLC ready","Easy application"] },
-              { img:"/images/real-plastogrip.png", label:"PlastoGrip X",  tag:"Wall Plaster",    sub:"GP · Ready-Mix Formula",       feat:["Crack-resistant surface","Ultra-smooth finish","Factory premixed"] },
+              { img:"/images/real-tx4.png",       label:"TileGrip X4",   tag:"Tile Adhesive",      sub:"C2TES1 · Extra Strong Flex",  feat:["Water resistant","Superior bonding","Indoor & outdoor"] },
+              { img:"/images/real-plastogrip.png", label:"PlastoGrip X",  tag:"Ready Mix Plaster",  sub:"GP · Ready-Mix Formula",       feat:["Crack-resistant surface","Ultra-smooth finish","Factory premixed"] },
+              { img:"/images/real-blockgrip.png",  label:"BlockGrip X",   tag:"Block Joint Mortar", sub:"M5 · High-Strength Joint",     feat:["High compressive strength","AAC & CLC ready","Easy application"] },
+              { img:"/images/real-ag1.png",        label:"AlphaGrout X1", tag:"Precision Grout",    sub:"CG2WA · Premium Grade",        feat:["Stain & mould proof","Anti-bacterial","10+ colour options"] },
             ];
             // The whole wheel rotates; card i is placed at i*90deg on cylinder
             const wheelDeg = -activeCarousel * 90;
