@@ -73,11 +73,15 @@ export function BrochurePage() {
                 {[3, 2, 1, 0].map((offset) => (
                   <div
                     key={offset}
-                    className="absolute inset-0 bg-white rounded-xl shadow-2xl"
+                    className="absolute inset-0 rounded-xl shadow-2xl"
                     style={{ transform: `rotate(${(offset - 1.5) * 2}deg) translateY(${offset * 2}px)`, zIndex: offset }}
                   >
-                    <div className="h-full rounded-xl overflow-hidden bg-slate-900 flex flex-col">
-                      <div className="flex-1 bg-gradient-to-b from-slate-800 to-slate-900" />
+                    <div className="h-full rounded-xl overflow-hidden bg-slate-900 flex flex-col border border-white/10">
+                      <div className="flex-1 bg-gradient-to-b from-slate-800 to-slate-900 flex items-center justify-center p-4">
+                        {offset === 3 ? (
+                          <img src="/logo.png" alt="Alphabond" className="w-28 h-auto object-contain" style={{ filter: "brightness(0) invert(1)" }} />
+                        ) : null}
+                      </div>
                       <div className="p-3">
                         <div className="h-2 bg-blue-500 rounded w-3/4 mb-1.5" />
                         <div className="h-1.5 bg-slate-600 rounded w-full mb-1" />
