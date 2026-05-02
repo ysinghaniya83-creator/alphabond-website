@@ -229,84 +229,130 @@ export function Home() {
           {/* Dot grid texture */}
           <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage:"radial-gradient(circle,#010ED0 1px,transparent 1px)",backgroundSize:"36px 36px"}} />
 
-          {/* 3-D product carousel — one at a time, front card full, others recede behind */}
+          {/* ── Premium 3-D product carousel ─────────────────────── */}
           {(() => {
-            const carouselProducts = [
-              { img:"/images/real-tx4.png",       label:"TileGrip X4",   sub:"C2TES1 · Flexible Tile Adhesive", feat:["Water resistant formulation","Superior bonding strength","Indoor & outdoor use"] },
-              { img:"/images/real-ag1.png",        label:"AlphaGrout X1", sub:"CG2WA · Premium Tile Grout",       feat:["Stain & mould resistant","Anti-bacterial formula","Wide colour range"] },
-              { img:"/images/real-blockgrip.png",  label:"BlockGrip X",   sub:"M5 · Block Joining Mortar",        feat:["High compressive strength","AAC & CLC block ready","Easy to apply"] },
-              { img:"/images/real-plastogrip.png", label:"PlastoGrip X",  sub:"GP · Ready-Mix Wall Plaster",      feat:["Crack resistant finish","Ultra-smooth surface","Factory premixed"] },
+            const cp = [
+              { img:"/images/real-tx4.png",       label:"TileGrip X4",   tag:"Tile Adhesive",     sub:"C2TES1 · Extra Strong", feat:["Flexible & water resistant","20 kg · C2TES1 rated","Indoor & outdoor"],  color:"#1d4ed8" },
+              { img:"/images/real-ag1.png",        label:"AlphaGrout X1", tag:"Precision Grout",   sub:"CG2WA · Premium Grade",  feat:["Stain & mould resistant","Anti-bacterial formula","Wide colour range"], color:"#0369a1" },
+              { img:"/images/real-blockgrip.png",  label:"BlockGrip X",   tag:"Block Mortar",      sub:"M5 · Joint Mortar",      feat:["High compressive strength","AAC & CLC block ready","Factory premixed"],  color:"#1e3a5f" },
+              { img:"/images/real-plastogrip.png", label:"PlastoGrip X",  tag:"Wall Plaster",      sub:"GP · Ready-Mix",         feat:["Crack-resistant finish","Ultra-smooth surface","Time-saving formula"],  color:"#164e63" },
             ];
 
-            const cardStyleForOffset = (offset: number): React.CSSProperties => {
-              if (offset === 0) return {
-                transform: "perspective(700px) rotateY(0deg) translateZ(0px) scale(1)",
-                opacity: 1, zIndex: 10, filter: "none",
-              };
-              if (offset === 1) return {
-                transform: "perspective(700px) rotateY(-55deg) translateZ(-90px) scale(0.85)",
-                opacity: 0.45, zIndex: 5, filter: "brightness(0.6)",
-              };
-              if (offset === 3) return {
-                transform: "perspective(700px) rotateY(55deg) translateZ(-90px) scale(0.85)",
-                opacity: 0.45, zIndex: 5, filter: "brightness(0.6)",
-              };
-              // offset 2 — back, hidden
-              return {
-                transform: "perspective(700px) rotateY(180deg) translateZ(-180px) scale(0.6)",
-                opacity: 0, zIndex: 1,
-              };
-            };
+            // Offset 0 = front, 1 = right-peek, 2 = hidden-back, 3 = left-peek
+            const stageStyle = (offset: number): React.CSSProperties => ({
+              0: { transform:"translateX(0)   scale(1)    translateZ(0px)",    opacity:1,    zIndex:20 },
+              1: { transform:"translateX(148px) scale(0.82) translateZ(-60px)", opacity:0.38, zIndex:10 },
+              2: { transform:"translateX(0)   scale(0.65)  translateZ(-150px)", opacity:0,    zIndex:1  },
+              3: { transform:"translateX(-148px) scale(0.82) translateZ(-60px)",opacity:0.38, zIndex:10 },
+            }[offset] as React.CSSProperties);
 
             return (
-              <div className="absolute hidden lg:flex flex-col items-center"
-                style={{right:"72px", top:"50%", transform:"translateY(-50%)", width:"300px", zIndex:10}}>
+              <div
+                className="absolute hidden lg:flex flex-col items-center"
+                style={{right:"40px", top:"50%", transform:"translateY(-50%)", width:"420px", zIndex:10}}
+                onMouseEnter={() => {/* pause handled by clearing interval on hover would need ref, skip */}}
+              >
+                {/* Ambient glow behind active card */}
+                <div style={{
+                  position:"absolute", top:"50%", left:"50%",
+                  transform:"translate(-50%,-54%)",
+                  width:"260px", height:"320px",
+                  background:`radial-gradient(ellipse at center, ${cp[activeCarousel].color}55 0%, transparent 70%)`,
+                  filter:"blur(32px)", pointerEvents:"none", transition:"background 0.6s ease",
+                }} />
 
-                {/* Dot indicators */}
-                <div className="flex gap-1.5 mb-5">
-                  {carouselProducts.map((_, i) => (
-                    <div key={i} style={{
-                      width: activeCarousel === i ? "20px" : "6px",
-                      height: "6px", borderRadius: "3px",
-                      background: activeCarousel === i ? "#010ED0" : "rgba(255,255,255,0.25)",
-                      transition: "all 0.4s ease",
-                    }} />
-                  ))}
-                </div>
-
-                {/* 3-D stage */}
-                <div style={{position:"relative", width:"260px", height:"360px", transformStyle:"preserve-3d"}}>
-                  {carouselProducts.map((p, i) => {
+                {/* 3-D stage — perspective set on the parent */}
+                <div style={{
+                  position:"relative", width:"280px", height:"400px",
+                  perspective:"900px", perspectiveOrigin:"50% 50%",
+                }}>
+                  {cp.map((p, i) => {
                     const offset = (i - activeCarousel + 4) % 4;
-                    const style = cardStyleForOffset(offset);
                     return (
-                      <div key={i} style={{
-                        position:"absolute", inset:0,
-                        transition:"all 0.65s cubic-bezier(0.4,0,0.2,1)",
-                        ...style,
-                      }}>
+                      <div
+                        key={i}
+                        style={{
+                          position:"absolute", inset:0,
+                          transition:"all 0.7s cubic-bezier(0.4,0,0.2,1)",
+                          transformStyle:"preserve-3d",
+                          ...stageStyle(offset),
+                        }}
+                      >
+                        {/* Card shell */}
                         <div style={{
-                          background:"rgba(255,255,255,0.06)",
-                          backdropFilter:"blur(14px)",
-                          border:"1px solid rgba(255,255,255,0.13)",
-                          borderRadius:"24px",
-                          padding:"24px 20px 20px",
-                          height:"100%",
-                          display:"flex", flexDirection:"column", alignItems:"center",
-                          boxShadow: offset === 0 ? "0 24px 80px rgba(1,14,208,0.2), 0 0 0 1px rgba(1,14,208,0.15)" : "none",
+                          height:"100%", borderRadius:"28px",
+                          background: offset === 0
+                            ? "linear-gradient(160deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%)"
+                            : "rgba(255,255,255,0.04)",
+                          backdropFilter:"blur(18px)",
+                          border: offset === 0 ? "1px solid rgba(255,255,255,0.18)" : "1px solid rgba(255,255,255,0.07)",
+                          boxShadow: offset === 0
+                            ? `0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(1,14,208,0.25), inset 0 1px 0 rgba(255,255,255,0.12)`
+                            : "0 8px 24px rgba(0,0,0,0.3)",
+                          overflow:"hidden", display:"flex", flexDirection:"column",
                         }}>
-                          <div style={{fontSize:"8px", fontWeight:700, color:"rgb(96,165,250)", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:"16px"}}>Featured Product</div>
-                          <img src={p.img} alt={p.label}
-                            style={{height:"160px", width:"auto", objectFit:"contain", marginBottom:"16px"}} />
-                          <div style={{fontFamily:"Space Grotesk, sans-serif", fontSize:"17px", fontWeight:700, color:"white", marginBottom:"4px", textAlign:"center"}}>{p.label}</div>
-                          <div style={{fontSize:"11px", color:"rgb(147,197,253)", marginBottom:"16px", textAlign:"center"}}>{p.sub}</div>
-                          <div style={{width:"100%", borderTop:"1px solid rgba(255,255,255,0.08)", paddingTop:"14px", display:"flex", flexDirection:"column", gap:"8px"}}>
-                            {p.feat.map((f, fi) => (
-                              <div key={fi} style={{display:"flex", alignItems:"center", gap:"8px", fontSize:"11px", color:"rgb(203,213,225)"}}>
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="rgba(1,14,208,0.7)"/><path d="M2.5 5l1.8 1.8L7.5 3.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                                {f}
+                          {/* Top accent stripe */}
+                          <div style={{
+                            height:"3px",
+                            background:`linear-gradient(90deg, ${p.color}, #60a5fa, ${p.color})`,
+                            opacity: offset === 0 ? 1 : 0.4,
+                          }} />
+
+                          <div style={{padding:"22px 22px 20px", display:"flex", flexDirection:"column", flex:1, alignItems:"center"}}>
+                            {/* Tag pill */}
+                            <div style={{
+                              display:"inline-flex", alignItems:"center", gap:"5px",
+                              padding:"3px 10px", borderRadius:"20px",
+                              background:"rgba(1,14,208,0.18)", border:"1px solid rgba(1,14,208,0.3)",
+                              fontSize:"9px", fontWeight:700, letterSpacing:"0.12em",
+                              color:"rgb(147,197,253)", textTransform:"uppercase", marginBottom:"16px",
+                            }}>{p.tag}</div>
+
+                            {/* Product image — the hero of the card */}
+                            <div style={{
+                              flex:1, display:"flex", alignItems:"center", justifyContent:"center",
+                              width:"100%", minHeight:0,
+                            }}>
+                              <img
+                                src={p.img} alt={p.label}
+                                style={{
+                                  maxHeight:"190px", width:"auto", objectFit:"contain",
+                                  filter: offset === 0 ? "drop-shadow(0 16px 32px rgba(0,0,0,0.5))" : "none",
+                                  transition:"filter 0.5s ease",
+                                }}
+                              />
+                            </div>
+
+                            {/* Name + sub */}
+                            <div style={{width:"100%", marginTop:"18px"}}>
+                              <div style={{
+                                fontFamily:"Space Grotesk, sans-serif",
+                                fontSize:"20px", fontWeight:800, color:"white",
+                                letterSpacing:"-0.02em", lineHeight:1.15, marginBottom:"4px",
+                              }}>{p.label}</div>
+                              <div style={{fontSize:"11px", color:"rgba(147,197,253,0.85)", marginBottom:"16px"}}>{p.sub}</div>
+
+                              {/* Divider */}
+                              <div style={{height:"1px", background:"linear-gradient(90deg, rgba(255,255,255,0.1), transparent)", marginBottom:"14px"}} />
+
+                              {/* Features */}
+                              <div style={{display:"flex", flexDirection:"column", gap:"9px"}}>
+                                {p.feat.map((f, fi) => (
+                                  <div key={fi} style={{display:"flex", alignItems:"center", gap:"9px"}}>
+                                    <div style={{
+                                      width:"16px", height:"16px", borderRadius:"50%", flexShrink:0,
+                                      background:"rgba(1,14,208,0.25)", border:"1px solid rgba(1,14,208,0.5)",
+                                      display:"flex", alignItems:"center", justifyContent:"center",
+                                    }}>
+                                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                        <path d="M1.5 4l1.8 1.8L6.5 2" stroke="#60a5fa" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                                      </svg>
+                                    </div>
+                                    <span style={{fontSize:"11.5px", color:"rgb(203,213,225)", lineHeight:1.3}}>{f}</span>
+                                  </div>
+                                ))}
                               </div>
-                            ))}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -314,11 +360,20 @@ export function Home() {
                   })}
                 </div>
 
-                {/* Label beneath */}
-                <div className="mt-5 text-center">
-                  <div style={{fontSize:"11px", color:"rgba(255,255,255,0.35)", letterSpacing:"0.08em"}}>
-                    {activeCarousel + 1} / {carouselProducts.length} — swipe through our range
-                  </div>
+                {/* Dot indicators */}
+                <div style={{display:"flex", gap:"6px", marginTop:"20px", alignItems:"center"}}>
+                  {cp.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveCarousel(i)}
+                      style={{
+                        width: activeCarousel === i ? "24px" : "7px",
+                        height:"7px", borderRadius:"4px", border:"none", cursor:"pointer",
+                        background: activeCarousel === i ? "#3b82f6" : "rgba(255,255,255,0.2)",
+                        transition:"all 0.35s ease", padding:0,
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             );
