@@ -257,7 +257,7 @@ const ProductPage = ({
 );
 
 export const AlphabondBrochure = ({ baseUrl }: Props) => (
-  <Document title="Alphabond Product Brochure" author="Kishan Enterprise" subject="Construction Chemicals — Bharuch, Gujarat">
+  <Document title="Alphabond Product Brochure" author="Kishan Enterprise" subject="Construction Chemicals — Bharuch, Gujarat" hyphenationCallback={(word) => [word]}>
 
     {/* ── PAGE 1: COVER ─────────────────────────────────── */}
     <Page size="A4" style={s.coverPage}>
