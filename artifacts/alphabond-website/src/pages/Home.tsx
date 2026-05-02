@@ -142,6 +142,97 @@ const SECTORS = [
   },
 ];
 
+/* ─── EnquiryForm ─────────────────────────────────────────────────── */
+function EnquiryForm() {
+  const [form, setForm] = useState({ firstName: "", lastName: "", company: "", phone: "", email: "", enquiryType: "Supply Enquiry", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm(f => ({ ...f, [field]: e.target.value }));
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.firstName || !form.phone || !form.message) {
+      setStatus("error"); setErrorMsg("Name, phone and message are required."); return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) { setStatus("success"); }
+      else { const d = await res.json(); setStatus("error"); setErrorMsg(d.error || "Failed to send."); }
+    } catch { setStatus("error"); setErrorMsg("Network error. Please call us directly."); }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="bg-white rounded-3xl p-8 md:p-10 text-slate-900 shadow-2xl flex flex-col items-center justify-center min-h-[400px] text-center">
+        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-5">
+          <CheckCircle2 size={32} className="text-green-600" />
+        </div>
+        <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Enquiry received!</h3>
+        <p className="text-slate-500 mb-6">Our team will respond within hours. You can also reach us directly at +91 96385 63857.</p>
+        <Button onClick={() => setStatus("idle")} variant="outline" className="rounded-full px-6">Send Another</Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-3xl p-8 md:p-10 text-slate-900 shadow-2xl">
+      <h3 className="text-2xl font-display font-bold mb-1">Send an Enquiry</h3>
+      <p className="text-slate-500 text-sm mb-6">Supply · Samples · Job Work · Technical queries</p>
+      <form className="space-y-4" onSubmit={submit}>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">First Name *</label>
+            <Input value={form.firstName} onChange={set("firstName")} placeholder="Rajesh" className="bg-slate-50 border-slate-200" required />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Last Name</label>
+            <Input value={form.lastName} onChange={set("lastName")} placeholder="Patel" className="bg-slate-50 border-slate-200" />
+          </div>
+        </div>
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Company Name</label>
+          <Input value={form.company} onChange={set("company")} placeholder="Your Company Ltd." className="bg-slate-50 border-slate-200" />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Phone *</label>
+            <Input value={form.phone} onChange={set("phone")} placeholder="+91 98765 43210" className="bg-slate-50 border-slate-200" required />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Email</label>
+            <Input value={form.email} onChange={set("email")} type="email" placeholder="you@company.com" className="bg-slate-50 border-slate-200" />
+          </div>
+        </div>
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Enquiry Type</label>
+          <select value={form.enquiryType} onChange={set("enquiryType")} className="w-full h-10 px-3 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary/30">
+            <option>Supply Enquiry</option>
+            <option>Sample Request</option>
+            <option>Job Work / White Label</option>
+            <option>Technical Query / TDS</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Message *</label>
+          <Textarea value={form.message} onChange={set("message")} placeholder="Describe your project, product interest, or job-work requirement..." className="bg-slate-50 border-slate-200 min-h-[90px]" required />
+        </div>
+        {status === "error" && <p className="text-red-600 text-sm bg-red-50 rounded-lg px-4 py-2">{errorMsg}</p>}
+        <Button type="submit" disabled={status === "sending"} className="w-full bg-primary hover:bg-primary/90 text-white h-12 rounded-xl text-base font-semibold">
+          {status === "sending" ? "Sending…" : "Submit Enquiry"}
+        </Button>
+      </form>
+    </div>
+  );
+}
+
 /* ─── Component ───────────────────────────────────────────────────── */
 export function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -207,44 +298,92 @@ export function Home() {
       <main className="flex-1">
 
         {/* ── Hero ───────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-950">
+          {/* Chemical factory bg image */}
           <div className="absolute inset-0 z-0">
-            <img src="/images/hero-bg.png" alt="Construction Site" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-900/75 to-slate-900/30" />
+            <img src="/images/hero-chemicals-bg.png" alt="Alphabond Manufacturing Facility" className="w-full h-full object-cover opacity-30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+            {/* Decorative chemical molecule / grid overlay */}
+            <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: "radial-gradient(circle, #010ED0 1px, transparent 1px)", backgroundSize: "40px 40px"}} />
+          </div>
+
+          {/* Right side: product bag showcase */}
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:flex items-center justify-center z-10 pr-12">
+            <div className="grid grid-cols-4 gap-3 max-w-md">
+              {[
+                { img: "/images/real-tx1.png", name: "TileGrip X1", sub: "C1T" },
+                { img: "/images/real-tx2.png", name: "TileGrip X2", sub: "C2T" },
+                { img: "/images/real-tx3.png", name: "TileGrip X3", sub: "C2TE" },
+                { img: "/images/real-tx4.png", name: "TileGrip X4", sub: "C2TES1" },
+                { img: "/images/real-blockgrip.png", name: "BlockGrip X", sub: "AAC Mortar" },
+                { img: "/images/real-plastogrip.png", name: "PlastoGrip X", sub: "Plaster" },
+                { img: "/images/real-ag1.png", name: "AlphaGrout X1", sub: ">45 N/mm²" },
+                { img: "/images/real-ag2.png", name: "AlphaGrout X2", sub: ">65 N/mm²" },
+              ].map((p, i) => (
+                <div key={p.name}
+                  className="flex flex-col items-center bg-white/5 hover:bg-white/10 transition-all rounded-2xl p-3 border border-white/10 hover:border-primary/50 group"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  <img src={p.img} alt={p.name} className="h-20 w-auto object-contain mb-2 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="text-[9px] font-bold text-white text-center leading-tight">{p.name}</div>
+                  <div className="text-[8px] text-blue-400/70 text-center mt-0.5">{p.sub}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="container relative z-10 mx-auto px-4 md:px-8 pt-20">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold mb-8 tracking-wide">
-                <ShieldCheck size={13} className="text-blue-300" />
-                ISO-Certified Manufacturer · Bharuch, Gujarat · Since 2008
+            <div className="max-w-2xl">
+              <div className="flex flex-wrap gap-2 mb-8">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-300 text-[11px] font-bold tracking-wide">
+                  <ShieldCheck size={11} /> ISO 9001:2015 Certified
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
+                  Bharuch & Surat, Gujarat
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-slate-300 text-[11px] font-semibold">
+                  Since 2008
+                </span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold font-display text-white leading-[1.03] mb-6">
-                Building the<br /><span className="text-blue-400">foundation,</span><br />literally.
+
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display text-white leading-[1.04] mb-6">
+                High-performance<br /><span className="text-blue-400">construction</span><br />chemicals.
               </h1>
-              <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl leading-relaxed">
-                From wet sand for India's largest cement majors to a full range of construction chemicals. Kishan Enterprise — operating as <strong className="text-white font-semibold">Alphabond</strong> — manufactures the materials that make modern infrastructure possible.
+              <p className="text-lg text-slate-300 mb-4 max-w-lg leading-relaxed">
+                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — all manufactured at our ISO-certified Bharuch facility.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-16">
-                <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base h-13">Explore Products</Button></a>
-                <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-base h-13 bg-transparent">Request a Sample</Button></a>
-                <Link href="/brochure"><Button size="lg" variant="outline" className="border-white/20 text-white/70 hover:text-white hover:bg-white/10 rounded-full px-8 text-base h-13 bg-transparent gap-2"><FileText size={16} /> Download Brochure</Button></Link>
+              <p className="text-sm text-slate-500 mb-10 max-w-lg">
+                Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 mb-14">
+                <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-sm font-semibold h-12">Explore All 8 Products</Button></a>
+                <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-sm h-12 bg-transparent">Request a Sample</Button></a>
+                <Link href="/brochure"><Button size="lg" variant="outline" className="border-white/15 text-white/60 hover:text-white hover:bg-white/8 rounded-full px-6 text-sm h-12 bg-transparent gap-1.5"><FileText size={14} /> Brochure</Button></Link>
               </div>
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/15">
+
+              {/* Key product capsules */}
+              <div className="flex flex-wrap gap-2 mb-12">
+                {["Tile Adhesive (C1T–C2TES1)", "Non-Shrink Precision Grout", "AAC Block Mortar", "Ready-Mix Plaster", "Dry & Wet Sand"].map(tag => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-xs font-medium">{tag}</span>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
                 {[
-                  { value: "17+", label: "Years in Industry" },
-                  { value: "9,000 MT", label: "Monthly Sand Output" },
-                  { value: "20+", label: "Major Industrial Clients" },
+                  { value: "8", label: "Products", sub: "In the range" },
+                  { value: "1.5L", label: "Bags/Month", sub: "Chemical output" },
+                  { value: "20+", label: "Major Clients", sub: "National brands" },
                 ].map(s => (
                   <div key={s.label}>
-                    <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1">{s.value}</div>
-                    <div className="text-xs text-slate-400 uppercase tracking-wider">{s.label}</div>
+                    <div className="text-3xl md:text-4xl font-display font-bold text-white mb-0.5">{s.value}</div>
+                    <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">{s.label}</div>
+                    <div className="text-[10px] text-slate-600">{s.sub}</div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-white/40 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-white/30 animate-bounce">
             <ChevronDown size={20} />
           </div>
         </section>
@@ -1051,47 +1190,7 @@ export function Home() {
                   ))}
                 </div>
               </div>
-              <div className="bg-white rounded-3xl p-8 md:p-10 text-slate-900 shadow-2xl">
-                <h3 className="text-2xl font-display font-bold mb-1">Send an Enquiry</h3>
-                <p className="text-slate-500 text-sm mb-6">Supply · Samples · Job Work · Technical queries</p>
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">First Name</label>
-                      <Input placeholder="Rajesh" className="bg-slate-50 border-slate-200" />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Last Name</label>
-                      <Input placeholder="Patel" className="bg-slate-50 border-slate-200" />
-                    </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Company Name</label>
-                    <Input placeholder="Your Company Ltd." className="bg-slate-50 border-slate-200" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Phone</label>
-                      <Input placeholder="+91 98765 43210" className="bg-slate-50 border-slate-200" />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Enquiry Type</label>
-                      <select className="w-full h-10 px-3 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary/30">
-                        <option>Supply Enquiry</option>
-                        <option>Sample Request</option>
-                        <option>Job Work / White Label</option>
-                        <option>Technical Query / TDS</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Message</label>
-                    <Textarea placeholder="Describe your project, product interest, or job-work requirement..." className="bg-slate-50 border-slate-200 min-h-[90px]" />
-                  </div>
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white h-12 rounded-xl text-base font-semibold">Submit Enquiry</Button>
-                </form>
-              </div>
+              <EnquiryForm />
             </div>
           </div>
         </section>

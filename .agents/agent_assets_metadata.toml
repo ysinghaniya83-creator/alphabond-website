@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "UQTOs16cpOylRBBHT8Ly3"
@@ -66,3 +65,87 @@ id = "Z9MOJAvmb6C_wtopl2uPO"
 uri = "file://artifacts/alphabond-website/public/images/facility-lab.png"
 type = "image"
 title = "quality control lab testing"
+
+[[generated]]
+id = "gvj0sq0Gp9bPVYjgTAVrg"
+uri = "file://artifacts/alphabond-website/public/images/hero-chemicals-bg.png"
+type = "image"
+title = "hero chemicals bg"
+
+[[generated]]
+id = "H2An6DFaCXVAI6gebU7Pa"
+uri = "file://artifacts/alphabond-website/public/images/app-tilegrip-x1.png"
+type = "image"
+title = "tilegrip x1 ceramic floor"
+
+[[generated]]
+id = "fTRj_lQge0hHf38V-5GCH"
+uri = "file://artifacts/alphabond-website/public/images/app-tilegrip-x2.png"
+type = "image"
+title = "tilegrip x2 vitrified floor"
+
+[[generated]]
+id = "efiCnnCZVSZRVPxYPVb_W"
+uri = "file://artifacts/alphabond-website/public/images/app-tilegrip-x3.png"
+type = "image"
+title = "tilegrip x3 marble stone wall"
+
+[[generated]]
+id = "nou_zNhcN7hbr26v1i2jD"
+uri = "file://artifacts/alphabond-website/public/images/app-tilegrip-x4.png"
+type = "image"
+title = "tilegrip x4 granite facade"
+
+[[generated]]
+id = "WOa4GN5gkbti19hCRmOiV"
+uri = "file://artifacts/alphabond-website/public/images/app-blockgrip.png"
+type = "image"
+title = "blockgrip aac masonry"
+
+[[generated]]
+id = "e6_H_CMK46bRwGtNNmvZ5"
+uri = "file://artifacts/alphabond-website/public/images/app-plastogrip.png"
+type = "image"
+title = "plastogrip wall plastering"
+
+[[generated]]
+id = "a69sw88W86ardWN8KC-4q"
+uri = "file://artifacts/alphabond-website/public/images/app-alphagrout-x1.png"
+type = "image"
+title = "alphagrout machine foundation"
+
+[[generated]]
+id = "Z7JCl0l7A_xwQvo1wogMn"
+uri = "file://artifacts/alphabond-website/public/images/app-alphagrout-x2.png"
+type = "image"
+title = "alphagrout anchor bolt column"
+
+[[generated]]
+id = "S1kj8yRuFrqVibj6tYX6Q"
+uri = "file://artifacts/alphabond-website/public/images/blog-tile-failure-summer.png"
+type = "image"
+title = "tile adhesive failure summer"
+
+[[outputs]]
+id = "3UIZVSe8DM0_aiES-EKzV"
+uri = "file://attached_assets/stock_images/aac-blocks.jpg"
+type = "image"
+title = "AAC blocks wall construction India masonry"
+
+[[outputs]]
+id = "ddTZWGtB0ViGgpj2kag62"
+uri = "file://attached_assets/stock_images/tile-grout.jpg"
+type = "image"
+title = "bathroom tile grout lines close up floor"
+
+[[outputs]]
+id = "zmzb5Vac1B9DNTGCM6KLs"
+uri = "file://attached_assets/stock_images/dry-sand.jpg"
+type = "image"
+title = "industrial sand quarry processing plant conveyor"
+
+[[outputs]]
+id = "tAN6RojJ5eiDe4RHV3bvn"
+uri = "file://attached_assets/stock_images/contractor-guide.jpg"
+type = "image"
+title = "construction site workers building materials India"

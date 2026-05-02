@@ -245,7 +245,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={3}
       category="Tile Adhesive  ·  C1T" typeBadge="Type 1"
-      bagImg="/images/real-tx1.png"
+      bagImg="/images/real-tx1.png" appImg="/images/app-tilegrip-x1.png"
       name="TileGrip X1" subtitle="Premium Tile Adhesive for Superior Bonding"
       desc="TileGrip X1 is a high-performance, polymer-modified tile adhesive designed for superior bonding strength and durability. Engineered for both wall and floor applications, it provides excellent adhesion to various substrates including concrete, cement plaster, and existing tiles."
       howToUse="Add 4.5 litres of clean water per 20 kg bag. Mix to a smooth, lump-free consistency. Apply with a notched trowel, press tiles firmly within 10–15 minutes. Fill joints after 24 hours. Do not walk on tiles for at least 24 hours."
@@ -266,7 +266,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={4}
       category="Tile Adhesive  ·  C2T" typeBadge="Type 2"
-      bagImg="/images/real-tx2.png"
+      bagImg="/images/real-tx2.png" appImg="/images/app-tilegrip-x2.png"
       name="TileGrip X2" subtitle="High-Strength Tile Adhesive for Heavy-Duty Applications"
       desc="TileGrip X2 is a high-bond tile adhesive specially formulated for large-format and heavy tiles. Designed for both interior and exterior applications, it provides exceptional adhesion and flexibility, ensuring a long-lasting and durable finish."
       howToUse="Add 4.5 litres of clean water per 20 kg bag. Mix to a smooth, lump-free consistency. Apply with a notched trowel, press tiles firmly within 10–15 minutes. Fill joints after 24 hours. Suitable for floors, walls, vertical and horizontal surfaces."
@@ -287,7 +287,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={5}
       category="Tile Adhesive  ·  C2TE" typeBadge="Type 3"
-      bagImg="/images/real-tx3.png"
+      bagImg="/images/real-tx3.png" appImg="/images/app-tilegrip-x3.png"
       name="TileGrip X3" subtitle="Premium-Grade Adhesive for Heavy & High-Traffic Applications"
       desc="TileGrip X3 by Alphabond is a top-tier, high-performance tile adhesive specially formulated for demanding applications. Designed for large-format tiles, heavy stones, and high-traffic areas, it offers exceptional bonding strength, flexibility, and durability."
       howToUse="Add 4.5 litres of clean water per 20 kg bag. Mix to a smooth consistency. Apply with a notched trowel, press tiles firmly within 10–15 minutes. Extended open time of 20–25 min allows precision placement of large-format tiles. Fill joints after 24 hours."
@@ -308,7 +308,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={6}
       category="Tile Adhesive  ·  C2TES1" typeBadge="Type 4"
-      bagImg="/images/real-tx4.png"
+      bagImg="/images/real-tx4.png" appImg="/images/app-tilegrip-x4.png"
       name="TileGrip X4" subtitle="Ultimate Heavy-Duty Tile Adhesive for Extreme Conditions"
       desc="TileGrip X4 by Alphabond is a high-performance, industrial-grade tile adhesive designed for the most demanding applications. Engineered for large-format tiles, natural stones, and extreme environments, it delivers superior adhesion, flexibility, and durability for long-lasting performance."
       howToUse="Add 4.5 litres of clean water per 20 kg bag. Mix thoroughly. Apply with a notched trowel at correct bed thickness. Allow 20–25 minutes open time for precise placement on heavy stone and cladding. Cure for minimum 24 hours before grouting."
@@ -329,7 +329,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={7}
       category="Block Jointing Mortar" typeBadge="Masonry"
-      bagImg="/images/real-blockgrip.png"
+      bagImg="/images/real-blockgrip.png" appImg="/images/app-blockgrip.png"
       name="BlockGrip X" subtitle="High-Performance Ready-Mix Mortar for Superior Masonry Work"
       desc="BlockGrip X is a premium-grade ready-mix mortar designed for efficient and durable masonry applications. Engineered with high-quality cement, graded sand, and performance-enhancing additives, it ensures strong bonding, smooth application, and long-lasting durability for bricklaying and blockwork."
       howToUse="Mix approx. 25–28% clean water in 40 kg powder and make a workable paste. Apply to block surfaces using a notch trowel to ensure good bonding. One 40 kg bag will bond approx. 40 blocks (900 mm × 200 mm × 150 mm). Joints should be 3–5 mm thick."
@@ -350,7 +350,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={8}
       category="Ready-Mix Cement Plaster / Bonding Agent" typeBadge="Plaster"
-      bagImg="/images/real-plastogrip.png"
+      bagImg="/images/real-plastogrip.png" appImg="/images/app-plastogrip.png"
       name="PlastoGrip X" subtitle="High-Performance Ready-Mix Plaster for Superior Wall Finishing"
       desc="PlastoGrip X is a high-quality, polymer-modified ready-mix plaster designed for smooth and durable wall finishes. It provides excellent adhesion, crack resistance, and workability — making it ideal for both interior and exterior applications. Formulated with graded sand, premium binders, and performance-enhancing additives. Eliminates the need for hacking or wire mesh on smooth surfaces."
       howToUse="Cure the wall surface with water before applying. First coat (bonding layer): add more water to make a thinner slurry and apply a thin, uniform coat (1–2 mm). Allow to become tacky. Second coat: add the required water to a 40 kg bag, mix with a blender, and apply the finishing coat. Allow to cure."
@@ -371,7 +371,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={9}
       category="High Performance Precision Grout" typeBadge="Non-Shrink"
-      bagImg="/images/real-ag1.png"
+      bagImg="/images/real-ag1.png" appImg="/images/app-alphagrout-x1.png"
       name="AlphaGrout X1" subtitle="High Performance Precision Grout"
       desc="AlphaGrout X1 is a cement-based, non-shrink, non-expanding polymer-enriched high-performance, high-strength binder for precision grouting applications. Formulated with advanced polymers, specialised additives, and carefully chosen fillers. It is a blend of Portland cement, graded fillers, and additives that ensure controlled expansion, low water demand for high early strength, and consistent mixing."
       howToUse="Prepare and clean the surface thoroughly. Set up sealed formwork around the area to be grouted. Mix AlphaGrout X1 with clean water to the desired consistency. Pour steadily from one side to avoid air pockets. Finish the exposed areas neatly. Cure properly for at least 7 days to ensure optimal strength and durability."
@@ -393,7 +393,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <ProductPage
       baseUrl={baseUrl} page={10}
       category="High Performance Precision Grout" typeBadge="Non-Shrink+"
-      bagImg="/images/real-ag2.png"
+      bagImg="/images/real-ag2.png" appImg="/images/app-alphagrout-x2.png"
       name="AlphaGrout X2" subtitle="High Performance Precision Grout — Extended Aggregate Grade"
       desc="AlphaGrout X2 is a cement-based, non-shrink, non-expanding polymer-enriched high-performance, high-strength binder for precision grouting. Well-graded coarse aggregates up to 20 mm in size can be added for larger-volume applications. Delivers higher compressive strength than X1 with the same reliable non-shrink properties."
       howToUse="Prepare and clean the surface thoroughly. Set up sealed formwork. Mix with clean water to the desired consistency. For large-volume pours, add coarse aggregates up to 20 mm. Pour steadily from one side to avoid air pockets. Cure for at least 7 days."
