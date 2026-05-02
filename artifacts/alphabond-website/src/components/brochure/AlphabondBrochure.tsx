@@ -312,7 +312,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
     <Page size="A4" style={s.aboutPage}>
       <View style={s.aboutHeader}>
         <Text style={s.aboutHeaderLabel}>About Us</Text>
-        <Text style={s.aboutHeaderTitle}>{"Kishan Enterprise, operating as Alphabond™\nBuilding India, one bond at a time."}</Text>
+        <Text style={s.aboutHeaderTitle}>{"Kishan Enterprise, operating as\nAlphabond™\nBuilding India, one bond at a time."}</Text>
       </View>
       <View style={s.aboutContent}>
         {/* Facility images */}
