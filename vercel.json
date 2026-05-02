@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm --filter @workspace/alphabond-website run build",
+  "outputDirectory": "artifacts/alphabond-website/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null
+}
