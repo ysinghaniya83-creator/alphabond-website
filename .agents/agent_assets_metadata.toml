@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "UQTOs16cpOylRBBHT8Ly3"
+uri = "file://artifacts/alphabond-website/public/images/hero-bg.png"
+type = "image"
+title = "Modern construction hero background"
+
+[[generated]]
+id = "BhXFCQRjgjt5Yt6nO3wi6"
+uri = "file://artifacts/alphabond-website/public/images/product-tilegrip.png"
+type = "image"
+title = "Professional tile adhesive application"
+
+[[generated]]
+id = "bDhkfBoCgEryWfS9SAn0J"
+uri = "file://artifacts/alphabond-website/public/images/product-alphagrout.png"
+type = "image"
+title = "Flawless grout lines"
+
+[[generated]]
+id = "DzgEyac9JceWbAp63xc5L"
+uri = "file://artifacts/alphabond-website/public/images/sector-residential.png"
+type = "image"
+title = "Luxury residential construction"
+
+[[generated]]
+id = "Bsmat-Lg8qBEDHJcq6wHO"
+uri = "file://artifacts/alphabond-website/public/images/sector-infrastructure.png"
+type = "image"
+title = "Massive concrete infrastructure"
