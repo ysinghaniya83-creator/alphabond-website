@@ -126,6 +126,12 @@ uri = "file://artifacts/alphabond-website/public/images/blog-tile-failure-summer
 type = "image"
 title = "tile adhesive failure summer"
 
+[[generated]]
+id = "Ded2xR2SA6eQNpizkpuy3"
+uri = "file://artifacts/alphabond-website/public/images/hero-bg-generated.png"
+type = "image"
+title = "alphabond hero dark background"
+
 [[outputs]]
 id = "3UIZVSe8DM0_aiES-EKzV"
 uri = "file://attached_assets/stock_images/aac-blocks.jpg"

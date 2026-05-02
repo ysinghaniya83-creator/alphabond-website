@@ -207,28 +207,55 @@ export function Home() {
 
         {/* ── Hero ───────────────────────────────────────────── */}
         <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-          {/* Full-bleed background photo */}
+          {/* Generated cinematic background */}
           <div className="absolute inset-0">
             <img
-              src="/images/sector-renovation.png"
-              alt="Construction chemicals application — tiling and renovation work"
-              className="w-full h-full object-cover"
-              style={{objectPosition:"center center"}}
+              src="/images/hero-bg-generated.png"
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover object-center"
             />
-            {/* Left overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 from-35% via-slate-950/82 via-58% to-slate-950/20" />
-            {/* Top & bottom vignette */}
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-transparent to-slate-950/60" />
+            {/* Dark overlay — heavier on left for text, lighter on right to show bag */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 from-30% via-slate-950/70 via-55% to-slate-950/30" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-transparent to-slate-950/70" />
           </div>
 
-          {/* Subtle dot grid on top */}
-          <div className="absolute inset-0 opacity-[0.025]" style={{backgroundImage:"radial-gradient(circle,#fff 1px,transparent 1px)",backgroundSize:"36px 36px"}} />
+          {/* Dot grid texture */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage:"radial-gradient(circle,#010ED0 1px,transparent 1px)",backgroundSize:"36px 36px"}} />
 
-          {/* Content */}
+          {/* Product showcase card — right side */}
+          <div className="absolute right-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center pointer-events-none select-none" style={{width:"280px"}}>
+            {/* Card */}
+            <div className="w-full bg-white/6 backdrop-blur-md border border-white/12 rounded-3xl p-6 shadow-2xl">
+              <div className="text-[9px] font-bold text-blue-400 uppercase tracking-[0.18em] mb-4">Featured Product</div>
+              <img
+                src="/images/real-tx4.png"
+                alt="Alphabond TileGrip X4 — C2TES1 Flexible Tile Adhesive"
+                className="w-full h-52 object-contain mx-auto mb-4"
+              />
+              <div className="text-white font-display font-bold text-base mb-0.5">TileGrip X4</div>
+              <div className="text-blue-300 text-xs font-medium mb-4">C2TES1 · Flexible Tile Adhesive</div>
+              <div className="space-y-2">
+                {["Water resistant formulation","Superior bonding strength","Indoor &amp; outdoor use"].map((f,i)=>(
+                  <div key={i} className="flex items-center gap-2 text-[11px] text-slate-300">
+                    <CheckCircle2 size={10} className="text-blue-400 shrink-0" />
+                    <span dangerouslySetInnerHTML={{__html:f}} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* ISO badge below card */}
+            <div className="mt-3 flex items-center gap-2 bg-white/6 border border-white/12 backdrop-blur-md rounded-xl px-4 py-2.5 w-full justify-center">
+              <ShieldCheck size={12} className="text-blue-400" />
+              <span className="text-white text-[11px] font-bold">ISO 9001:2015 Certified</span>
+            </div>
+          </div>
+
+          {/* Content — left column */}
           <div className="relative z-10 container mx-auto px-4 md:px-8 w-full pt-28 pb-36">
-            <div className="max-w-2xl">
+            <div className="max-w-xl lg:max-w-[52%]">
 
-              {/* Credential badges */}
+              {/* Badges */}
               <div className="flex flex-wrap gap-2 mb-8">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-300 text-[11px] font-bold tracking-wide">
                   <ShieldCheck size={11} /> ISO 9001:2015 Certified
@@ -245,7 +272,7 @@ export function Home() {
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed mb-3 max-w-lg">
-                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — manufactured at our ISO-certified Bharuch facility.
+                Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand — all manufactured at our ISO-certified Bharuch facility.
               </p>
               <p className="text-sm text-slate-500 mb-10 max-w-lg">
                 Kishan Enterprise — operating as <strong className="text-slate-300">Alphabond™</strong> — trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
@@ -270,13 +297,13 @@ export function Home() {
                 </Link>
               </div>
 
-              {/* Stats row */}
+              {/* Stats */}
               <div className="flex flex-wrap gap-8 pt-7 border-t border-white/10">
                 {[
-                  { value: "17+", label: "Years in Business" },
-                  { value: "8",   label: "Products in Range" },
-                  { value: "20+", label: "Major Clients" },
-                  { value: "1.5L", label: "Bags/Month" },
+                  { value: "17+",  label: "Years in Business" },
+                  { value: "8",    label: "Products in Range" },
+                  { value: "20+",  label: "Major Clients" },
+                  { value: "1.5L", label: "Bags / Month" },
                 ].map(s => (
                   <div key={s.label}>
                     <div className="text-3xl font-display font-bold text-white leading-none mb-0.5">{s.value}</div>
@@ -287,11 +314,11 @@ export function Home() {
             </div>
           </div>
 
-          {/* Bottom trusted-by bar */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/8 bg-slate-950/60 backdrop-blur-sm">
+          {/* Trusted-by bar */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/8 bg-slate-950/70 backdrop-blur-sm">
             <div className="container mx-auto px-4 md:px-8 h-14 flex items-center gap-8">
               <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest shrink-0">Trusted by</span>
-              <div className="flex items-center gap-6 text-sm text-slate-400 font-medium">
+              <div className="flex items-center gap-6 text-sm text-slate-400 font-medium flex-wrap">
                 {["Pidilite","UltraTech RMC","Asian Paints","Walplast","Magicrete","JK Lakshmi"].map((b, i, arr) => (
                   <React.Fragment key={b}>
                     <span>{b}</span>
@@ -302,7 +329,7 @@ export function Home() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
+          {/* Scroll cue */}
           <div className="absolute bottom-20 right-8 z-10 flex flex-col items-center text-white/20 animate-bounce">
             <ChevronDown size={20} />
           </div>
