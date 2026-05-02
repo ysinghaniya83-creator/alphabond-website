@@ -4,128 +4,110 @@ import { Button } from "@/components/ui/button";
 import {
   Menu, X, ArrowRight, ShieldCheck, MapPin, Phone, Mail,
   ChevronDown, Truck, CloudRain, FlaskConical,
-  Package, Wrench, Users, Clock, HeartHandshake, Award,
-  Factory, CheckCircle2, Layers, Download
+  Package, HeartHandshake, Users, Clock,
+  Factory, CheckCircle2, Download, Award
 } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion, AccordionContent, AccordionItem, AccordionTrigger
+} from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-const PRODUCTS = [
+/* ─── Real product data from alphabond.in ─────────────────────────── */
+const TILEGRIP_GRADES = [
   {
-    id: "tilegrip",
-    num: "01",
-    category: "Tile Adhesive",
-    name: "Tilegrip",
-    grades: "X1 · X2 · X3 · X4",
-    img: "/images/product-tilegrip.png",
-    tagline: "For every tile, on every surface.",
-    description: "Polymer-modified cementitious tile adhesives engineered for ceramic, vitrified, porcelain, natural stone and large-format tiles. Four grades cover every substrate, load condition, and application environment — from simple indoor ceramic work to heavy-duty external façade installations.",
-    gradeTable: [
-      { grade: "X1", type: "Standard", use: "Ceramic tiles, indoor walls & floors", size: "Up to 30×30 cm", environment: "Indoor only", substrate: "Cement plaster, concrete" },
-      { grade: "X2", type: "Improved", use: "Vitrified & glazed tiles, wet areas", size: "Up to 60×60 cm", environment: "Indoor & outdoor", substrate: "Cement, AAC block, RCC" },
-      { grade: "X3", type: "High-Strength", use: "Porcelain, large-format tiles, anti-slump", size: "Up to 120×60 cm", environment: "Indoor & outdoor", substrate: "All substrates incl. existing tiles" },
-      { grade: "X4", type: "Heavy Duty", use: "Natural stone, façade, anti-slip", size: "Unrestricted", environment: "Outdoor, façade, submerged", substrate: "All substrates, pool areas" },
-    ],
+    grade: "X1",
+    subtitle: "Standard Adhesive",
+    img: "/images/real-tx1.png",
+    desc: "Standard polymer-modified tile adhesive for everyday applications. Ideal for ceramic, vitrified, and highly porous tiles on indoor walls and floors.",
+    applications: ["Ceramic tiles – internal/external floors", "Vitrified tiles – internal floors", "Highly porous tiles – prevents debonding"],
     specs: [
-      { label: "Coverage", value: "4–6 kg/m² (bed 4–6 mm)" },
-      { label: "Open Time", value: "20–30 min (X1/X2) · 30–40 min (X3/X4)" },
-      { label: "Pot Life", value: "3–4 hours after mixing" },
-      { label: "Initial Set", value: "4–6 hours" },
-      { label: "Full Cure", value: "28 days" },
-      { label: "Mix Ratio", value: "Water 24–26% by weight" },
-    ],
-    features: [
-      "Zero vertical slippage — anti-slump grades available",
-      "Extended open time for precision alignment",
-      "Excellent water and heat resistance",
-      "Low VOC, eco-friendly formulation",
-      "BIS compliant — meets IS 15477 standards",
+      { label: "Open Time", value: "~20 min @ 20°C" },
+      { label: "Pot Life", value: "~120 min" },
+      { label: "Shear Strength", value: "> 1.0 N/mm²" },
+      { label: "Tensile Strength", value: "> 0.5 N/mm²" },
+      { label: "Coverage", value: "4–5 m² per 20 kg @ 3 mm" },
+      { label: "Packaging", value: "20 kg Bag" },
     ],
   },
   {
-    id: "alphagrout",
-    num: "02",
-    category: "Non-Shrink Grout",
-    name: "Alphagrout",
-    grades: "X1 · X2",
-    img: "/images/product-alphagrout.png",
-    tagline: "When structural integrity is non-negotiable.",
-    description: "High-strength, non-shrink cementitious grouts engineered for precision bedding, anchor bolts, machine foundations, and structural gap filling. Zero shrinkage ensures permanent load transfer with no voids. Two grades serve different flowability and strength requirements.",
-    gradeTable: [
-      { grade: "X1", type: "Standard Flow", use: "Anchor bolts, base plates, precision bedding", size: "Gap 10–100 mm", environment: "Indoor & outdoor", substrate: "Concrete, masonry, steel" },
-      { grade: "X2", type: "High Flow", use: "Equipment foundations, deep pours, complex geometry", size: "Gap 20–200 mm", environment: "Indoor & outdoor, vibration zones", substrate: "Concrete, steel baseplates" },
-    ],
+    grade: "X2",
+    subtitle: "Heavy-Duty Adhesive",
+    img: "/images/real-tx2.png",
+    appImg: "/images/real-tx2-app.jpg",
+    desc: "Polymer-enhanced adhesive for large-format and heavy tiles. Superior flexibility and bond for indoor/outdoor spaces and high-traffic installations.",
+    applications: ["Large-format vitrified tiles – floors", "Porcelain & ceramic – high-traffic areas", "Natural stone – medium-weight", "Indoor & outdoor floor installations"],
     specs: [
-      { label: "Compressive Strength", value: "≥ 45 N/mm² at 28 days" },
-      { label: "Flow (X2)", value: "Self-levelling, 230+ mm flow" },
-      { label: "Initial Set", value: "4–6 hours" },
-      { label: "Full Cure", value: "28 days" },
-      { label: "Expansion", value: "0.05–0.15% (non-shrink)" },
-      { label: "Coverage", value: "1.9–2.1 kg per litre of void" },
-    ],
-    features: [
-      "Zero shrinkage — no voids, no settlement",
-      "High early strength for fast equipment commissioning",
-      "Resistant to vibration, impact, and dynamic loads",
-      "Excellent flowability — fills complex forms without segregation",
-      "Suitable for pre-stressed concrete structures",
+      { label: "Open Time", value: "~20 min @ 20°C" },
+      { label: "Pot Life", value: "~120 min" },
+      { label: "Shear Strength", value: "> 1.25 N/mm²" },
+      { label: "Tensile Strength", value: "> 1.0 N/mm²" },
+      { label: "Coverage", value: "Per 20 kg bag" },
+      { label: "Packaging", value: "20 kg Bag" },
     ],
   },
   {
-    id: "blockgrip",
-    num: "03",
-    category: "AAC Block Adhesive",
-    name: "Blockgrip X",
-    grades: "Thin-bed Mortar",
-    img: "/images/product-blockgrip.png",
-    tagline: "Cleaner walls. Faster builds. Stronger joints.",
-    description: "Thin-bed AAC block adhesive that replaces conventional cement-sand mortar for autoclaved aerated concrete block laying. Applied at just 2–3 mm joint thickness versus 10–12 mm for conventional mortar, it reduces material consumption by up to 80%, eliminates thermal bridging, and delivers stronger, more precise joints.",
-    gradeTable: [
-      { grade: "Blockgrip X", type: "Thin-bed Mortar", use: "AAC / Autoclaved Aerated Concrete block laying", size: "Joint 1–3 mm", environment: "Interior & exterior walls", substrate: "AAC blocks (all grades)" },
-    ],
+    grade: "X3",
+    subtitle: "Premium – Natural Stone & Large Format",
+    img: "/images/real-tx3.png",
+    desc: "Premium-grade for natural stone, marble, granite, and large-format tiles. Enhanced bonding, flexibility, and extended open time for demanding applications.",
+    applications: ["Maximum adhesion for oversized tiles", "Granite, marble & natural stone walls", "High-traffic malls, lobbies, corridors", "Demanding exterior installations"],
     specs: [
-      { label: "Joint Thickness", value: "1–3 mm (vs 10–12 mm conventional)" },
-      { label: "Coverage", value: "3.5–4.5 kg/m² of wall area" },
-      { label: "Open Time", value: "15 minutes" },
-      { label: "Setting Time", value: "2–3 hours" },
-      { label: "Compressive Strength", value: "≥ 10 N/mm² at 28 days" },
-      { label: "Material Saving", value: "Up to 80% vs conventional mortar" },
-    ],
-    features: [
-      "80% less material waste vs conventional mortar",
-      "Eliminates thermal bridging at joints",
-      "Improved block alignment and wall plumb accuracy",
-      "Faster floor-to-floor cycle times",
-      "Reduces dead load on structural frame",
+      { label: "Open Time", value: "~20–25 min @ 20°C" },
+      { label: "Pot Life", value: "~120 min" },
+      { label: "Shear Strength", value: "> 1.5 N/mm²" },
+      { label: "Tensile Strength", value: "> 1.0 N/mm²" },
+      { label: "Coverage", value: "Per 20 kg bag" },
+      { label: "Packaging", value: "20 kg Bag" },
     ],
   },
   {
-    id: "plastogrip",
-    num: "04",
-    category: "Plaster Bonding Agent",
-    name: "Plastogrip X",
-    grades: "Plaster Primer",
-    img: "/images/product-plastogrip.png",
-    tagline: "No hacking. No delamination. No callbacks.",
-    description: "Acrylic-polymer plaster bonding primer that creates a mechanical key on smooth concrete, RCC columns, beams, and AAC block surfaces — eliminating the need for surface hacking (chipping). Applied before plaster, it prevents delamination, improves adhesion, and ensures smooth, crack-free finish on internal and external walls.",
-    gradeTable: [
-      { grade: "Plastogrip X", type: "Bonding Primer", use: "Pre-plaster application on smooth concrete, RCC, AAC blocks", size: "Single coat — 0.15–0.20 mm", environment: "Internal & external walls", substrate: "Concrete, RCC, AAC blocks, brick" },
-    ],
+    grade: "X4",
+    subtitle: "Extra-Strength – Cladding & Façades",
+    img: "/images/real-tx4.png",
+    desc: "Ultimate performance adhesive for heavy stone, cladding, and demanding exterior or interior applications. Maximum bond strength, weather resistance, unmatched reliability.",
+    applications: ["Dense stones – granite/marble wall cladding", "Heavy-load industrial & commercial floors", "Oversized and thick tile installation", "Outdoor façades with extreme weather exposure"],
     specs: [
-      { label: "Coverage", value: "6–8 m²/litre per coat" },
-      { label: "Recoat Time", value: "45–60 minutes" },
-      { label: "Plaster Application", value: "After surface tackifies (~1 hour)" },
-      { label: "Bond Strength", value: "≥ 0.8 N/mm²" },
-      { label: "Form", value: "Ready-to-use liquid (dilute 1:1 with water)" },
-      { label: "Shelf Life", value: "12 months in original sealed container" },
+      { label: "Open Time", value: "~20–25 min @ 20°C" },
+      { label: "Pot Life", value: "~120 min" },
+      { label: "Shear Strength", value: "> 1.5 N/mm²" },
+      { label: "Tensile Strength", value: "> 1.0 N/mm²" },
+      { label: "Coverage", value: "Per 20 kg bag" },
+      { label: "Packaging", value: "20 kg Bag" },
     ],
-    features: [
-      "Eliminates surface hacking — saves labour, time, dust",
-      "Prevents plaster delamination and cracking",
-      "Suitable for internal and external walls",
-      "Excellent adhesion on smooth RCC and columns",
-      "Easy roller or brush application",
+  },
+];
+
+const ALPHAGROUT_GRADES = [
+  {
+    grade: "X1",
+    subtitle: "Cement-Based Joint Grout",
+    img: "/images/real-ag1.png",
+    appImg: "/images/real-ag1-app.jpg",
+    desc: "High-performance, cement-based, polymer-modified grout for filling tile joints with exceptional strength, smooth finish, and lasting durability.",
+    applications: ["Tile joints 1–6 mm width", "Wet areas – bathrooms, kitchens", "Outdoor terraces, façades, balconies", "Residential & commercial flooring"],
+    specs: [
+      { label: "Joint Width", value: "1–6 mm" },
+      { label: "Pot Life", value: "~90 min @ 20°C" },
+      { label: "Compressive Strength", value: "> 20 N/mm²" },
+      { label: "Flexural Strength", value: "> 5 N/mm²" },
+      { label: "Water Absorption", value: "< 5%" },
+      { label: "Packaging", value: "1 kg & 20 kg Bags" },
+    ],
+  },
+  {
+    grade: "X2",
+    subtitle: "Flexible Polymer-Modified Grout",
+    img: "/images/real-ag2.png",
+    desc: "Flexible, polymer-modified grout offering superior stain resistance and durability. Ideal for wider joints and high-moisture areas.",
+    applications: ["Wider joint widths", "High-moisture and wet areas", "Stain-resistant applications", "Commercial high-traffic installations"],
+    specs: [
+      { label: "Type", value: "Polymer-modified, flexible" },
+      { label: "Stain Resistance", value: "Superior" },
+      { label: "Flexibility", value: "Enhanced" },
+      { label: "Application", value: "Wide joints, wet areas" },
+      { label: "Durability", value: "High-moisture zones" },
+      { label: "Packaging", value: "Available in multiple sizes" },
     ],
   },
 ];
@@ -135,36 +117,38 @@ const SECTORS = [
     title: "Residential & Commercial",
     img: "/images/sector-residential.png",
     badge: "01",
-    desc: "Homes, luxury apartments, office towers, and malls. Tilegrip X2/X3 for premium large-format tiles. Alphagrout X1 for anchor fixings. Blockgrip X for AAC block walls. Plastogrip X for column and beam plastering.",
-    products: ["Tilegrip X2 / X3", "Blockgrip X", "Plastogrip X"],
+    desc: "Homes, luxury apartments, office towers, and malls. Tilegrip X2/X3 for premium large-format tiles. Blockgrip X for AAC block walls. Plastogrip X for column and beam plastering.",
+    products: ["Tilegrip X2 / X3", "Blockgrip X", "Plastogrip X", "Alphagrout X1"],
   },
   {
     title: "Infrastructure Projects",
     img: "/images/sector-infrastructure.png",
     badge: "02",
-    desc: "Bridges, highways, metros, and public works. Alphagrout X2 for bridge bearing pads, expansion joint grouting, anchor bolt setting under dynamic load. Proven in projects across Gujarat and Maharashtra.",
-    products: ["Alphagrout X1 / X2", "Tilegrip X4"],
+    desc: "Bridges, highways, metros, and public works. Tilegrip X4 for structural tile cladding. Proven in projects across Gujarat and Maharashtra.",
+    products: ["Tilegrip X4", "Blockgrip X"],
   },
   {
     title: "Industrial & Institutional",
     img: "/images/sector-industrial.png",
     badge: "03",
-    desc: "Factories, warehouses, hospitals, and schools where chemical resistance, heavy-duty bonding, and long service life are critical. Tilegrip X4 for chemical-resistant floor tiles. Alphagrout X2 for machine foundation grouting.",
-    products: ["Tilegrip X3 / X4", "Alphagrout X2"],
+    desc: "Factories, warehouses, hospitals, and schools where chemical resistance, heavy-duty bonding, and long service life are critical. Tilegrip X4 for heavy-load floors.",
+    products: ["Tilegrip X3 / X4", "Alphagrout X1 / X2"],
   },
   {
     title: "Renovation & Remodeling",
     img: "/images/sector-renovation.png",
     badge: "04",
-    desc: "Tile replacement, heritage building restoration, and wall finishing upgrades. Tilegrip X3 for tile-on-tile application. Plastogrip X for delamination repair without hacking. Fast return-to-service formulations.",
+    desc: "Tile replacement, heritage restoration, and wall finishing upgrades. Tilegrip X3 for tile-on-tile application. Plastogrip X for delamination repair without hacking.",
     products: ["Tilegrip X3", "Plastogrip X"],
   },
 ];
 
+/* ─── Component ───────────────────────────────────────────────────── */
 export function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const [activeTilegrip, setActiveTilegrip] = useState(0);
+  const [activeAlphagrout, setActiveAlphagrout] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -172,18 +156,24 @@ export function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks: [string, string][] = [
+    ["Products", "#products"], ["Solutions", "#solutions"],
+    ["Clients", "#clients"], ["Job Work", "#job-work"],
+    ["About", "#about"], ["Contact", "#contact"],
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
 
       {/* ── Navbar ─────────────────────────────────────────── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/96 backdrop-blur-md shadow-sm border-b border-slate-200" : "bg-transparent"}`}>
         <div className="container mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <img src="/logo.png" alt="Alphabond" className="h-10 w-auto object-contain" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-7">
-            {[["Products", "#products"], ["Solutions", "#solutions"], ["Clients", "#clients"], ["Job Work", "#job-work"], ["About", "#about"], ["Contact", "#contact"]].map(([label, href]) => (
+            {navLinks.map(([label, href]) => (
               <a key={label} href={href} className={`text-sm font-medium transition-colors ${isScrolled ? "text-slate-600 hover:text-primary" : "text-white/80 hover:text-white"}`}>{label}</a>
             ))}
           </nav>
@@ -202,12 +192,10 @@ export function Home() {
 
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b shadow-lg p-4 flex flex-col gap-3 z-50">
-            {[["Products", "#products"], ["Solutions", "#solutions"], ["Clients", "#clients"], ["Job Work", "#job-work"], ["About", "#about"], ["Contact", "#contact"]].map(([label, href]) => (
+            {navLinks.map(([label, href]) => (
               <a key={label} href={href} className="p-2 font-medium text-slate-700" onClick={() => setMobileMenuOpen(false)}>{label}</a>
             ))}
-            <a href="#contact" className="mt-2">
-              <Button className="w-full">Get a Quote</Button>
-            </a>
+            <a href="#contact" className="mt-2"><Button className="w-full">Get a Quote</Button></a>
           </div>
         )}
       </header>
@@ -218,7 +206,7 @@ export function Home() {
         <section className="relative min-h-screen flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src="/images/hero-bg.png" alt="Construction Site" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/75 to-slate-900/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-900/75 to-slate-900/30" />
           </div>
 
           <div className="container relative z-10 mx-auto px-4 md:px-8 pt-20">
@@ -227,26 +215,16 @@ export function Home() {
                 <ShieldCheck size={13} className="text-blue-300" />
                 ISO-Certified Manufacturer · Bharuch, Gujarat · Since 2008
               </div>
-
               <h1 className="text-5xl md:text-7xl font-bold font-display text-white leading-[1.03] mb-6">
-                Building the<br />
-                <span className="text-blue-400">foundation,</span><br />
-                literally.
+                Building the<br /><span className="text-blue-400">foundation,</span><br />literally.
               </h1>
-
               <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl leading-relaxed">
                 From wet sand for India's largest cement majors to a full range of construction chemicals. Kishan Enterprise — operating as <strong className="text-white font-semibold">Alphabond</strong> — manufactures the materials that make modern infrastructure possible.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4 mb-16">
-                <a href="#products">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base h-13">Explore Products</Button>
-                </a>
-                <a href="#contact">
-                  <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-base h-13 bg-transparent">Request a Sample</Button>
-                </a>
+                <a href="#products"><Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base h-13">Explore Products</Button></a>
+                <a href="#contact"><Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 text-base h-13 bg-transparent">Request a Sample</Button></a>
               </div>
-
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/15">
                 {[
                   { value: "17+", label: "Years in Industry" },
@@ -261,8 +239,7 @@ export function Home() {
               </div>
             </div>
           </div>
-
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/40 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-white/40 animate-bounce">
             <ChevronDown size={20} />
           </div>
         </section>
@@ -273,15 +250,9 @@ export function Home() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">About the Company</p>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">
-                  Two decades of materials, manufactured in Gujarat.
-                </h2>
-                <p className="text-slate-600 leading-relaxed mb-5">
-                  Kishan Enterprise, operating under the brand name <strong>Alphabond™</strong>, is a leading manufacturer and supplier of high-quality building materials and industrial sand solutions based in Bharuch and Surat, Gujarat.
-                </p>
-                <p className="text-slate-600 leading-relaxed mb-8">
-                  Since 2008 we have supplied wet sand to India's top cement and RMC companies. We entered dry sand manufacturing in 2021, and launched the Alphabond construction chemicals range in 2022 — all from our ISO-certified facility in Bharuch with a dedicated in-house QC lab and our own logistics fleet.
-                </p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">Two decades of materials, manufactured in Gujarat.</h2>
+                <p className="text-slate-600 leading-relaxed mb-5">Kishan Enterprise, operating under the brand name <strong>Alphabond™</strong>, is a leading manufacturer and supplier of high-quality building materials and industrial sand solutions based in Bharuch and Surat, Gujarat.</p>
+                <p className="text-slate-600 leading-relaxed mb-8">Since 2008 we've supplied wet sand to India's top cement and RMC companies. We entered dry sand manufacturing in 2021, and launched the Alphabond construction chemicals range in 2022 — all from our ISO-certified facility in Bharuch with a dedicated in-house QC lab and our own logistics fleet.</p>
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { label: "Established", value: "2008" },
@@ -296,56 +267,35 @@ export function Home() {
                   ))}
                 </div>
               </div>
-
               <div className="space-y-4">
                 <div className="aspect-video rounded-2xl overflow-hidden bg-slate-100">
-                  <img src="/images/facility-plant.png" alt="Alphabond Bharuch Manufacturing Facility" className="w-full h-full object-cover" />
+                  <img src="/images/facility-plant.png" alt="Alphabond Bharuch Facility" className="w-full h-full object-cover" />
                 </div>
-                <div className="rounded-xl overflow-hidden bg-slate-100 aspect-video">
-                  <img src="/images/facility-lab.png" alt="In-house Quality Control Laboratory" className="w-full h-full object-cover" />
+                <div className="aspect-video rounded-2xl overflow-hidden bg-slate-100">
+                  <img src="/images/facility-lab.png" alt="In-house QC Lab" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-slate-400 text-center">Bharuch manufacturing facility & in-house QC laboratory</p>
+                <p className="text-xs text-slate-400 text-center">Bharuch manufacturing facility & in-house quality control laboratory</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── Three Differentiators ──────────────────────────── */}
+        {/* ── Differentiators ────────────────────────────────── */}
         <section className="py-20 bg-slate-950 text-white">
           <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-2xl mb-14">
               <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">What Sets Us Apart</p>
-              <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-4">
-                Three things our competitors can't match.
-              </h2>
+              <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-4">Three things our competitors can't match.</h2>
               <p className="text-slate-400 text-lg">Owning our logistics, mastering monsoon production, and testing every batch in our own lab. These aren't extras — they're how we keep India's biggest construction companies running on schedule, year-round.</p>
             </div>
-
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                {
-                  icon: <Truck size={26} />,
-                  title: "Our own fleet.",
-                  tag: "Reliable · On-time · Direct",
-                  desc: "We don't outsource transport, so we don't apologize for it either. With a dedicated fleet of trucks under our direct control, we deliver on our schedule — straight from plant to your project site. No broker. No delay.",
-                },
-                {
-                  icon: <CloudRain size={26} />,
-                  title: "Monsoon doesn't stop us.",
-                  tag: "Year-round supply · No off-season",
-                  desc: "When the rains hit, most regional suppliers shut down for months. Our equipment and process technology are engineered to keep producing even during peak monsoon. Your projects don't have to pause when ours don't.",
-                },
-                {
-                  icon: <FlaskConical size={26} />,
-                  title: "In-house QC lab.",
-                  tag: "Tested in · Tested out · Documented",
-                  desc: "Every raw material is tested before it enters the plant. Every finished product is tested before it leaves. Fully equipped quality control lab ensures every bag, every batch, every shipment meets specification.",
-                },
+                { icon: <Truck size={26} />, title: "Our own fleet.", tag: "Reliable · On-time · Direct", desc: "We don't outsource transport, so we don't apologize for it either. With a dedicated fleet of trucks under our direct control, we deliver on our schedule — straight from plant to your project site." },
+                { icon: <CloudRain size={26} />, title: "Monsoon doesn't stop us.", tag: "Year-round supply · No off-season", desc: "When the rains hit, most regional suppliers shut down for months. Our equipment and process technology are engineered to keep producing through peak monsoon." },
+                { icon: <FlaskConical size={26} />, title: "In-house QC lab.", tag: "Tested in · Tested out · Documented", desc: "Every raw material is tested before it enters the plant. Every finished product is tested before it leaves. Every bag, every batch, every shipment meets specification." },
               ].map((item, i) => (
                 <div key={i} className="group border border-white/10 rounded-2xl p-8 hover:border-primary/50 hover:bg-white/5 transition-all">
-                  <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-blue-400 mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                    {item.icon}
-                  </div>
+                  <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-blue-400 mb-6 group-hover:bg-primary group-hover:text-white transition-colors">{item.icon}</div>
                   <h3 className="text-xl font-display font-bold mb-3">{item.title}</h3>
                   <p className="text-slate-400 text-sm mb-5 leading-relaxed">{item.desc}</p>
                   <div className="text-xs font-bold text-blue-400 tracking-widest uppercase">{item.tag}</div>
@@ -361,156 +311,344 @@ export function Home() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
               <div>
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">The Alphabond Line</p>
-                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900">
-                  Four products.<br />Every project covered.
-                </h2>
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900">Four products.<br />Every project covered.</h2>
               </div>
-              <p className="text-slate-600 max-w-sm text-base leading-relaxed">
-                Manufactured in our ISO-certified Bharuch facility. Tested in our own lab. Used by India's leading construction brands.
-              </p>
+              <p className="text-slate-600 max-w-sm text-base leading-relaxed">Manufactured in our ISO-certified Bharuch facility. Tested in our in-house lab. Trusted by India's leading construction brands.</p>
             </div>
 
-            <div className="space-y-6">
-              {PRODUCTS.map((product) => (
-                <div key={product.id} className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="grid md:grid-cols-5 gap-0">
-                    {/* Image */}
-                    <div className="md:col-span-2 aspect-[4/3] md:aspect-auto overflow-hidden">
-                      <img
-                        src={product.img}
-                        alt={product.name}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
+            {/* ─ TILEGRIP SERIES ─────────────────────────────── */}
+            <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden mb-6">
+              <div className="grid md:grid-cols-5">
+                {/* Left: series overview */}
+                <div className="md:col-span-2 bg-slate-900 text-white p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
+                  <div className="relative z-10">
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">01 · Tile Adhesive</span>
+                    <h3 className="text-3xl font-display font-bold mb-2">TileGrip Series</h3>
+                    <p className="text-blue-300 font-medium mb-5">X1 · X2 · X3 · X4</p>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                      Alphabond's premium range of high-performance, polymer-modified tile adhesives designed for superior bonding strength, durability, and ease of application. Specialized solutions for ceramic, vitrified, porcelain, natural stone, and large-format tiles — for both interior and exterior use.
+                    </p>
+                    <ul className="space-y-2">
+                      {["Water-resistant formulation", "Superior bonding strength", "Saves time & labour", "Indoor & outdoor use", "Packaging: 20 kg Bags"].map(f => (
+                        <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Application photo */}
+                  <div className="relative z-10 mt-8 rounded-xl overflow-hidden aspect-video">
+                    <img src="/images/real-tx2-app.jpg" alt="TileGrip application" className="w-full h-full object-cover opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                    <p className="absolute bottom-2 left-3 text-xs text-slate-300">TileGrip X2 — large-format floor installation</p>
+                  </div>
+                </div>
 
-                    {/* Content */}
-                    <div className="md:col-span-3 p-8 md:p-10 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-2.5 py-1 rounded-full">{product.num} · {product.category}</span>
-                        </div>
-                        <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-1">
-                          {product.name} <span className="text-primary font-normal text-xl">{product.grades}</span>
-                        </h3>
-                        <p className="text-sm font-medium text-slate-500 italic mb-4">{product.tagline}</p>
-                        <p className="text-slate-600 leading-relaxed mb-6">{product.description}</p>
-
-                        {/* Features */}
-                        <ul className="space-y-1.5 mb-6">
-                          {product.features.map(f => (
-                            <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
-                              <CheckCircle2 size={15} className="text-primary mt-0.5 shrink-0" />{f}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Specs strip */}
-                      <div className="grid grid-cols-3 gap-2 mb-5">
-                        {product.specs.slice(0, 3).map(s => (
-                          <div key={s.label} className="bg-slate-50 rounded-lg px-3 py-2 border border-slate-100">
-                            <div className="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">{s.label}</div>
-                            <div className="text-xs font-semibold text-slate-900">{s.value}</div>
-                          </div>
-                        ))}
-                      </div>
-
+                {/* Right: 4 grade cards */}
+                <div className="md:col-span-3 p-6">
+                  {/* Grade tabs */}
+                  <div className="flex gap-2 mb-5 flex-wrap">
+                    {TILEGRIP_GRADES.map((g, i) => (
                       <button
-                        onClick={() => setActiveProduct(activeProduct === product.id ? null : product.id)}
-                        className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors"
+                        key={g.grade}
+                        onClick={() => setActiveTilegrip(i)}
+                        className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${activeTilegrip === i ? "bg-primary text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}
                       >
-                        {activeProduct === product.id ? "Hide grade details" : "View grade breakdown & full specs"}
-                        <ChevronDown size={16} className={`transition-transform ${activeProduct === product.id ? "rotate-180" : ""}`} />
+                        {g.grade}
                       </button>
-                    </div>
+                    ))}
                   </div>
 
-                  {/* Expanded grade table */}
-                  {activeProduct === product.id && (
-                    <div className="border-t border-slate-100 p-8 md:p-10 bg-slate-50">
-                      <div className="grid lg:grid-cols-2 gap-8">
-                        {/* Grade Table */}
-                        <div>
-                          <h4 className="font-display font-bold text-slate-900 mb-4">Grade Comparison</h4>
-                          <div className="overflow-x-auto">
-                            <table className="w-full text-sm">
-                              <thead>
-                                <tr className="border-b border-slate-200">
-                                  <th className="text-left py-2 pr-3 text-xs font-bold uppercase tracking-wide text-slate-500">Grade</th>
-                                  <th className="text-left py-2 pr-3 text-xs font-bold uppercase tracking-wide text-slate-500">Type</th>
-                                  <th className="text-left py-2 pr-3 text-xs font-bold uppercase tracking-wide text-slate-500">Recommended Use</th>
-                                  <th className="text-left py-2 text-xs font-bold uppercase tracking-wide text-slate-500">Environment</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {product.gradeTable.map((row) => (
-                                  <tr key={row.grade} className="border-b border-slate-100 hover:bg-white transition-colors">
-                                    <td className="py-3 pr-3 font-bold text-primary">{row.grade}</td>
-                                    <td className="py-3 pr-3 font-medium text-slate-800">{row.type}</td>
-                                    <td className="py-3 pr-3 text-slate-600 text-xs leading-relaxed">{row.use}</td>
-                                    <td className="py-3 text-slate-600 text-xs">{row.environment}</td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                  {/* Active grade detail */}
+                  {(() => {
+                    const g = TILEGRIP_GRADES[activeTilegrip];
+                    return (
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        {/* Bag image */}
+                        <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                          <img src={g.img} alt={`TileGrip ${g.grade}`} className="h-56 w-auto object-contain" />
+                          <div className="mt-3 text-center">
+                            <div className="font-display font-bold text-slate-900">TileGrip {g.grade}</div>
+                            <div className="text-xs text-slate-500">{g.subtitle}</div>
                           </div>
                         </div>
 
-                        {/* Full Specs */}
+                        {/* Info */}
                         <div>
-                          <h4 className="font-display font-bold text-slate-900 mb-4">Technical Specifications</h4>
-                          <div className="grid grid-cols-2 gap-2">
-                            {product.specs.map(s => (
-                              <div key={s.label} className="bg-white rounded-lg px-3 py-2.5 border border-slate-200">
-                                <div className="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">{s.label}</div>
-                                <div className="text-sm font-semibold text-slate-900">{s.value}</div>
+                          <h4 className="font-display font-bold text-slate-900 text-lg mb-2">TileGrip {g.grade}</h4>
+                          <p className="text-slate-500 text-xs italic mb-3">{g.subtitle}</p>
+                          <p className="text-sm text-slate-600 leading-relaxed mb-4">{g.desc}</p>
+                          <div className="space-y-1.5 mb-4">
+                            {g.applications.map(a => (
+                              <div key={a} className="flex items-start gap-2 text-xs text-slate-700">
+                                <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />{a}
                               </div>
                             ))}
                           </div>
-                          <div className="mt-5 flex gap-3">
-                            <a href="#contact">
-                              <Button size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full gap-2 text-xs">
-                                Request TDS <Download size={13} />
-                              </Button>
-                            </a>
-                            <a href="#contact">
-                              <Button size="sm" variant="outline" className="rounded-full gap-2 text-xs">
-                                Get a Sample <ArrowRight size={13} />
-                              </Button>
-                            </a>
+                          <div className="grid grid-cols-2 gap-2">
+                            {g.specs.map(s => (
+                              <div key={s.label} className="bg-slate-50 rounded-lg px-3 py-2 border border-slate-100">
+                                <div className="text-[9px] text-slate-400 uppercase tracking-wide">{s.label}</div>
+                                <div className="text-xs font-semibold text-slate-900">{s.value}</div>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    );
+                  })()}
+
+                  {/* Grade overview strip */}
+                  <div className="mt-5 grid grid-cols-4 gap-2 pt-5 border-t border-slate-100">
+                    {TILEGRIP_GRADES.map((g, i) => (
+                      <button
+                        key={g.grade}
+                        onClick={() => setActiveTilegrip(i)}
+                        className={`rounded-xl p-3 border text-center transition-all ${activeTilegrip === i ? "border-primary bg-primary/5" : "border-slate-100 hover:border-primary/30"}`}
+                      >
+                        <img src={g.img} alt={g.grade} className="h-12 w-auto object-contain mx-auto mb-1" />
+                        <div className="text-xs font-bold text-primary">{g.grade}</div>
+                        <div className="text-[9px] text-slate-400 leading-tight">{g.subtitle.split(" – ")[0]}</div>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 flex gap-3">
+                    <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> Request TDS</Button></a>
+                    <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Get a Sample <ArrowRight size={12} /></Button></a>
+                  </div>
                 </div>
-              ))}
+              </div>
+            </div>
+
+            {/* ─ ALPHAGROUT SERIES ───────────────────────────── */}
+            <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden mb-6">
+              <div className="grid md:grid-cols-5">
+                <div className="md:col-span-2 bg-slate-900 text-white p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
+                  <div className="relative z-10">
+                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 block">02 · Tile Grout</span>
+                    <h3 className="text-3xl font-display font-bold mb-2">AlphaGrout Series</h3>
+                    <p className="text-blue-300 font-medium mb-5">X1 · X2</p>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                      High-performance, cement-based and polymer-modified tile joint grouts designed for smooth, durable tile joints with excellent water, stain, and crack resistance. Available in multiple colours for both residential and commercial applications.
+                    </p>
+                    <ul className="space-y-2">
+                      {["Neat, uniform finish between tiles", "Water-resistant — ideal for wet areas", "Durable in heavy foot-traffic", "Weather-resistant for external use", "Packaging: 1 kg & 20 kg Bags"].map(f => (
+                        <li key={f} className="flex items-center gap-2 text-sm text-slate-300"><CheckCircle2 size={13} className="text-blue-400 shrink-0" />{f}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="relative z-10 mt-8 rounded-xl overflow-hidden aspect-video">
+                    <img src="/images/real-ag1-app.jpg" alt="AlphaGrout application" className="w-full h-full object-cover opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                    <p className="absolute bottom-2 left-3 text-xs text-slate-300">AlphaGrout — tile joint finishing</p>
+                  </div>
+                </div>
+
+                <div className="md:col-span-3 p-6">
+                  <div className="flex gap-2 mb-5">
+                    {ALPHAGROUT_GRADES.map((g, i) => (
+                      <button
+                        key={g.grade}
+                        onClick={() => setActiveAlphagrout(i)}
+                        className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${activeAlphagrout === i ? "bg-primary text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}
+                      >
+                        {g.grade}
+                      </button>
+                    ))}
+                  </div>
+
+                  {(() => {
+                    const g = ALPHAGROUT_GRADES[activeAlphagrout];
+                    return (
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="flex flex-col items-center justify-center bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                          <img src={g.img} alt={`AlphaGrout ${g.grade}`} className="h-56 w-auto object-contain" />
+                          <div className="mt-3 text-center">
+                            <div className="font-display font-bold text-slate-900">AlphaGrout {g.grade}</div>
+                            <div className="text-xs text-slate-500">{g.subtitle}</div>
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="font-display font-bold text-slate-900 text-lg mb-2">AlphaGrout {g.grade}</h4>
+                          <p className="text-slate-500 text-xs italic mb-3">{g.subtitle}</p>
+                          <p className="text-sm text-slate-600 leading-relaxed mb-4">{g.desc}</p>
+                          <div className="space-y-1.5 mb-4">
+                            {g.applications.map(a => (
+                              <div key={a} className="flex items-start gap-2 text-xs text-slate-700">
+                                <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />{a}
+                              </div>
+                            ))}
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            {g.specs.map(s => (
+                              <div key={s.label} className="bg-slate-50 rounded-lg px-3 py-2 border border-slate-100">
+                                <div className="text-[9px] text-slate-400 uppercase tracking-wide">{s.label}</div>
+                                <div className="text-xs font-semibold text-slate-900">{s.value}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
+                  <div className="mt-5 grid grid-cols-2 gap-2 pt-5 border-t border-slate-100">
+                    {ALPHAGROUT_GRADES.map((g, i) => (
+                      <button
+                        key={g.grade}
+                        onClick={() => setActiveAlphagrout(i)}
+                        className={`rounded-xl p-3 border flex items-center gap-3 transition-all ${activeAlphagrout === i ? "border-primary bg-primary/5" : "border-slate-100 hover:border-primary/30"}`}
+                      >
+                        <img src={g.img} alt={g.grade} className="h-10 w-auto object-contain" />
+                        <div className="text-left">
+                          <div className="text-xs font-bold text-primary">AlphaGrout {g.grade}</div>
+                          <div className="text-[9px] text-slate-400 leading-tight">{g.subtitle}</div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 flex gap-3">
+                    <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> Request TDS</Button></a>
+                    <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Get a Sample <ArrowRight size={12} /></Button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ─ BLOCKGRIP X + PLASTOGRIP X ──────────────────── */}
+            <div className="grid md:grid-cols-2 gap-6">
+
+              {/* BlockGrip X */}
+              <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
+                <div className="grid grid-cols-2 gap-0 flex-1">
+                  <div className="bg-slate-50 border-r border-slate-100 flex items-center justify-center p-8">
+                    <div className="text-center">
+                      <img src="/images/real-blockgrip.png" alt="BlockGrip X" className="h-52 w-auto object-contain mx-auto" />
+                    </div>
+                  </div>
+                  <div className="p-7 flex flex-col">
+                    <span className="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">03 · AAC Block Adhesive</span>
+                    <h3 className="text-2xl font-display font-bold text-slate-900 mb-1">BlockGrip X</h3>
+                    <p className="text-slate-500 text-xs italic mb-4">Thin-bed Mortar</p>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-5">
+                      Premium, cement-based, polymer-modified adhesive for AAC blocks, hollow blocks, concrete blocks, and bricks. Superior bond strength, thin joint application (3–5 mm), and faster construction — replacing conventional sand-cement mortar with better performance.
+                    </p>
+                    <div className="space-y-1.5 mb-5">
+                      {[
+                        "High bonding strength for AAC & masonry",
+                        "Thin joint 3–5 mm — reduces structural load",
+                        "Shrinkage-controlled — no cracks/debonding",
+                        "Versatile for interior & exterior walls",
+                      ].map(f => (
+                        <div key={f} className="flex items-start gap-2 text-xs text-slate-700">
+                          <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />{f}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 mb-5">
+                      {[
+                        { label: "Compressive Strength", value: "> 7.5 N/mm²" },
+                        { label: "Bond Strength", value: "> 1.0 N/mm²" },
+                        { label: "Thickness", value: "3–5 mm" },
+                        { label: "Pot Life", value: "~120 min @ 20°C" },
+                        { label: "Mix Ratio", value: "~3:1 (Powder:Water)" },
+                        { label: "Packaging", value: "20 kg & 40 kg Bags" },
+                      ].map(s => (
+                        <div key={s.label} className="bg-slate-50 rounded-lg px-2.5 py-2 border border-slate-100">
+                          <div className="text-[9px] text-slate-400 uppercase tracking-wide">{s.label}</div>
+                          <div className="text-xs font-semibold text-slate-900">{s.value}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-auto">
+                      <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> TDS</Button></a>
+                      <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Sample <ArrowRight size={12} /></Button></a>
+                    </div>
+                  </div>
+                </div>
+                <div className="overflow-hidden h-40">
+                  <img src="/images/real-blockgrip-app.jpg" alt="BlockGrip X in use" className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              {/* PlastoGrip X */}
+              <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
+                <div className="grid grid-cols-2 gap-0 flex-1">
+                  <div className="bg-slate-50 border-r border-slate-100 flex items-center justify-center p-8">
+                    <div className="text-center">
+                      <img src="/images/real-plastogrip.png" alt="PlastoGrip X" className="h-52 w-auto object-contain mx-auto" />
+                    </div>
+                  </div>
+                  <div className="p-7 flex flex-col">
+                    <span className="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">04 · Plaster Bonding Agent</span>
+                    <h3 className="text-2xl font-display font-bold text-slate-900 mb-1">PlastoGrip X</h3>
+                    <p className="text-slate-500 text-xs italic mb-4">Plaster Primer</p>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-5">
+                      Polymer-modified plaster adhesive for direct application of plaster on concrete surfaces, ceilings, AAC blocks, and smooth substrates. Eliminates hacking or wire mesh. Ensures long-lasting, crack-free plaster finishes indoors and outdoors.
+                    </p>
+                    <div className="space-y-1.5 mb-5">
+                      {[
+                        "No hacking or wire mesh required",
+                        "Prevents debonding, cracks & hollow patches",
+                        "Excellent water retention and workability",
+                        "Interior & exterior plaster applications",
+                      ].map(f => (
+                        <div key={f} className="flex items-start gap-2 text-xs text-slate-700">
+                          <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />{f}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 mb-5">
+                      {[
+                        { label: "Bond Strength", value: "> 1.0 N/mm²" },
+                        { label: "Pot Life", value: "~90 min @ 20°C" },
+                        { label: "Coverage", value: "~40–50 sq.ft / 20 kg" },
+                        { label: "Thickness", value: "Thin coat (1–2 mm)" },
+                        { label: "Appearance", value: "Grey / White Powder" },
+                        { label: "Packaging", value: "20 kg Bag" },
+                      ].map(s => (
+                        <div key={s.label} className="bg-slate-50 rounded-lg px-2.5 py-2 border border-slate-100">
+                          <div className="text-[9px] text-slate-400 uppercase tracking-wide">{s.label}</div>
+                          <div className="text-xs font-semibold text-slate-900">{s.value}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-auto">
+                      <a href="#contact"><Button size="sm" className="rounded-full text-xs bg-primary hover:bg-primary/90 text-white gap-1.5"><Download size={12} /> TDS</Button></a>
+                      <a href="#contact"><Button size="sm" variant="outline" className="rounded-full text-xs gap-1.5">Sample <ArrowRight size={12} /></Button></a>
+                    </div>
+                  </div>
+                </div>
+                <div className="overflow-hidden h-40">
+                  <img src="/images/real-plastogrip-app.jpg" alt="PlastoGrip X in use" className="w-full h-full object-cover" />
+                </div>
+              </div>
             </div>
 
             {/* System callout */}
-            <div className="mt-10 rounded-2xl bg-primary/5 border border-primary/20 p-8 md:p-10">
+            <div className="mt-8 rounded-2xl bg-primary/5 border border-primary/20 p-8 md:p-10">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-primary font-bold mb-3">The Alphabond System</p>
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-3">Products designed to work together.</h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    From block laying (Blockgrip X) to plastering (Plastogrip X) to tiling (Tilegrip) to structural grouting (Alphagrout) — a single supplier for your entire finishing and bonding chain. No compatibility issues. Unified technical support.
-                  </p>
+                  <p className="text-slate-600 leading-relaxed text-sm">From block laying to plastering to tiling to grouting — a single supplier for your entire finishing and bonding chain. No compatibility issues. Unified technical support. One trusted brand.</p>
                 </div>
-                <div className="flex flex-wrap gap-3 items-center justify-center md:justify-end">
+                <div className="flex flex-wrap gap-2 items-center justify-center md:justify-end">
                   {[
-                    { step: "01", name: "Blockgrip X", action: "Lay AAC blocks" },
-                    { step: "02", name: "Plastogrip X", action: "Prime for plaster" },
-                    { step: "03", name: "Tilegrip", action: "Fix tiles" },
-                    { step: "04", name: "Alphagrout", action: "Structural grout" },
+                    { step: "01", name: "BlockGrip X", action: "Lay AAC blocks" },
+                    { step: "02", name: "PlastoGrip X", action: "Prime for plaster" },
+                    { step: "03", name: "TileGrip", action: "Fix tiles" },
+                    { step: "04", name: "AlphaGrout", action: "Fill joints" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <div className="text-center bg-white rounded-xl border border-primary/20 px-4 py-3 min-w-[110px]">
+                      <div className="text-center bg-white rounded-xl border border-primary/20 px-4 py-3 min-w-[105px]">
                         <div className="text-xs text-primary font-bold mb-0.5">{item.step}</div>
                         <div className="font-display font-bold text-slate-900 text-sm">{item.name}</div>
                         <div className="text-xs text-slate-500">{item.action}</div>
                       </div>
-                      {i < 3 && <ArrowRight size={14} className="text-slate-300 shrink-0" />}
+                      {i < 3 && <ArrowRight size={13} className="text-slate-300 shrink-0" />}
                     </div>
                   ))}
                 </div>
@@ -526,9 +664,7 @@ export function Home() {
               <div>
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">Manufacturing Capacity</p>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">Built to scale.</h2>
-                <p className="text-slate-600 leading-relaxed mb-8">
-                  Two advanced production facilities in Bharuch. A second unit currently under construction will more than triple chemical output. Every product comes with complete batch traceability and in-house QC documentation.
-                </p>
+                <p className="text-slate-600 leading-relaxed mb-8">Two advanced production facilities in Bharuch. A second unit currently under construction will more than triple chemical output. Every product carries full batch traceability and in-house QC documentation.</p>
                 <div className="space-y-3">
                   {[
                     { label: "Production Units", value: "2 (1 Operational, 1 Under Construction)" },
@@ -537,7 +673,7 @@ export function Home() {
                     { label: "QC", value: "In-house lab — tested in, tested out, documented" },
                   ].map(item => (
                     <div key={item.label} className="flex gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 items-start">
-                      <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
+                      <CheckCircle2 size={15} className="text-primary mt-0.5 shrink-0" />
                       <div>
                         <div className="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">{item.label}</div>
                         <div className="font-semibold text-slate-900 text-sm">{item.value}</div>
@@ -546,7 +682,6 @@ export function Home() {
                   ))}
                 </div>
               </div>
-
               <div className="grid grid-cols-1 gap-4">
                 <div className="rounded-2xl bg-slate-950 text-white p-8 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-2xl" />
@@ -558,12 +693,12 @@ export function Home() {
                   <div className="rounded-2xl border border-slate-200 p-6 text-center">
                     <div className="text-4xl font-display font-bold text-slate-900 mb-1">1.5L</div>
                     <div className="text-sm font-semibold text-slate-700 mb-1">Bags / Month</div>
-                    <div className="text-xs text-slate-500">Current chemical production capacity</div>
+                    <div className="text-xs text-slate-500">Current chemical production</div>
                   </div>
                   <div className="rounded-2xl bg-primary/5 border border-primary/20 p-6 text-center">
                     <div className="text-4xl font-display font-bold text-primary mb-1">5L+</div>
                     <div className="text-sm font-semibold text-slate-700 mb-1">Bags / Month</div>
-                    <div className="text-xs text-slate-500">After second unit operational</div>
+                    <div className="text-xs text-slate-500">After 2nd unit is operational</div>
                   </div>
                 </div>
               </div>
@@ -579,16 +714,11 @@ export function Home() {
               <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-3">Built for every project type.</h2>
               <p className="text-lg text-slate-600 max-w-2xl">Each sector demands different performance characteristics. Here's how Alphabond products are specified for each environment.</p>
             </div>
-
             <div className="grid sm:grid-cols-2 gap-6">
               {SECTORS.map((sector, i) => (
                 <div key={i} className="group relative rounded-2xl overflow-hidden bg-slate-900">
                   <div className="aspect-[16/9] overflow-hidden">
-                    <img
-                      src={sector.img}
-                      alt={sector.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-80"
-                    />
+                    <img src={sector.img} alt={sector.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-80" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-7 w-full">
@@ -614,25 +744,16 @@ export function Home() {
               <div>
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">Job Work & Contract Manufacturing</p>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">Your brand. Our manufacturing.</h2>
-                <p className="text-slate-600 leading-relaxed mb-5">
-                  Alphabond operates as a trusted white-label contract manufacturer for construction chemicals, produced under your brand name from our ISO-certified Bharuch facility. We've been trusted by <strong>Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu</strong> for private-label production since 2022.
-                </p>
-                <p className="text-slate-600 leading-relaxed mb-8">
-                  From custom formulations and stringent batch testing to branded packaging and direct dispatch — partners get a ready-to-market, quality-assured product range without the capital or complexity of building their own plant.
-                </p>
-                <a href="#contact">
-                  <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 gap-2">
-                    Discuss a Partnership <ArrowRight size={16} />
-                  </Button>
-                </a>
+                <p className="text-slate-600 leading-relaxed mb-5">Alphabond operates as a trusted white-label contract manufacturer for construction chemicals, produced under your brand name from our ISO-certified Bharuch facility. We've been trusted by <strong>Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu</strong> for private-label production since 2022.</p>
+                <p className="text-slate-600 leading-relaxed mb-8">From custom formulations and stringent batch testing to branded packaging and direct dispatch — partners get a ready-to-market, quality-assured product range without the capital or complexity of building their own plant.</p>
+                <a href="#contact"><Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 gap-2">Discuss a Partnership <ArrowRight size={16} /></Button></a>
               </div>
-
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { icon: <FlaskConical size={20} />, title: "Custom Formulations", desc: "Product specs tailored to match your brand's performance requirements and market positioning." },
                   { icon: <CheckCircle2 size={20} />, title: "Stringent QC Testing", desc: "Every batch tested in our in-house lab. Full documentation provided with each shipment." },
                   { icon: <Package size={20} />, title: "Branded Packaging", desc: "Products dispatched ready-to-market under your brand name, colours, and design." },
-                  { icon: <HeartHandshake size={20} />, title: "Full Service Partnership", desc: "From R&D to delivery. We handle the manufacturing so you can focus on brand growth." },
+                  { icon: <HeartHandshake size={20} />, title: "Full Service Partnership", desc: "From R&D to delivery. We handle manufacturing so you can focus on brand growth." },
                 ].map((item, i) => (
                   <div key={i} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-primary/30 hover:shadow-sm transition-all">
                     <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">{item.icon}</div>
@@ -651,29 +772,13 @@ export function Home() {
             <div className="text-center max-w-3xl mx-auto mb-14">
               <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">Clients</p>
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-5">Trusted by India's biggest names.</h2>
-              <p className="text-slate-400 text-lg">From the country's largest cement majors and construction-chemical brands to private-label job-work partners. India's building industry trusts Kishan Enterprise for raw materials and contract manufacturing.</p>
+              <p className="text-slate-400 text-lg">From the country's largest cement majors and construction-chemical brands to private-label job-work partners.</p>
             </div>
-
-            <div className="space-y-6">
+            <div className="space-y-5">
               {[
-                {
-                  category: "Wet Sand Supply",
-                  tag: "Since 2008",
-                  tagColor: "text-green-400 bg-green-400/10 border-green-400/20",
-                  clients: ["UltraTech Cement RMC", "JK Lakshmi Cement RMC", "Nuvoco Vistas RMC", "ACC Cement RMC", "Prism Johnson RMC", "Wagad Infra Projects RMC"],
-                },
-                {
-                  category: "Dry Sand Supply",
-                  tag: "Since 2021",
-                  tagColor: "text-blue-400 bg-blue-400/10 border-blue-400/20",
-                  clients: ["Pidilite Industries", "Magicrete Building Solutions", "BirlaNu Ltd.", "Walplast Products", "Globcon Industries", "Avon Building Solutions", "Bharat Silica", "Aswani Industries (Ascolite)"],
-                },
-                {
-                  category: "Job Work / Contract Manufacturing",
-                  tag: "Since 2022",
-                  tagColor: "text-orange-400 bg-orange-400/10 border-orange-400/20",
-                  clients: ["Asian Paints", "Walplast Products", "Masterapuu", "Revacon Buildtech", "Magicrete Building Solutions"],
-                },
+                { category: "Wet Sand Supply", tag: "Since 2008", tagColor: "text-green-400 bg-green-400/10 border-green-400/20", clients: ["UltraTech Cement RMC", "JK Lakshmi Cement RMC", "Nuvoco Vistas RMC", "ACC Cement RMC", "Prism Johnson RMC", "Wagad Infra Projects RMC"] },
+                { category: "Dry Sand Supply", tag: "Since 2021", tagColor: "text-blue-400 bg-blue-400/10 border-blue-400/20", clients: ["Pidilite Industries", "Magicrete Building Solutions", "BirlaNu Ltd.", "Walplast Products", "Globcon Industries", "Avon Building Solutions", "Bharat Silica", "Aswani Industries (Ascolite)"] },
+                { category: "Job Work / Contract Manufacturing", tag: "Since 2022", tagColor: "text-orange-400 bg-orange-400/10 border-orange-400/20", clients: ["Asian Paints", "Walplast Products", "Masterapuu", "Revacon Buildtech", "Magicrete Building Solutions"] },
               ].map((group, i) => (
                 <div key={i} className="border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-colors">
                   <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -682,16 +787,13 @@ export function Home() {
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {group.clients.map(client => (
-                      <div key={client} className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-slate-300 hover:border-primary/40 hover:text-white transition-colors">
-                        {client}
-                      </div>
+                      <div key={client} className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-slate-300 hover:border-primary/40 hover:text-white transition-colors">{client}</div>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
-
-            <p className="text-center text-slate-600 text-xs mt-8">All trademarks are property of their respective owners and referenced solely to indicate supply relationships. No endorsement is implied.</p>
+            <p className="text-center text-slate-600 text-xs mt-8">All trademarks are property of their respective owners. Referenced solely to indicate supply relationships. No endorsement implied.</p>
           </div>
         </section>
 
@@ -702,23 +804,20 @@ export function Home() {
               <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">Why Alphabond</p>
               <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900">Eight reasons our clients stay with us.</h2>
             </div>
-
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
                 { icon: <Award size={20} />, num: "01", title: "Consistent Quality", desc: "Every batch tested in our in-house lab. Every shipment uniform. QC built into every stage of manufacturing." },
                 { icon: <Truck size={20} />, num: "02", title: "Own Fleet, Own Schedule", desc: "Dedicated truck fleet under direct control. Clients build their schedules around our reliability." },
-                { icon: <Factory size={20} />, num: "03", title: "High Capacity", desc: "9,000 MT dry sand and 1.5 lakh chemical bags monthly. Expanding to 5L+ bags soon." },
+                { icon: <Factory size={20} />, num: "03", title: "High Capacity", desc: "9,000 MT dry sand and 1.5 lakh bags monthly. Expanding to 5L+ bags per month soon." },
                 { icon: <Clock size={20} />, num: "04", title: "17+ Years Experience", desc: "Operating since 2008. Deep expertise in supply, logistics, and large industrial buyer needs." },
-                { icon: <Users size={20} />, num: "05", title: "Trusted by Leaders", desc: "UltraTech, Pidilite, JK Lakshmi, Asian Paints, Nuvoco, ACC, Walplast — and counting." },
+                { icon: <Users size={20} />, num: "05", title: "Trusted by Leaders", desc: "UltraTech, Pidilite, JK Lakshmi, Asian Paints, Nuvoco, ACC, Walplast — and growing." },
                 { icon: <CloudRain size={20} />, num: "06", title: "Monsoon-Ready", desc: "Engineered to produce year-round. Competitors shut down in monsoon. We don't." },
                 { icon: <ShieldCheck size={20} />, num: "07", title: "ISO-Certified", desc: "Documented processes, traceable batches, audit-ready records. Every time." },
                 { icon: <HeartHandshake size={20} />, num: "08", title: "Customer-Centric", desc: "Hands-on management. Direct lines of communication. We answer fast." },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100 hover:shadow-md hover:border-primary/20 transition-all group">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                      {item.icon}
-                    </div>
+                    <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">{item.icon}</div>
                     <span className="text-2xl font-display font-bold text-slate-100">{item.num}</span>
                   </div>
                   <h3 className="font-bold text-slate-900 mb-2 text-sm">{item.title}</h3>
@@ -736,17 +835,13 @@ export function Home() {
               <div className="border border-slate-200 rounded-3xl p-10 md:p-12 flex flex-col">
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-6">Our Vision</p>
                 <h2 className="text-3xl font-display font-bold text-slate-900 mb-6">To be the most trusted name in construction bonding solutions.</h2>
-                <p className="text-lg text-slate-600 leading-relaxed border-l-4 border-primary pl-6">
-                  Setting new benchmarks for durability, quality, and sustainability — empowering builders, architects, and infrastructure leaders with products that simplify construction, enhance performance, and create lasting value.
-                </p>
+                <p className="text-lg text-slate-600 leading-relaxed border-l-4 border-primary pl-6">Setting new benchmarks for durability, quality, and sustainability — empowering builders, architects, and infrastructure leaders with products that simplify construction, enhance performance, and create lasting value.</p>
               </div>
               <div className="bg-slate-950 rounded-3xl p-10 md:p-12 text-white relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-3xl opacity-15 -translate-y-1/2 translate-x-1/4" />
                 <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-6 relative z-10">Our Mission</p>
                 <h2 className="text-3xl font-display font-bold mb-6 relative z-10">To deliver products that build a stronger India.</h2>
-                <p className="text-lg text-slate-300 leading-relaxed relative z-10">
-                  High-performance construction chemicals and sand solutions that transform the way the world builds — backed by continuous R&D, ethical practices, and exceptional customer service. Every project, big or small, built stronger and smarter with Alphabond.
-                </p>
+                <p className="text-lg text-slate-300 leading-relaxed relative z-10">High-performance construction chemicals and sand solutions that transform the way the world builds — backed by continuous R&D, ethical practices, and exceptional customer service. Every project, big or small, built stronger and smarter with Alphabond.</p>
               </div>
             </div>
           </div>
@@ -758,10 +853,10 @@ export function Home() {
             <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-slate-900 mb-14">What professionals say.</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { name: "Rajesh Patel", role: "Principal Architect, Ahmedabad", quote: "Alphabond's Blockgrip has transformed how we approach AAC masonry. The clean, precise joint and near-zero wastage align perfectly with how we design for sustainable construction." },
-                { name: "Nikhil Gole", role: "Civil Contractor, Pune", quote: "Tilegrip X3 is non-negotiable on my sites now. The anti-slump property is a game-changer for large vitrified tiles on walls. Bonding strength means zero callbacks." },
-                { name: "Priya Sharma", role: "Interior Designer, Mumbai", quote: "For 120×60 Italian porcelain on flooring, you can't compromise. Tilegrip X4's extended open time gives us the precision large-format installations require." },
-                { name: "Arun Kumar", role: "Project Manager, Chennai", quote: "Alphagrout X2 delivered consistent performance on anchor bolt setting for our bridge bearing pads — high early strength, no shrinkage. Exactly what structural work demands." },
+                { name: "Rajesh Patel", role: "Principal Architect, Ahmedabad", quote: "Alphabond's BlockGrip has transformed how we approach AAC masonry. The clean, precise joint and near-zero wastage align perfectly with how we design for sustainable construction." },
+                { name: "Nikhil Gole", role: "Civil Contractor, Pune", quote: "TileGrip X3 is non-negotiable on my sites now. The extended open time is a game-changer for large-format stone on walls. Bonding strength means zero callbacks months later." },
+                { name: "Priya Sharma", role: "Interior Designer, Mumbai", quote: "For 120×60 Italian porcelain on flooring, you can't compromise. TileGrip X4's superior bond and flexible formulation give us the results our luxury clients demand." },
+                { name: "Arun Kumar", role: "Project Manager, Chennai", quote: "AlphaGrout X1 gave us a consistently clean, uniform finish across a 40,000 sq.ft. commercial floor. Water resistance held perfectly in the wet zones. Reliable product." },
               ].map((t, i) => (
                 <div key={i} className="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
                   <div className="flex gap-1 text-primary mb-5">
@@ -789,15 +884,14 @@ export function Home() {
               <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-3">Frequently Asked Questions</h2>
               <p className="text-slate-600">Technical and commercial queries about our products and operations.</p>
             </div>
-
             <Accordion type="single" collapsible className="w-full bg-slate-50 rounded-2xl p-6 border border-slate-200">
               {[
-                { q: "What does Alphabond manufacture?", a: "Alphabond (a brand of Kishan Enterprise) manufactures wet sand, dry sand, and a full range of construction chemicals from our ISO-certified facility in Bharuch, Gujarat. Our chemical range includes Tile Adhesives (Tilegrip X1–X4), Non-shrink Grouts (Alphagrout X1 & X2), AAC Block Adhesive (Blockgrip X), and Plaster Bonding Agent (Plastogrip X)." },
-                { q: "Which Tilegrip grade should I use for my project?", a: "Tilegrip X1 is for standard ceramic tiles indoors. X2 covers vitrified and glazed tiles, indoor and outdoor. X3 is a high-strength anti-slump grade for large-format tiles (up to 120×60 cm) on walls and floors. X4 is our heavy-duty grade for natural stone, external façade, and submerged/pool areas. Contact us and we'll specify the right grade for your project." },
+                { q: "What does Alphabond manufacture?", a: "Alphabond (a brand of Kishan Enterprise) manufactures wet sand, dry sand, and a full range of construction chemicals from our ISO-certified facility in Bharuch, Gujarat. Our chemical range includes Tile Adhesives (TileGrip X1–X4), Tile Grouts (AlphaGrout X1 & X2), AAC Block Adhesive (BlockGrip X), and Plaster Bonding Agent (PlastoGrip X)." },
+                { q: "Which TileGrip grade should I use?", a: "TileGrip X1 is for standard ceramic tiles indoors. X2 handles large-format vitrified, porcelain, and natural stone for indoor/outdoor use. X3 is premium-grade for granite, marble, and large-format tiles in high-traffic and demanding exteriors. X4 is our extra-strength grade for heavy stone cladding, façades, and challenging industrial/exterior applications." },
+                { q: "What is AlphaGrout used for — is it a tile grout or a structural grout?", a: "AlphaGrout is a tile joint grout — it fills the gaps between tiles to provide a neat, durable finish with water and stain resistance. X1 is a cement-based grout for joints 1–6 mm wide. X2 is a flexible, polymer-modified grout for wider joints and high-moisture areas. It is not used for structural anchor bolt grouting." },
                 { q: "Do you offer job work / contract manufacturing?", a: "Yes. Since 2022, we manufacture tile adhesives, block adhesives, grouts, and specialty compounds under clients' own brand names. Current partners include Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu. We provide custom formulations, batch QC documentation, and branded packaging." },
-                { q: "What is your current production capacity?", a: "Dry sand: 8,000–9,000 MT per month. Construction chemicals: 1.5 lakh bags per month currently. A second production unit is under construction in Bharuch that will expand chemical capacity to over 5 lakh bags per month." },
-                { q: "Do you supply pan-India? What about monsoon season?", a: "Yes, we supply across India. We operate our own logistics fleet which gives us direct control over delivery schedules. Our facility and process technology are designed to operate through monsoon — unlike many regional suppliers who pause production during the rainy season." },
-                { q: "How do I get Technical Data Sheets (TDS) for your products?", a: "Contact us via the form below or call us directly. We will send TDS for any product or grade within the same business day. For large project specifications, our technical team can provide a project-specific product selection guide." },
+                { q: "What is your production capacity?", a: "Dry sand: 8,000–9,000 MT per month. Construction chemicals: 1.5 lakh bags per month currently. A second production unit under construction in Bharuch will expand chemical capacity to over 5 lakh bags per month." },
+                { q: "How do I get Technical Data Sheets for your products?", a: "Contact us via the enquiry form or call directly. We will send TDS for any product or grade the same business day. For large project specifications, our technical team can provide a project-specific product selection guide." },
               ].map((item, i) => (
                 <AccordionItem key={i} value={`item-${i}`}>
                   <AccordionTrigger className="text-left font-display font-semibold text-base hover:text-primary">{item.q}</AccordionTrigger>
@@ -815,47 +909,27 @@ export function Home() {
             <div className="grid md:grid-cols-2 gap-16">
               <div>
                 <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">Get In Touch</p>
-                <h2 className="text-4xl md:text-5xl font-display font-bold mb-5 leading-tight">
-                  Let's build together.
-                </h2>
+                <h2 className="text-4xl md:text-5xl font-display font-bold mb-5 leading-tight">Let's build together.</h2>
                 <p className="text-slate-400 mb-12 text-lg leading-relaxed">For supply enquiries, sample requests, job work partnerships, or rate negotiations. Our team responds within hours, not days.</p>
-
                 <div className="space-y-7">
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                      <MapPin size={18} className="text-primary" />
+                  {[
+                    { icon: <MapPin size={18} />, title: "Manufacturing Facility", lines: ["Bharuch, Gujarat, India", "Also present in Surat, Gujarat"] },
+                    { icon: <Phone size={18} />, title: "Call Us", lines: ["+91 96385 63857", "+91 90994 65837"] },
+                    { icon: <Mail size={18} />, title: "Email Us", lines: ["info@alphabond.in"] },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center shrink-0">{item.icon && React.cloneElement(item.icon as React.ReactElement, { className: "text-primary" })}</div>
+                      <div>
+                        <h4 className="font-bold text-base mb-1">{item.title}</h4>
+                        {item.lines.map(l => <p key={l} className="text-slate-400 text-sm">{l}</p>)}
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-base mb-1">Manufacturing Facility</h4>
-                      <p className="text-slate-400 text-sm">Bharuch, Gujarat, India</p>
-                      <p className="text-slate-500 text-xs mt-0.5">Also present in Surat, Gujarat</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                      <Phone size={18} className="text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-base mb-1">Call Us</h4>
-                      <a href="tel:+919638563857" className="text-slate-400 text-sm hover:text-white transition-colors block">+91 96385 63857</a>
-                      <a href="tel:+919099465837" className="text-slate-400 text-sm hover:text-white transition-colors block">+91 90994 65837</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                      <Mail size={18} className="text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-base mb-1">Email Us</h4>
-                      <a href="mailto:info@alphabond.in" className="text-slate-400 text-sm hover:text-white transition-colors">info@alphabond.in</a>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-
               <div className="bg-white rounded-3xl p-8 md:p-10 text-slate-900 shadow-2xl">
                 <h3 className="text-2xl font-display font-bold mb-1">Send an Enquiry</h3>
-                <p className="text-slate-500 text-sm mb-6">Supply enquiries · Sample requests · Job work · Technical queries</p>
+                <p className="text-slate-500 text-sm mb-6">Supply · Samples · Job Work · Technical queries</p>
                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
@@ -882,18 +956,16 @@ export function Home() {
                         <option>Supply Enquiry</option>
                         <option>Sample Request</option>
                         <option>Job Work / White Label</option>
-                        <option>Technical Query</option>
+                        <option>Technical Query / TDS</option>
                         <option>Other</option>
                       </select>
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Message / Requirement</label>
-                    <Textarea placeholder="Describe your project, product interest, or job-work requirement..." className="bg-slate-50 border-slate-200 min-h-[100px]" />
+                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Message</label>
+                    <Textarea placeholder="Describe your project, product interest, or job-work requirement..." className="bg-slate-50 border-slate-200 min-h-[90px]" />
                   </div>
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white h-12 rounded-xl text-base font-semibold">
-                    Submit Enquiry
-                  </Button>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white h-12 rounded-xl text-base font-semibold">Submit Enquiry</Button>
                 </form>
               </div>
             </div>
@@ -907,10 +979,8 @@ export function Home() {
               <div className="md:col-span-2">
                 <img src="/logo.png" alt="Alphabond" className="h-10 w-auto object-contain mb-4 brightness-200" />
                 <p className="text-xs text-slate-600 mb-1">A Brand of Kishan Enterprise</p>
-                <p className="text-sm leading-relaxed max-w-sm mt-3">
-                  ISO-certified manufacturer of construction chemicals and industrial sand solutions. Bharuch & Surat, Gujarat, India. Since 2008.
-                </p>
-                <div className="flex gap-4 mt-6 text-sm">
+                <p className="text-sm leading-relaxed max-w-sm mt-3">ISO-certified manufacturer of construction chemicals and industrial sand solutions. Bharuch & Surat, Gujarat, India. Since 2008.</p>
+                <div className="flex gap-4 mt-6 text-sm flex-wrap">
                   <a href="tel:+919638563857" className="text-slate-500 hover:text-white transition-colors">+91 96385 63857</a>
                   <a href="mailto:info@alphabond.in" className="text-slate-500 hover:text-white transition-colors">info@alphabond.in</a>
                 </div>
@@ -918,7 +988,7 @@ export function Home() {
               <div>
                 <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-wider">Products</h4>
                 <ul className="space-y-2 text-sm">
-                  {["Tilegrip (X1–X4)", "Alphagrout (X1 & X2)", "Blockgrip X", "Plastogrip X"].map(p => (
+                  {["TileGrip (X1–X4)", "AlphaGrout (X1 & X2)", "BlockGrip X", "PlastoGrip X"].map(p => (
                     <li key={p}><a href="#products" className="hover:text-white transition-colors">{p}</a></li>
                   ))}
                 </ul>
