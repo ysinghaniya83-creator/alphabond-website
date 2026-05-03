@@ -162,7 +162,7 @@ export function Home() {
 
   const navLinks: [string, string][] = [
     ["Products", "#products"], ["Solutions", "#solutions"],
-    ["Clients", "#clients"], ["Job Work", "#job-work"],
+    ["Job Work", "#job-work"],
     ["Blog", "/blog"], ["About", "#about"], ["Contact", "#contact"],
   ];
 
@@ -415,7 +415,6 @@ export function Home() {
                 {[
                   { value: "17+",  label: "Years in Business" },
                   { value: "8",    label: "Products in Range" },
-                  { value: "20+",  label: "Major Clients" },
                   { value: "1.5L", label: "Bags / Month" },
                 ].map(s => (
                   <div key={s.label}>
@@ -496,7 +495,7 @@ export function Home() {
                   {[
                     { value: "17+", label: "Years in Business", sub: "Est. 2008" },
                     { value: "9,000 MT", label: "Monthly Sand Output", sub: "Bharuch plant" },
-                    { value: "20+", label: "Major Clients", sub: "Industrial buyers" },
+                    { value: "1.5L", label: "Bags / Month", sub: "Chemical output" },
                   ].map(s => (
                     <div key={s.label} className="bg-slate-50 rounded-xl p-4 border border-slate-100 text-center">
                       <div className="text-xl font-display font-bold text-primary">{s.value}</div>
@@ -1121,51 +1120,20 @@ export function Home() {
           </div>
         </section>
 
-        {/* ── Clients ────────────────────────────────────────── */}
-        <section id="clients" className="py-24 bg-slate-950 text-white">
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-4">Clients</p>
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-5">Trusted by India's biggest names.</h2>
-              <p className="text-slate-400 text-lg">From the country's largest cement majors and construction-chemical brands to private-label job-work partners.</p>
-            </div>
-            <div className="space-y-5">
-              {[
-                { category: "Wet Sand Supply", tag: "Since 2008", tagColor: "text-green-400 bg-green-400/10 border-green-400/20", clients: ["UltraTech Cement RMC", "JK Lakshmi Cement RMC", "Nuvoco Vistas RMC", "ACC Cement RMC", "Prism Johnson RMC", "Wagad Infra Projects RMC"] },
-                { category: "Dry Sand Supply", tag: "Since 2021", tagColor: "text-blue-400 bg-blue-400/10 border-blue-400/20", clients: ["Pidilite Industries", "Magicrete Building Solutions", "BirlaNu Ltd.", "Walplast Products", "Globcon Industries", "Avon Building Solutions", "Bharat Silica", "Aswani Industries (Ascolite)"] },
-                { category: "Job Work / Contract Manufacturing", tag: "Since 2022", tagColor: "text-orange-400 bg-orange-400/10 border-orange-400/20", clients: ["Asian Paints", "Walplast Products", "Masterapuu", "Revacon Buildtech", "Magicrete Building Solutions"] },
-              ].map((group, i) => (
-                <div key={i} className="border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-colors">
-                  <div className="flex flex-wrap items-center gap-4 mb-6">
-                    <h3 className="text-base font-display font-bold">{group.category}</h3>
-                    <span className={`text-xs px-3 py-1 rounded-full border font-semibold ${group.tagColor}`}>{group.tag}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-3">
-                    {group.clients.map(client => (
-                      <div key={client} className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-slate-300 hover:border-primary/40 hover:text-white transition-colors">{client}</div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-slate-600 text-xs mt-8">All trademarks are property of their respective owners. Referenced solely to indicate supply relationships. No endorsement implied.</p>
-          </div>
-        </section>
-
         {/* ── Why Alphabond ──────────────────────────────────── */}
         <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <div className="text-center max-w-2xl mx-auto mb-14">
               <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">Why Alphabond</p>
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900">Eight reasons our clients stay with us.</h2>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900">Eight reasons to choose Alphabond.</h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
                 { icon: <Award size={20} />, num: "01", title: "Consistent Quality", desc: "Every batch tested in our in-house lab. Every shipment uniform. QC built into every stage of manufacturing." },
-                { icon: <Truck size={20} />, num: "02", title: "Own Fleet, Own Schedule", desc: "Dedicated truck fleet under direct control. Clients build their schedules around our reliability." },
+                { icon: <Truck size={20} />, num: "02", title: "Own Fleet, Own Schedule", desc: "Dedicated truck fleet under direct control. Every delivery on time, every time." },
                 { icon: <Factory size={20} />, num: "03", title: "High Capacity", desc: "9,000 MT dry sand and 1.5 lakh bags monthly. Expanding to 5L+ bags per month soon." },
                 { icon: <Clock size={20} />, num: "04", title: "17+ Years Experience", desc: "Operating since 2008. Deep expertise in supply, logistics, and large industrial buyer needs." },
-                { icon: <Users size={20} />, num: "05", title: "Trusted by Leaders", desc: "UltraTech, Pidilite, JK Lakshmi, Asian Paints, Nuvoco, ACC, Walplast, and growing." },
+                { icon: <Users size={20} />, num: "05", title: "Trusted by Leaders", desc: "Supplying some of India's largest cement majors, construction-chemical brands, and infrastructure companies." },
                 { icon: <CloudRain size={20} />, num: "06", title: "Monsoon-Ready", desc: "Engineered to produce year-round. Competitors shut down in monsoon. We don't." },
                 { icon: <ShieldCheck size={20} />, num: "07", title: "ISO-Certified", desc: "Documented processes, traceable batches, audit-ready records. Every time." },
                 { icon: <HeartHandshake size={20} />, num: "08", title: "Customer-Centric", desc: "Hands-on management. Direct lines of communication. We answer fast." },
@@ -1210,7 +1178,7 @@ export function Home() {
               {[
                 { name: "Rajesh Patel", role: "Principal Architect, Ahmedabad", quote: "Alphabond's BlockGrip has transformed how we approach AAC masonry. The clean, precise joint and near-zero wastage align perfectly with how we design for sustainable construction." },
                 { name: "Nikhil Gole", role: "Civil Contractor, Pune", quote: "TileGrip X3 is non-negotiable on my sites now. The extended open time is a game-changer for large-format stone on walls. Bonding strength means zero callbacks months later." },
-                { name: "Priya Sharma", role: "Interior Designer, Mumbai", quote: "For 120×60 Italian porcelain on flooring, you can't compromise. TileGrip X4's superior bond and flexible formulation give us the results our luxury clients demand." },
+                { name: "Priya Sharma", role: "Interior Designer, Mumbai", quote: "For 120×60 Italian porcelain on flooring, you can't compromise. TileGrip X4's superior bond and flexible formulation give us the results our luxury projects demand." },
                 { name: "Arun Kumar", role: "Project Manager, Chennai", quote: "AlphaGrout X1 gave us a consistently clean, uniform finish across a 40,000 sq.ft. commercial floor. Water resistance held perfectly in the wet zones. Reliable product." },
               ].map((t, i) => (
                 <div key={i} className="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
@@ -1244,7 +1212,7 @@ export function Home() {
                 { q: "What does Alphabond manufacture?", a: "Alphabond (a brand of Kishan Enterprise) manufactures wet sand, dry sand, and a full range of construction chemicals from our ISO-certified facility in Bharuch, Gujarat. Our chemical range includes Tile Adhesives (TileGrip X1–X4), Structural Precision Grouts (AlphaGrout X1 & X2), AAC Block Jointing Mortar (BlockGrip X), and Ready-Mix Plaster / Bonding Agent (PlastoGrip X)." },
                 { q: "Which TileGrip grade should I use?", a: "TileGrip X1 is for standard ceramic tiles indoors. X2 handles large-format vitrified, porcelain, and natural stone for indoor/outdoor use. X3 is premium-grade for granite, marble, and large-format tiles in high-traffic and demanding exteriors. X4 is our extra-strength grade for heavy stone cladding, façades, and challenging industrial/exterior applications." },
                 { q: "What is AlphaGrout used for? Is it a tile grout or a structural grout?", a: "AlphaGrout X1 and X2 are high-performance structural precision grouts, not tile grouts. They are cement-based, non-shrink, polymer-enriched grouts engineered for machine foundation grouting, column joints, structural anchor bolts, and base plates of turbines, compressors, and heavy industrial machinery. X1 achieves >45 N/mm² compressive strength at 28 days. X2 delivers >65 N/mm² at 28 days and accepts coarse aggregates up to 20 mm for large-volume pours." },
-                { q: "Do you offer job work / contract manufacturing?", a: "Yes. Since 2022, we manufacture tile adhesives, block adhesives, grouts, and specialty compounds under clients' own brand names. Current partners include Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu. We provide custom formulations, batch QC documentation, and branded packaging." },
+                { q: "Do you offer job work / contract manufacturing?", a: "Yes. Since 2022, we manufacture tile adhesives, block adhesives, grouts, and specialty compounds under third-party brand names. We provide custom formulations, batch QC documentation, and branded packaging. Contact us to discuss your requirements." },
                 { q: "What is your production capacity?", a: "Dry sand: 8,000–9,000 MT per month. Construction chemicals: 1.5 lakh bags per month currently. A second production unit under construction in Bharuch will expand chemical capacity to over 5 lakh bags per month." },
                 { q: "How do I get Technical Data Sheets for your products?", a: "Contact us via the enquiry form or call directly. We will send TDS for any product or grade the same business day. For large project specifications, our technical team can provide a project-specific product selection guide." },
               ].map((item, i) => (
@@ -1311,7 +1279,7 @@ export function Home() {
               <div>
                 <h4 className="text-white font-semibold text-xs mb-4 uppercase tracking-wider">Company</h4>
                 <ul className="space-y-2 text-sm">
-                  {[["About", "#about"], ["Solutions", "#solutions"], ["Clients", "#clients"], ["Job Work", "#job-work"], ["Contact", "#contact"]].map(([label, href]) => (
+                  {[["About", "#about"], ["Solutions", "#solutions"], ["Job Work", "#job-work"], ["Contact", "#contact"]].map(([label, href]) => (
                     <li key={label}><a href={href} className="hover:text-white transition-colors">{label}</a></li>
                   ))}
                 </ul>

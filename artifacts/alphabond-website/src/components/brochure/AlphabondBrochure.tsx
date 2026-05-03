@@ -341,7 +341,6 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
           {[
             { value: "17+", label: "Years in\nBusiness" },
             { value: "8", label: "Products\nin Range" },
-            { value: "20+", label: "Major\nClients" },
             { value: "9,000 MT", label: "Dry Sand\nper Month" },
             { value: "1.5L+", label: "Bags\nper Month" },
           ].map((stat, i) => (
@@ -713,77 +712,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
       pack={["25 kg bag"]}
     />
 
-    {/* ── PAGE 11: CLIENTS & PARTNERS ───────────────────── */}
-    <Page size="A4" style={s.clientsPage}>
-      <View style={s.clientsHeader}>
-        <Text style={s.clientsHeaderLabel}>Our Clients & Partners</Text>
-        <Text style={s.clientsHeaderTitle}>{"Trusted by India's largest names\nin construction and manufacturing."}</Text>
-      </View>
-      <View style={s.clientsBody}>
-        {/* Wet Sand */}
-        <View style={s.clientGroup}>
-          <View style={s.clientGroupHeader}>
-            <Text style={s.clientGroupTitle}>Wet Sand Supply</Text>
-            <Text style={s.clientGroupTag}>Since 2008</Text>
-          </View>
-          <View style={s.clientGrid}>
-            {["UltraTech Cement RMC", "JK Lakshmi Cement RMC", "Nuvoco Vistas RMC", "ACC Cement RMC", "Prism Johnson RMC", "Wagad Infra Projects"].map(c => (
-              <View key={c} style={s.clientChip}><Text style={s.clientChipText}>{c}</Text></View>
-            ))}
-          </View>
-        </View>
-        <View style={s.clientDivider} />
-
-        {/* Dry Sand */}
-        <View style={s.clientGroup}>
-          <View style={s.clientGroupHeader}>
-            <Text style={s.clientGroupTitle}>Dry Sand Supply</Text>
-            <Text style={s.clientGroupTag}>Since 2021</Text>
-          </View>
-          <View style={s.clientGrid}>
-            {["Pidilite Industries", "Magicrete Building Solutions", "BirlaNu Ltd.", "Walplast Products", "Globcon Industries", "Avon Building Solutions", "Bharat Silica", "Aswani Industries (Ascolite)"].map(c => (
-              <View key={c} style={s.clientChip}><Text style={s.clientChipText}>{c}</Text></View>
-            ))}
-          </View>
-        </View>
-        <View style={s.clientDivider} />
-
-        {/* Job Work */}
-        <View style={s.clientGroup}>
-          <View style={s.clientGroupHeader}>
-            <Text style={s.clientGroupTitle}>Job Work / Contract Manufacturing</Text>
-            <Text style={s.clientGroupTag}>Since 2022</Text>
-          </View>
-          <View style={s.clientGrid}>
-            {["Asian Paints", "Walplast Products", "Masterapuu", "Revacon Buildtech", "Magicrete Building Solutions"].map(c => (
-              <View key={c} style={s.clientChip}><Text style={s.clientChipText}>{c}</Text></View>
-            ))}
-          </View>
-        </View>
-
-        <View style={{ marginTop: 24, backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 8, padding: 16, border: "1px solid rgba(255,255,255,0.08)" }}>
-          <Text style={{ fontSize: 10, fontWeight: 700, color: "#ffffff", marginBottom: 8 }}>Why leading brands choose Alphabond</Text>
-          <View style={{ flexDirection: "row", gap: 10 }}>
-            {[
-              { title: "Own Fleet", desc: "Dedicated truck fleet under direct management. Consistent on-time delivery." },
-              { title: "Year-Round", desc: "Monsoon-ready facility. No seasonal shutdowns affecting client production." },
-              { title: "ISO Certified", desc: "Documented QC. Full batch traceability. Audit-ready at all times." },
-              { title: "Responsive", desc: "Direct lines to management. Queries resolved same day." },
-            ].map(item => (
-              <View key={item.title} style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 6, padding: 10 }}>
-                <Text style={{ fontSize: 8.5, fontWeight: 700, color: "#60A5FA", marginBottom: 4 }}>{item.title}</Text>
-                <Text style={{ fontSize: 7.5, color: "#94A3B8", lineHeight: 1.55 }}>{item.desc}</Text>
-              </View>
-            ))}
-          </View>
-        </View>
-
-        <Text style={s.clientNote}>All trademarks are property of their respective owners. Referenced solely to indicate supply relationships. No endorsement is implied.</Text>
-      </View>
-      <Text style={s.pageNumDark}>11</Text>
-    </Page>
-
-    {/* ── PAGE 12: FULL LINEUP ──────────────────────────── */}
+    {/* ── PAGE 11: FULL LINEUP ──────────────────────────── */}
     <Page size="A4" style={s.lineupPage}>
       <View style={s.lineupBand}>
         <Text style={s.lineupTitle}>{"The Complete Alphabond Range"}</Text>
@@ -819,7 +748,7 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
         <Text style={s.lineupBadge}>Since 2008</Text>
       </View>
 
-      <Text style={s.pageNumDark}>12</Text>
+      <Text style={s.pageNumDark}>11</Text>
     </Page>
 
     {/* ── PAGE 13: BACK COVER ───────────────────────────── */}
