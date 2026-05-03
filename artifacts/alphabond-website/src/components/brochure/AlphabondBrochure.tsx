@@ -777,15 +777,15 @@ export const AlphabondBrochure = ({ baseUrl }: Props) => (
         <View style={s.backAddresses}>
           <View style={s.backAddrBox}>
             <Text style={s.backAddrLabel}>Registered Office</Text>
-            <Text style={s.backAddrLine}>{"Kishan Enterprise\nB/H. Agroha Society, Old National Highway,\nAmod Road, Bharuch — 392001, Gujarat, India"}</Text>
+            <Text style={s.backAddrLine}>{"Kishan Enterprise\nShop No. A/12, Ground Floor, Krishna Residency,\nN.H. 48, Kamrej, Surat, Gujarat — 394186"}</Text>
           </View>
           <View style={s.backAddrBox}>
-            <Text style={s.backAddrLabel}>Works / Factory</Text>
-            <Text style={s.backAddrLine}>{"Survey No. 134/1, Amod-Bharuch Highway,\nKhambhalia, Bharuch District,\nGujarat — 392001, India"}</Text>
+            <Text style={s.backAddrLabel}>Production Unit</Text>
+            <Text style={s.backAddrLine}>{"Survey No. 747/A, N.H. 48,\nBehind Relief Hotel, Jhanghar,\nBharuch, Gujarat — 392210"}</Text>
           </View>
           <View style={s.backAddrBox}>
             <Text style={s.backAddrLabel}>Branch Office</Text>
-            <Text style={s.backAddrLine}>{"Kishan Enterprise\nParvat Patia, Ring Road,\nSurat — 395010, Gujarat, India"}</Text>
+            <Text style={s.backAddrLine}>{"Shop R/5B/S-7, Jogeshwari Mata CHS,\nSai Siddhi Sankul, W.E. Highway,\nJogeshwari East, Mumbai — 400060"}</Text>
           </View>
         </View>
 
