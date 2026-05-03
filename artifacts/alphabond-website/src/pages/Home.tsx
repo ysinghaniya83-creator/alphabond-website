@@ -388,7 +388,7 @@ export function Home() {
                 Tile adhesives · Precision grouts · Block mortar · Ready-mix plaster · Industrial sand, all manufactured at our ISO-certified Bharuch facility.
               </p>
               <p className="text-sm text-slate-500 mb-10 max-w-lg">
-                Kishan Enterprise, operating as <strong className="text-slate-300">Alphabond™</strong>, trusted by Asian Paints, Pidilite, UltraTech, Walplast, and Magicrete.
+                Kishan Enterprise, operating as <strong className="text-slate-300">Alphabond™</strong>, supplying India's leading construction and infrastructure companies since 2008.
               </p>
 
               {/* CTAs */}
@@ -421,21 +421,6 @@ export function Home() {
                     <div className="text-3xl font-display font-bold text-white leading-none mb-0.5">{s.value}</div>
                     <div className="text-[11px] text-slate-400 font-medium">{s.label}</div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Trusted-by bar */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/8 bg-slate-950/70 backdrop-blur-sm">
-            <div className="container mx-auto px-4 md:px-8 h-14 flex items-center gap-8">
-              <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest shrink-0">Trusted by</span>
-              <div className="flex items-center gap-6 text-sm text-slate-400 font-medium flex-wrap">
-                {["Pidilite","UltraTech RMC","Asian Paints","Walplast","Magicrete","JK Lakshmi"].map((b, i, arr) => (
-                  <React.Fragment key={b}>
-                    <span>{b}</span>
-                    {i < arr.length - 1 && <span className="text-slate-700">·</span>}
-                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -1098,7 +1083,7 @@ export function Home() {
               <div>
                 <p className="text-xs uppercase tracking-widest text-primary font-bold mb-4">Job Work & Contract Manufacturing</p>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-5">Your brand. Our manufacturing.</h2>
-                <p className="text-slate-600 leading-relaxed mb-5">Alphabond operates as a trusted white-label contract manufacturer for construction chemicals, produced under your brand name from our ISO-certified Bharuch facility. We've been trusted by <strong>Asian Paints, Walplast, Magicrete, Revacon Buildtech, and Masterapuu</strong> for private-label production since 2022.</p>
+                <p className="text-slate-600 leading-relaxed mb-5">Alphabond operates as a trusted white-label contract manufacturer for construction chemicals, produced under your brand name from our ISO-certified Bharuch facility. We have been delivering private-label production for leading construction-chemical brands since 2022.</p>
                 <p className="text-slate-600 leading-relaxed mb-8">From custom formulations and stringent batch testing to branded packaging and direct dispatch. Partners get a ready-to-market, quality-assured product range without the capital or complexity of building their own plant.</p>
                 <a href="#contact"><Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 gap-2">Discuss a Partnership <ArrowRight size={16} /></Button></a>
               </div>
@@ -1166,36 +1151,6 @@ export function Home() {
                 <h2 className="text-3xl font-display font-bold mb-6 relative z-10">To deliver products that build a stronger India.</h2>
                 <p className="text-lg text-slate-300 leading-relaxed relative z-10">High-performance construction chemicals and sand solutions that transform the way the world builds, backed by continuous R&D, ethical practices, and exceptional customer service. Every project, big or small, built stronger and smarter with Alphabond.</p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Testimonials ───────────────────────────────────── */}
-        <section className="py-24 bg-slate-50">
-          <div className="container mx-auto px-4 md:px-8">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-slate-900 mb-14">What professionals say.</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                { name: "Rajesh Patel", role: "Principal Architect, Ahmedabad", quote: "Alphabond's BlockGrip has transformed how we approach AAC masonry. The clean, precise joint and near-zero wastage align perfectly with how we design for sustainable construction." },
-                { name: "Nikhil Gole", role: "Civil Contractor, Pune", quote: "TileGrip X3 is non-negotiable on my sites now. The extended open time is a game-changer for large-format stone on walls. Bonding strength means zero callbacks months later." },
-                { name: "Priya Sharma", role: "Interior Designer, Mumbai", quote: "For 120×60 Italian porcelain on flooring, you can't compromise. TileGrip X4's superior bond and flexible formulation give us the results our luxury projects demand." },
-                { name: "Arun Kumar", role: "Project Manager, Chennai", quote: "AlphaGrout X1 gave us a consistently clean, uniform finish across a 40,000 sq.ft. commercial floor. Water resistance held perfectly in the wet zones. Reliable product." },
-              ].map((t, i) => (
-                <div key={i} className="bg-white rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
-                  <div className="flex gap-1 text-primary mb-5">
-                    {[1,2,3,4,5].map(star => (
-                      <svg key={star} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-slate-700 italic mb-5 leading-relaxed">"{t.quote}"</p>
-                  <div>
-                    <div className="font-bold text-slate-900 text-sm">{t.name}</div>
-                    <div className="text-xs text-slate-500">{t.role}</div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
