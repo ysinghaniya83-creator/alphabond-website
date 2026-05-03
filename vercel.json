@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm --filter @workspace/alphabond-website run build",
   "outputDirectory": "artifacts/alphabond-website/dist/public",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install && npm install --no-save @rollup/rollup-linux-x64-gnu lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-gnu",
   "framework": null
 }
