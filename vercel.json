@@ -2,5 +2,8 @@
   "buildCommand": "echo 'Using pre-built output'",
   "outputDirectory": "artifacts/alphabond-website/dist/public",
   "installCommand": "echo 'No install needed'",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
