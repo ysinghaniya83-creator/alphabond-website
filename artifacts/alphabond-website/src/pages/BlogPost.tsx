@@ -32,8 +32,8 @@ export function BlogPost() {
       {/* Nav */}
       <header className="border-b border-slate-100 bg-white sticky top-0 z-40">
         <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <img src="/logo.png" alt="Alphabond" className="h-8 w-auto object-contain" />
+          <Link href="/" className="flex items-center overflow-hidden" style={{height:"64px"}}>
+            <img src="/logo.png" alt="Alphabond" className="h-16 w-auto object-contain block" />
           </Link>
           <Link href="/blog" className="text-sm text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
             <ArrowLeft size={14} /> All articles

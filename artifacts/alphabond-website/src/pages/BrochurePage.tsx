@@ -19,8 +19,8 @@ export function BrochurePage() {
       {/* Nav */}
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur-md sticky top-0 z-40">
         <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-          <Link href="/">
-            <img src="/logo.png" alt="Alphabond" className="h-8 w-auto object-contain brightness-200" />
+          <Link href="/" className="flex items-center overflow-hidden" style={{height:"64px"}}>
+            <img src="/logo.png" alt="Alphabond" className="h-16 w-auto object-contain block brightness-200" />
           </Link>
           <Link href="/" className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
             <ArrowLeft size={14} /> Back to site
