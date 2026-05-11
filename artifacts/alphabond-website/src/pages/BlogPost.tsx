@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { ArrowLeft, Clock, Calendar, Tag } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blogs";
@@ -15,6 +16,45 @@ export function BlogPost() {
   const params = useParams<{ slug: string }>();
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   const others = BLOG_POSTS.filter((p) => p.slug !== params.slug).slice(0, 2);
+
+  useEffect(() => {
+    if (!post) return;
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "article-schema";
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "description": post.subtitle,
+      "image": `https://alphabond.in${post.coverImage}`,
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "author": {
+        "@type": "Organization",
+        "name": post.author.name,
+        "url": "https://alphabond.in"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Alphabond (Kishan Enterprise)",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://alphabond.in/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://alphabond.in/blog/${post.slug}`
+      }
+    });
+    document.head.appendChild(script);
+    document.title = `${post.title} — Alphabond Blog`;
+    return () => {
+      document.head.querySelector("#article-schema")?.remove();
+      document.title = "Alphabond™ — Construction Chemicals & Industrial Sand | ISO-Certified Manufacturer, Bharuch Gujarat";
+    };
+  }, [post]);
 
   if (!post) {
     return (
